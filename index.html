@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Best cab, taxi & car rental service in Indore. Book local taxi, outstation cabs to Ujjain, Omkareshwar, Mandu. Airport pickup & drop. 24/7 support. Call now!">
+  <title>Taxi Service Indore | Cab Service | Car Rental | Book Now</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #F5A800;
+      --primary-dark: #D98F00;
+      --primary-light: #FFF5D6;
+      --primary-glow: rgba(245,168,0,0.25);
+      --dark: #0F0D0A;
+      --dark2: #1A1712;
+      --dark3: #252219;
+      --text: #1C1A15;
+      --text-mid: #5A5548;
+      --text-light: #9A9080;
+      --white: #FFFFFF;
+      --bg: #FAFAF7;
+      --border: #EEEAE0;
+      --green: #22C55E;
+      --font-h: Poppins, sans-serif;
+      --font-b: Poppins, sans-serif;
+      --radius: 20px;
+      --radius-sm: 12px;
+      --shadow: 0 4px 32px rgba(15,13,10,0.08);
+      --shadow-lg: 0 20px 60px rgba(15,13,10,0.14);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+
+    /* ══ LOADER ══ */
+    #loader {
+      position: fixed; inset: 0; background: var(--dark); z-index: 9999;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 18px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #loader.out { opacity: 0; visibility: hidden; }
+    .ldr-logo { font-family: var(--font-h); font-size: 26px; font-weight: 800; color: #fff; }
+    .ldr-logo b { color: var(--primary); }
+    .ldr-bar { width: 160px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+    .ldr-fill { height: 100%; background: var(--primary); animation: lf 1.5s cubic-bezier(0.4,0,0.2,1) forwards; }
+    @keyframes lf { from{width:0} to{width:100%} }
+
+    /* ══ TOPBAR ══ */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--dark); height: 36px;
+      display: flex; align-items: center; padding: 0 5%;
+      transition: transform 0.3s ease;
+    }
+    .topbar.hide { transform: translateY(-100%); }
+    .topbar-inner { max-width: 1240px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .tb-left { display: flex; gap: 18px; align-items: center; }
+    .tb-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: rgba(255,255,255,0.45); font-weight: 500; }
+    .tb-item a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .tb-item a:hover { color: var(--primary); }
+    .tb-badge { display: flex; align-items: center; gap: 5px; background: rgba(245,168,0,0.12); border: 1px solid rgba(245,168,0,0.22); color: var(--primary); font-size: 10.5px; font-weight: 700; padding: 2px 10px; border-radius: 100px; }
+
+    /* ══ NAV ══ */
+    nav {
+      position: fixed; top: 36px; left: 0; right: 0; z-index: 999;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      height: 72px; padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.35s ease; box-shadow: 0 2px 20px rgba(15,13,10,0.06);
+    }
+    nav.scrolled { top: 0; box-shadow: 0 4px 36px rgba(15,13,10,0.12); }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-mark {
+      width: 46px; height: 46px; background: var(--primary); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+      box-shadow: 0 4px 16px var(--primary-glow); transition: transform 0.3s;
+      overflow: hidden;
+    }
+    .logo-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .logo:hover .logo-mark { transform: rotate(-6deg) scale(1.05); }
+    .logo-text { line-height: 1; }
+    .logo-name { font-family: var(--font-h); font-weight: 800; font-size: 19px; color: var(--dark); letter-spacing: -0.3px; }
+    .logo-name b { color: var(--primary-dark); }
+    .logo-sub { font-size: 10px; color: var(--text-light); font-weight: 500; letter-spacing: 0.4px; margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-links a {
+      color: var(--text-mid); text-decoration: none; font-size: 13.5px; font-weight: 600;
+      padding: 7px 14px; border-radius: 8px; transition: all 0.2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 3px; left: 14px; right: 14px;
+      height: 2px; background: var(--primary); border-radius: 2px;
+      transform: scaleX(0); transition: transform 0.25s ease; transform-origin: left;
+    }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-tel {
+      display: flex; align-items: center; gap: 7px; font-size: 13.5px; font-weight: 700;
+      color: var(--text-mid); text-decoration: none; padding: 8px 14px;
+      border: 1.5px solid var(--border); border-radius: 10px; transition: all 0.2s;
+    }
+    .nav-tel:hover { border-color: var(--primary); color: var(--primary-dark); background: var(--primary-light); }
+    .btn-book {
+      display: flex; align-items: center; gap: 7px; background: var(--primary); color: var(--dark);
+      font-family: var(--font-b); font-weight: 700; font-size: 13.5px; padding: 10px 22px;
+      border-radius: 10px; text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 3px 16px var(--primary-glow); transition: all 0.25s;
+    }
+    .btn-book:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 22px var(--primary-glow); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 22px; height: 2.5px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+    .header-offset { height: 108px; }
+
+    /* ══ MOBILE MENU ══ */
+    .mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 990; }
+    .mob-menu {
+      position: fixed; top: 0; right: -100%; width: 300px; height: 100vh;
+      background: white; z-index: 995; padding: 80px 28px 32px;
+      display: flex; flex-direction: column; gap: 6px;
+      transition: right 0.35s cubic-bezier(0.16,1,0.3,1); box-shadow: -20px 0 60px rgba(0,0,0,0.15);
+    }
+    .mob-menu.open { right: 0; }
+    .mob-close { position: absolute; top: 22px; right: 22px; background: var(--border); border: none; border-radius: 8px; width: 36px; height: 36px; cursor: pointer; font-size: 18px; }
+    .mob-menu a { color: var(--text); text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px 14px; border-radius: 10px; transition: all 0.2s; display: flex; align-items: center; gap: 10px; }
+    .mob-menu a:hover { background: var(--primary-light); color: var(--primary-dark); }
+    .mob-divider { height: 1px; background: var(--border); margin: 8px 0; }
+    .mob-cta { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+
+    /* ══ HERO ══ */
+    .hero {
+      position: relative; min-height: calc(100vh - 108px);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; background: var(--dark);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&auto=format&fit=crop&q=85');
+      background-size: cover; background-position: center;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(15,13,10,0.88) 0%, rgba(15,13,10,0.55) 60%, rgba(15,13,10,0.75) 100%);
+    }
+    .hero-grain {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 200px;
+    }
+    .hero-accent-line {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent 0%, var(--primary) 30%, var(--primary) 70%, transparent 100%);
+    }
+    .hero-float-left {
+      position: absolute; left: 5%; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 16px; z-index: 5;
+      opacity: 0; animation: fadeRight 0.8s 1.2s ease forwards;
+    }
+    .hero-float-stat { display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(16px); border-radius: 16px; padding: 18px 20px; text-align: center; }
+    .hfs-num { font-family: var(--font-h); font-size: 26px; font-weight: 800; color: var(--primary); line-height: 1; }
+    .hfs-label { font-size: 10px; color: rgba(255,255,255,0.4); font-weight: 500; margin-top: 4px; letter-spacing: 0.4px; }
+    @keyframes fadeRight { from{opacity:0;transform:translateY(-50%) translateX(-20px)} to{opacity:1;transform:translateY(-50%) translateX(0)} }
+
+    .hero-inner {
+      position: relative; z-index: 10; width: 100%; max-width: 680px;
+      padding: 60px 20px 80px; display: flex; flex-direction: column; align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,168,0,0.1); border: 1px solid rgba(245,168,0,0.3);
+      color: var(--primary); padding: 6px 16px; border-radius: 100px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      margin-bottom: 22px;
+      opacity: 0; animation: fadeUp 0.6s 0.3s ease forwards;
+    }
+    .hero-dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+    .hero-h1 {
+      font-family: var(--font-h); font-size: clamp(34px, 5.5vw, 62px);
+      font-weight: 800; line-height: 1.08; letter-spacing: -2px; color: white;
+      text-align: center; margin-bottom: 18px;
+      opacity: 0; animation: fadeUp 0.7s 0.45s ease forwards;
+    }
+    .hero-h1 em { font-style: normal; color: var(--primary); }
+    .hero-sub {
+      font-size: clamp(14px, 1.8vw, 17px); color: rgba(255,255,255,0.6); font-weight: 400;
+      text-align: center; max-width: 520px; line-height: 1.7; margin-bottom: 32px;
+      opacity: 0; animation: fadeUp 0.7s 0.6s ease forwards;
+    }
+    .hero-cta-row {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px;
+      opacity: 0; animation: fadeUp 0.7s 0.75s ease forwards;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary); color: var(--dark); font-family: var(--font-b);
+      font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 12px;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 6px 28px var(--primary-glow); transition: all 0.25s;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 10px 36px var(--primary-glow); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.07); color: white; font-family: var(--font-b);
+      font-weight: 600; font-size: 15px; padding: 14px 26px; border-radius: 12px;
+      text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); cursor: pointer;
+      transition: all 0.25s; backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.38); }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* Booking Card */
+    .booking-card {
+      width: 100%; background: white; border-radius: 24px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06);
+      opacity: 0; transform: translateY(28px);
+      animation: cardIn 0.9s 0.85s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+    .bk-head { background: var(--dark); padding: 18px 24px; display: flex; align-items: center; gap: 10px; }
+    .bk-head-icon { width: 32px; height: 32px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+    .bk-head h2 { font-family: var(--font-h); font-size: 15px; font-weight: 700; color: white; }
+    .bk-tabs { display: flex; border-bottom: 1px solid var(--border); }
+    .tab-btn {
+      flex: 1; padding: 12px 6px; border: none; background: transparent;
+      font-family: var(--font-b); font-size: 12.5px; font-weight: 700; color: var(--text-light);
+      cursor: pointer; transition: all 0.2s; border-bottom: 2.5px solid transparent;
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+    }
+    .tab-btn .ti { font-size: 18px; }
+    .tab-btn.active { color: var(--primary-dark); border-bottom-color: var(--primary); background: var(--primary-light); }
+    .bk-body { padding: 22px 24px; }
+    .tp { display: none; }
+    .tp.active { display: block; animation: tabIn 0.25s ease; }
+    @keyframes tabIn { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:translateY(0)} }
+    .fg { margin-bottom: 13px; }
+    .fg label { display: flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 700; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 5px; }
+    .fg input, .fg select {
+      width: 100%; padding: 11px 13px; border: 1.5px solid var(--border); border-radius: 10px;
+      background: var(--bg); color: var(--text); font-family: var(--font-b); font-size: 13.5px;
+      transition: all 0.2s; -webkit-appearance: none;
+    }
+    .fg input:focus, .fg select:focus { outline: none; border-color: var(--primary); background: white; box-shadow: 0 0 0 3px rgba(245,168,0,0.1); }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .bk-btn {
+      width: 100%; padding: 14px; background: var(--primary); color: var(--dark);
+      border: none; border-radius: 11px; font-family: var(--font-h); font-weight: 700; font-size: 16px;
+      cursor: pointer; transition: all 0.25s; margin-top: 4px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 4px 18px var(--primary-glow);
+    }
+    .bk-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .or-div { text-align: center; margin: 10px 0; font-size: 11px; color: var(--text-light); font-weight: 600; position: relative; }
+    .or-div::before,.or-div::after { content:''; position:absolute; top:50%; width:44%; height:1px; background:var(--border); }
+    .or-div::before{left:0;}.or-div::after{right:0;}
+    .wa-btn { width: 100%; padding: 12px; background: #25D366; color: white; border: none; border-radius: 11px; font-family: var(--font-h); font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.25s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+    .wa-btn:hover { background: #1fb358; transform: translateY(-1px); }
+
+    /* ══ SHARED SECTION STYLES ══ */
+    .section { padding: 96px 5%; }
+    .section.bg-white { background: white; }
+    .section.bg-dark { background: var(--dark2); }
+    .wrap { max-width: 1240px; margin: 0 auto; }
+    .sec-head { margin-bottom: 52px; }
+    .sec-head.center { text-align: center; }
+    .sec-label {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--primary-light); border: 1px solid rgba(245,168,0,0.25);
+      color: var(--primary-dark); font-size: 11px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; padding: 5px 14px;
+      border-radius: 100px; margin-bottom: 14px;
+    }
+    .sec-title { font-family: var(--font-h); font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: var(--dark); line-height: 1.15; letter-spacing: -1px; margin-bottom: 12px; }
+    .sec-title b { color: var(--primary-dark); }
+    .sec-desc { font-size: 15.5px; color: var(--text-mid); line-height: 1.7; max-width: 560px; }
+    .sec-head.center .sec-desc { margin: 0 auto; }
+    .sec-head-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 52px; gap: 20px; }
+    .view-all-btn {
+      display: inline-flex; align-items: center; gap: 7px; font-size: 13.5px; font-weight: 700;
+      color: var(--primary-dark); text-decoration: none; padding: 10px 20px;
+      border: 1.5px solid var(--primary); border-radius: 10px; transition: all 0.25s; flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .view-all-btn:hover { background: var(--primary); color: var(--dark); }
+    .view-all-btn svg { transition: transform 0.2s; }
+    .view-all-btn:hover svg { transform: translateX(3px); }
+
+    /* reveal animation */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══ SERVICES SECTION ══ */
+    .svc-carousel-wrap { position: relative; }
+    .svc-track-outer { overflow: hidden; border-radius: 16px; }
+    .svc-track { display: flex; gap: 20px; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); }
+    .svc-slide { flex: 0 0 calc(33.333% - 14px); }
+    .svc-card {
+      background: white; border-radius: 20px; overflow: hidden;
+      border: 1.5px solid var(--border); transition: all 0.3s ease;
+      box-shadow: 0 2px 16px rgba(15,13,10,0.05); height: 100%;
+      display: flex; flex-direction: column;
+    }
+    .svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(15,13,10,0.12); border-color: var(--primary); }
+    .svc-img { position: relative; height: 200px; overflow: hidden; }
+    .svc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .svc-card:hover .svc-img img { transform: scale(1.06); }
+    .svc-price-badge {
+      position: absolute; top: 14px; right: 14px;
+      background: var(--primary); color: var(--dark); font-size: 11.5px; font-weight: 800;
+      padding: 4px 12px; border-radius: 100px; box-shadow: 0 2px 12px var(--primary-glow);
+    }
+    .svc-body { padding: 20px 22px; flex: 1; display: flex; flex-direction: column; }
+    .svc-icon { font-size: 24px; margin-bottom: 10px; }
+    .svc-name { font-family: var(--font-h); font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+    .svc-desc { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; flex: 1; margin-bottom: 16px; }
+    .svc-cta { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--primary-dark); text-decoration: none; transition: gap 0.2s; }
+    .svc-card:hover .svc-cta { gap: 10px; }
+    .carousel-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 28px; }
+    .car-arrow {
+      width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border);
+      background: white; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.2s; color: var(--text);
+    }
+    .car-arrow:hover { background: var(--primary); border-color: var(--primary); color: var(--dark); }
+    .car-arrow.disabled { opacity: 0.3; pointer-events: none; }
+    .car-dots { display: flex; gap: 6px; align-items: center; }
+    .car-dot { width: 8px; height: 8px; border-radius: 100px; background: var(--border); cursor: pointer; transition: all 0.25s; }
+    .car-dot.active { background: var(--primary); width: 24px; }
+
+    /* ══ ROUTES SECTION ══ */
+    .routes-track-outer { overflow: hidden; }
+    .routes-track { display: flex; gap: 16px; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); }
+    .route-slide { flex: 0 0 calc(25% - 12px); }
+    .route-card {
+      background: white; border-radius: 18px; padding: 22px 20px;
+      border: 1.5px solid var(--border); transition: all 0.3s ease;
+      box-shadow: 0 2px 14px rgba(15,13,10,0.04); cursor: pointer;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .route-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(15,13,10,0.1); border-color: var(--primary); }
+    .route-from-to { display: flex; align-items: center; gap: 8px; font-family: var(--font-h); font-size: 15px; font-weight: 700; color: var(--dark); }
+    .route-arrow-icon { color: var(--primary); font-size: 18px; flex-shrink: 0; }
+    .route-meta { display: flex; gap: 10px; flex-wrap: wrap; }
+    .route-chip { font-size: 11.5px; color: var(--text-mid); background: var(--bg); border: 1px solid var(--border); padding: 3px 10px; border-radius: 100px; font-weight: 500; }
+    .route-book { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 700; color: var(--primary-dark); }
+    .route-icon { font-size: 28px; }
+
+    /* ══ FLEET SECTION ══ */
+    .fleet-track-outer { overflow: hidden; }
+    .fleet-track { display: flex; gap: 20px; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); }
+    .fleet-slide { flex: 0 0 calc(25% - 15px); }
+    .fleet-card {
+      background: white; border-radius: 20px; overflow: hidden;
+      border: 1.5px solid var(--border); transition: all 0.3s ease;
+      display: flex; flex-direction: column; box-shadow: 0 2px 16px rgba(15,13,10,0.05);
+    }
+    .fleet-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(15,13,10,0.12); border-color: var(--primary); }
+    .fleet-media { position: relative; background: var(--bg); height: 160px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 16px; }
+    .fleet-media img { max-height: 130px; max-width: 100%; object-fit: contain; transition: transform 0.35s ease; }
+    .fleet-card:hover .fleet-media img { transform: scale(1.06); }
+    .fleet-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--dark); color: white; font-size: 10px; font-weight: 700;
+      padding: 3px 10px; border-radius: 100px; letter-spacing: 0.4px;
+    }
+    .fleet-badge.popular { background: var(--primary); color: var(--dark); }
+    .fleet-body { padding: 18px 18px 14px; flex: 1; }
+    .fleet-cat { font-size: 10px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+    .fleet-name { font-family: var(--font-h); font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+    .fleet-price-row { display: flex; align-items: baseline; gap: 3px; margin-bottom: 12px; }
+    .fleet-price { font-family: var(--font-h); font-size: 28px; font-weight: 800; color: var(--dark); }
+    .fleet-price-unit { font-size: 12px; color: var(--text-light); }
+    .fleet-feats { display: flex; flex-direction: column; gap: 5px; border-top: 1px solid var(--border); padding-top: 12px; }
+    .fleet-feat { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-mid); }
+    .fleet-feat::before { content:''; width:5px; height:5px; background:var(--primary); border-radius:50%; flex-shrink:0; }
+    .fleet-book-btn {
+      margin: 0 18px 18px; padding: 11px; background: var(--primary-light); color: var(--primary-dark);
+      border: 1.5px solid var(--primary); border-radius: 10px; font-family: var(--font-b);
+      font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.25s; text-align: center;
+    }
+    .fleet-book-btn:hover { background: var(--primary); color: var(--dark); }
+
+    /* ══ WHY US ══ */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .why-card {
+      background: white; border: 1.5px solid var(--border); border-radius: 20px;
+      padding: 28px 26px; transition: all 0.3s ease;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--primary); }
+    .why-icon { font-size: 32px; margin-bottom: 14px; }
+    .why-card h3 { font-family: var(--font-h); font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .why-card p { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; }
+
+    /* ══ ABOUT ══ */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .ab-card { background: var(--dark); border-radius: 18px; padding: 28px 24px; text-align: center; }
+    .ab-card:nth-child(2) { background: var(--primary); }
+    .ab-num { font-family: var(--font-h); font-size: 38px; font-weight: 800; color: white; line-height: 1; }
+    .ab-card:nth-child(2) .ab-num { color: var(--dark); }
+    .ab-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 5px; font-weight: 500; }
+    .ab-card:nth-child(2) .ab-label { color: rgba(15,13,10,0.55); }
+    .feat-list { display: flex; flex-direction: column; gap: 12px; margin: 24px 0 28px; }
+    .feat-item { display: flex; gap: 12px; align-items: flex-start; }
+    .feat-chk { width: 22px; height: 22px; background: var(--primary-light); border: 1.5px solid var(--primary); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+    .feat-item p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+    /* ══ TESTIMONIALS ══ */
+    .rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .rev-card { background: white; border-radius: 20px; padding: 26px 24px; border: 1.5px solid var(--border); transition: all 0.3s; }
+    .rev-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .rev-stars { color: var(--primary); font-size: 15px; margin-bottom: 14px; letter-spacing: 2px; }
+    .rev-text { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+    .rev-user { display: flex; align-items: center; gap: 12px; }
+    .rev-av { width: 40px; height: 40px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-h); font-weight: 800; font-size: 13px; color: var(--primary-dark); flex-shrink: 0; }
+    .rev-name { font-weight: 700; font-size: 14px; color: var(--dark); }
+    .rev-route { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+
+    /* ══ CTA BAND ══ */
+    .cta-band { background: var(--dark); padding: 80px 5%; position: relative; overflow: hidden; }
+    .cta-band::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(245,168,0,0.07) 0%, transparent 70%); }
+    .cta-inner { max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+    .cta-inner .sec-label { margin-bottom: 14px; }
+    .cta-inner .sec-title { color: white; margin-bottom: 12px; }
+    .cta-inner p { color: rgba(255,255,255,0.55); font-size: 15.5px; margin-bottom: 30px; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+    .cta-call { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: var(--dark); font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 12px; text-decoration: none; transition: all 0.25s; box-shadow: 0 6px 28px var(--primary-glow); }
+    .cta-call:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .cta-wa { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); color: white; font-weight: 600; font-size: 15px; padding: 14px 26px; border-radius: 12px; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.15); transition: all 0.25s; }
+    .cta-wa:hover { background: #25D366; border-color: #25D366; }
+    .cta-info { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; }
+    .ci { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .ci a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .ci a:hover { color: var(--primary); }
+
+    /* ══ FOOTER ══ */
+    footer { background: var(--dark2); }
+    .footer-top { max-width: 1240px; margin: 0 auto; padding: 64px 5% 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 16px; }
+    .footer-logo-icon { width: 40px; height: 40px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; overflow: hidden; }
+    .footer-logo-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .footer-logo-text { font-family: var(--font-h); font-size: 18px; font-weight: 800; color: white; }
+    .footer-logo-text b { color: var(--primary); }
+    .footer-tagline { font-size: 13.5px; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 22px; }
+    .footer-contacts { display: flex; flex-direction: column; gap: 10px; }
+    .fci { display: flex; align-items: center; gap: 10px; text-decoration: none; transition: opacity 0.2s; }
+    .fci:hover { opacity: 0.8; }
+    .fci-icon { width: 32px; height: 32px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .fci-label { font-size: 10px; color: rgba(255,255,255,0.35); font-weight: 600; display: block; }
+    .fci-val { font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 600; display: block; }
+    .footer-nav-col h4 { font-family: var(--font-h); font-size: 13px; font-weight: 700; color: white; letter-spacing: 0.5px; margin-bottom: 16px; }
+    .footer-nav-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-nav-col a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    .footer-nav-col a:hover { color: var(--primary); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 5%; max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .footer-copyright { font-size: 12.5px; color: rgba(255,255,255,0.3); }
+    .footer-social { display: flex; gap: 8px; }
+    .footer-social a { width: 34px; height: 34px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: background 0.2s; }
+    .footer-social a:hover { background: rgba(245,168,0,0.15); }
+
+    /* ══ FLOAT BTNS ══ */
+    .float-btns { position: fixed; bottom: 24px; right: 24px; z-index: 888; display: flex; flex-direction: column; gap: 10px; }
+    .fb { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 100px; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 6px 24px rgba(0,0,0,0.2); transition: all 0.25s; }
+    .fb:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.25); }
+    .fb-wa { background: #25D366; color: white; }
+    .fb-call { background: var(--primary); color: var(--dark); }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 1100px) {
+      .hero-float-left { display: none; }
+      .svc-slide { flex: 0 0 calc(50% - 10px); }
+      .route-slide { flex: 0 0 calc(33.333% - 11px); }
+      .fleet-slide { flex: 0 0 calc(33.333% - 14px); }
+    }
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .rev-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .route-slide { flex: 0 0 calc(50% - 8px); }
+      .fleet-slide { flex: 0 0 calc(50% - 10px); }
+      .frow { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .topbar { display: none; }
+      nav { top: 0; }
+      .header-offset { height: 72px; }
+      .nav-links, .nav-tel { display: none; }
+      .hamburger { display: flex; }
+      .hero { min-height: calc(100vh - 72px); }
+      .hero-h1 { font-size: 32px; letter-spacing: -1px; }
+      .section { padding: 64px 5%; }
+      .svc-slide { flex: 0 0 calc(85%); }
+      .route-slide { flex: 0 0 calc(80%); }
+      .fleet-slide { flex: 0 0 calc(80%); }
+      .why-grid { grid-template-columns: 1fr; }
+      .rev-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .hero-cta-row { flex-direction: column; align-items: center; }
+      .sec-head-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .about-stats-grid { grid-template-columns: 1fr 1fr; }
+      .float-btns { bottom: 16px; right: 16px; }
+      .fb span:last-child { display: none; }
+      .fb { padding: 14px; border-radius: 50%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ldr-logo">Taxi Service <b>Indore</b></div>
+  <div class="ldr-bar"><div class="ldr-fill"></div></div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="tb-left">
+      <div class="tb-item">📞 <a href="tel:+917312345678">+91 731 234 5678</a></div>
+      <div class="tb-item">✉️ <a href="mailto:info@taxiserviceindore.in">info@taxiserviceindore.in</a></div>
+      <div class="tb-item">📍 Vijay Nagar, Indore, MP</div>
+    </div>
+    <div class="tb-badge">🟢 Available 24/7</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div style="max-width:1240px;width:100%;display:flex;align-items:center;justify-content:space-between;margin:0 auto;">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Taxi Service Indore logo"></div>
+      <div class="logo-text">
+        <div class="logo-name">Taxi Service <b>Indore</b></div>
+        <div class="logo-sub">Reliable · Affordable · 24/7</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#routes">Routes</a></li>
+      <li><a href="fleet.html">Fleet & Pricing</a></li>
+      <li><a href="rental.html">Rentals</a></li>
+      <li><a href="aboutus.html">About</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="tel:+917312345678" class="nav-tel">📞 +91 731 234 5678</a>
+      <a href="#booking" class="btn-book">Book Now →</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-overlay" id="mobOverlay" onclick="closeMenu()"></div>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMenu()">✕</button>
+  <a href="#services" onclick="closeMenu()">🚗 Services</a>
+  <a href="#routes" onclick="closeMenu()">🗺️ Top Routes</a>
+  <a href="fleet.html" onclick="closeMenu()">🚙 Fleet & Pricing</a>
+  <a href="rental.html" onclick="closeMenu()">🔑 Rentals</a>
+  <a href="aboutus.html" onclick="closeMenu()">ℹ️ About Us</a>
+  <a href="contactus.html" onclick="closeMenu()">📞 Contact</a>
+  <div class="mob-divider"></div>
+  <div class="mob-cta">
+    <a href="tel:+917312345678" class="btn-primary" style="justify-content:center">📞 Call Now</a>
+    <a href="https://wa.me/917312345678" class="wa-btn" target="_blank">💬 WhatsApp</a>
+  </div>
+</div>
+
+<div class="header-offset"></div>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-accent-line"></div>
+
+ 
+
+  <div class="hero-inner">
+    
+
+    <!-- Booking Card -->
+    <div class="booking-card" id="booking">
+      <div class="bk-head">
+        <div class="bk-head-icon">🚖</div>
+        <h2>Quick Cab Booking</h2>
+      </div>
+      <div class="bk-tabs">
+        <button class="tab-btn active" onclick="switchTab('local',this)"><span class="ti">🏙️</span>Local</button>
+        <button class="tab-btn" onclick="switchTab('outstation',this)"><span class="ti">🛣️</span>Outstation</button>
+        <button class="tab-btn" onclick="switchTab('airport',this)"><span class="ti">✈️</span>Airport</button>
+        <button class="tab-btn" onclick="switchTab('rental',this)"><span class="ti">🔑</span>Rental</button>
+      </div>
+      <div class="bk-body">
+        <div class="tp active" id="local">
+          <div class="fg"><label>📍 Pickup Location</label><input type="text" placeholder="Enter your pickup address in Indore"></div>
+          <div class="fg"><label>🎯 Drop Location</label><input type="text" placeholder="Where do you want to go?"></div>
+          <div class="frow">
+            <div class="fg"><label>📅 Date</label><input type="date"></div>
+            <div class="fg"><label>🕐 Time</label><input type="time"></div>
+          </div>
+          <button class="bk-btn" onclick="doBook()">🚖 Book Local Cab</button>
+          <div class="or-div">or reach us directly</div>
+          <a href="https://wa.me/917312345678?text=Hi+I+need+a+local+cab+in+Indore" class="wa-btn" target="_blank">💬 Book via WhatsApp</a>
+        </div>
+        <div class="tp" id="outstation">
+          <div class="fg"><label>🏙️ From</label><input type="text" placeholder="Indore" value="Indore"></div>
+          <div class="fg"><label>📍 To</label><input type="text" placeholder="Destination city (e.g., Ujjain, Bhopal)"></div>
+          <div class="frow">
+            <div class="fg"><label>📅 Travel Date</label><input type="date"></div>
+            <div class="fg"><label>🚗 Trip Type</label>
+              <select><option>One Way</option><option>Round Trip</option></select>
+            </div>
+          </div>
+          <button class="bk-btn" onclick="doBook()">🛣️ Book Outstation Cab</button>
+          <div class="or-div">or reach us directly</div>
+          <a href="https://wa.me/917312345678?text=Hi+I+need+an+outstation+cab" class="wa-btn" target="_blank">💬 Book via WhatsApp</a>
+        </div>
+        <div class="tp" id="airport">
+          <div class="fg"><label>✈️ Service Type</label>
+            <select><option>Airport Pickup</option><option>Airport Drop</option></select>
+          </div>
+          <div class="fg"><label>📍 Your Address</label><input type="text" placeholder="Your hotel / home address in Indore"></div>
+          <div class="frow">
+            <div class="fg"><label>📅 Date</label><input type="date"></div>
+            <div class="fg"><label>🕐 Flight Time</label><input type="time"></div>
+          </div>
+          <button class="bk-btn" onclick="doBook()">✈️ Book Airport Transfer</button>
+          <div class="or-div">or reach us directly</div>
+          <a href="https://wa.me/917312345678?text=Hi+I+need+an+airport+transfer+in+Indore" class="wa-btn" target="_blank">💬 Book via WhatsApp</a>
+        </div>
+        <div class="tp" id="rental">
+          <div class="fg"><label>📍 Pickup Location</label><input type="text" placeholder="Your location in Indore"></div>
+          <div class="frow">
+            <div class="fg"><label>📅 Date</label><input type="date"></div>
+            <div class="fg"><label>⏱️ Package</label>
+              <select><option>4 Hrs / 40 km</option><option>8 Hrs / 80 km</option><option>12 Hrs / 120 km</option></select>
+            </div>
+          </div>
+          <button class="bk-btn" onclick="doBook()">🔑 Book Rental</button>
+          <div class="or-div">or reach us directly</div>
+          <a href="https://wa.me/917312345678?text=Hi+I+need+a+cab+rental+in+Indore" class="wa-btn" target="_blank">💬 Book via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ SERVICES ════ -->
+<section class="section bg-white" id="services">
+  <div class="wrap">
+    <div class="sec-head-row">
+      <div class="sec-head" style="margin-bottom:0">
+        <div class="sec-label">🚗 Our Services</div>
+        <h2 class="sec-title">Cab & Taxi Services<br><b>in Indore</b></h2>
+        <p class="sec-desc">Every transport need handled with care, reliability, and transparent pricing.</p>
+      </div>
+      <a href="services-all.html" class="view-all-btn">View All Services <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+
+    <div class="svc-carousel-wrap reveal">
+      <div class="svc-track-outer">
+        <div class="svc-track" id="svcTrack">
+          <div class="svc-slide">
+            <div class="svc-card">
+              <div class="svc-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop&q=80" alt="Local City Taxi Indore" loading="lazy"><div class="svc-price-badge">From ₹150</div></div>
+              <div class="svc-body"><div class="svc-icon">🏙️</div><div class="svc-name">Local City Taxi</div><p class="svc-desc">24/7 rides across Vijay Nagar, Palasia, MG Road, Rajwada and all of Indore. Fixed fare, no surprises.</p><a href="#booking" class="svc-cta">Book Now →</a></div>
+            </div>
+          </div>
+          <div class="svc-slide">
+            <div class="svc-card">
+              <div class="svc-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&auto=format&fit=crop&q=80" alt="Airport Taxi Indore" loading="lazy"><div class="svc-price-badge">From ₹299</div></div>
+              <div class="svc-body"><div class="svc-icon">✈️</div><div class="svc-name">Airport Transfers</div><p class="svc-desc">Flight tracking & meet-greet at Devi Ahilya Airport (IDR). No surge, punctual pick-up & drop at all hours.</p><a href="#booking" class="svc-cta">Book Now →</a></div>
+            </div>
+          </div>
+          <div class="svc-slide">
+            <div class="svc-card">
+              <div class="svc-img"><img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600&auto=format&fit=crop&q=80" alt="Outstation Cab Indore" loading="lazy"><div class="svc-price-badge">From ₹12/km</div></div>
+              <div class="svc-body"><div class="svc-icon">🛣️</div><div class="svc-name">Outstation Cab</div><p class="svc-desc">One-way & round-trip from Indore to Ujjain, Omkareshwar, Bhopal, Mumbai and 50+ cities.</p><a href="#booking" class="svc-cta">Book Now →</a></div>
+            </div>
+          </div>
+          <div class="svc-slide">
+            <div class="svc-card">
+              <div class="svc-img"><img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=600&auto=format&fit=crop&q=80" alt="Car Rental Indore" loading="lazy"><div class="svc-price-badge">4/8/Full Day</div></div>
+              <div class="svc-body"><div class="svc-icon">🔑</div><div class="svc-name">Car Rental with Driver</div><p class="svc-desc">Hourly & full-day rentals for corporate travel, weddings, sightseeing and family outings across MP.</p><a href="rental.html" class="svc-cta">View Packages →</a></div>
+            </div>
+          </div>
+          <div class="svc-slide">
+            <div class="svc-card">
+              <div class="svc-img"><img src="https://images.unsplash.com/photo-1521791055366-0d553872952f?w=600&auto=format&fit=crop&q=80" alt="Corporate Cab Indore" loading="lazy"><div class="svc-price-badge">Contract Rates</div></div>
+              <div class="svc-body"><div class="svc-icon">💼</div><div class="svc-name">Corporate Cab Service</div><p class="svc-desc">Monthly contracts for IT parks, offices and corporate campuses. GST invoices provided.</p><a href="#booking" class="svc-cta">Get Quote →</a></div>
+            </div>
+          </div>
+          <div class="svc-slide">
+            <div class="svc-card">
+              <div class="svc-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Wedding Car Indore" loading="lazy"><div class="svc-price-badge">Luxury Fleet</div></div>
+              <div class="svc-body"><div class="svc-icon">💒</div><div class="svc-name">Wedding Cars</div><p class="svc-desc">Decked luxury cars and fleets for wedding ceremonies, receptions, and baraat processions in Indore.</p><a href="#booking" class="svc-cta">Enquire Now →</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="car-arrow" id="svcPrev" onclick="carMove('svc',-1)"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="car-dots" id="svcDots"></div>
+        <button class="car-arrow" id="svcNext" onclick="carMove('svc',1)"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ROUTES ════ -->
+<section class="section" id="routes">
+  <div class="wrap">
+    <div class="sec-head-row">
+      <div class="sec-head" style="margin-bottom:0">
+        <div class="sec-label">🗺️ Popular Routes</div>
+        <h2 class="sec-title">Top Routes<br><b>from Indore</b></h2>
+        <p class="sec-desc">Pre-planned, transparent pricing to major destinations across Madhya Pradesh and beyond.</p>
+      </div>
+      <a href="routes-all.html" class="view-all-btn">View All Routes <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+
+    <div class="reveal">
+      <div class="routes-track-outer">
+        <div class="routes-track" id="routesTrack">
+          <div class="route-slide">
+            <div class="route-card" onclick="doBook()">
+              <div class="route-icon">🕉️</div>
+              <div class="route-from-to">Indore <span class="route-arrow-icon">→</span> Ujjain</div>
+              <div class="route-meta"><span class="route-chip">📏 56 km</span><span class="route-chip">⏱️ ~1.5 hrs</span></div>
+              <div class="route-book"><span>Mahakaleshwar Darshan</span><span>Book →</span></div>
+            </div>
+          </div>
+          <div class="route-slide">
+            <div class="route-card" onclick="doBook()">
+              <div class="route-icon">🏛️</div>
+              <div class="route-from-to">Indore <span class="route-arrow-icon">→</span> Omkareshwar</div>
+              <div class="route-meta"><span class="route-chip">📏 77 km</span><span class="route-chip">⏱️ ~2 hrs</span></div>
+              <div class="route-book"><span>Narmada Jyotirlinga</span><span>Book →</span></div>
+            </div>
+          </div>
+          <div class="route-slide">
+            <div class="route-card" onclick="doBook()">
+              <div class="route-icon">🏯</div>
+              <div class="route-from-to">Indore <span class="route-arrow-icon">→</span> Mandu</div>
+              <div class="route-meta"><span class="route-chip">📏 98 km</span><span class="route-chip">⏱️ ~2.5 hrs</span></div>
+              <div class="route-book"><span>City of Joy</span><span>Book →</span></div>
+            </div>
+          </div>
+          <div class="route-slide">
+            <div class="route-card" onclick="doBook()">
+              <div class="route-icon">⛵</div>
+              <div class="route-from-to">Indore <span class="route-arrow-icon">→</span> Maheshwar</div>
+              <div class="route-meta"><span class="route-chip">📏 91 km</span><span class="route-chip">⏱️ ~2.5 hrs</span></div>
+              <div class="route-book"><span>Narmada Ghats</span><span>Book →</span></div>
+            </div>
+          </div>
+          <div class="route-slide">
+            <div class="route-card" onclick="doBook()">
+              <div class="route-icon">🏙️</div>
+              <div class="route-from-to">Indore <span class="route-arrow-icon">→</span> Bhopal</div>
+              <div class="route-meta"><span class="route-chip">📏 195 km</span><span class="route-chip">⏱️ ~3.5 hrs</span></div>
+              <div class="route-book"><span>City of Lakes</span><span>Book →</span></div>
+            </div>
+          </div>
+          <div class="route-slide">
+            <div class="route-card" onclick="doBook()">
+              <div class="route-icon">🌿</div>
+              <div class="route-from-to">Indore <span class="route-arrow-icon">→</span> Pachmarhi</div>
+              <div class="route-meta"><span class="route-chip">📏 256 km</span><span class="route-chip">⏱️ ~5 hrs</span></div>
+              <div class="route-book"><span>Hill Station MP</span><span>Book →</span></div>
+            </div>
+          </div>
+          <div class="route-slide">
+            <div class="route-card" onclick="doBook()">
+              <div class="route-icon">🕌</div>
+              <div class="route-from-to">Indore <span class="route-arrow-icon">→</span> Baglamukhi</div>
+              <div class="route-meta"><span class="route-chip">📏 158 km</span><span class="route-chip">⏱️ ~3 hrs</span></div>
+              <div class="route-book"><span>Shakti Peeth</span><span>Book →</span></div>
+            </div>
+          </div>
+          <div class="route-slide">
+            <div class="route-card" onclick="doBook()">
+              <div class="route-icon">🌆</div>
+              <div class="route-from-to">Indore <span class="route-arrow-icon">→</span> Ahmedabad</div>
+              <div class="route-meta"><span class="route-chip">📏 400 km</span><span class="route-chip">⏱️ ~7 hrs</span></div>
+              <div class="route-book"><span>Gujarat</span><span>Book →</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="car-arrow" id="routesPrev" onclick="carMove('routes',-1)"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="car-dots" id="routesDots"></div>
+        <button class="car-arrow" id="routesNext" onclick="carMove('routes',1)"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FLEET ════ -->
+<section class="section bg-white" id="cars">
+  <div class="wrap">
+    <div class="sec-head-row">
+      <div class="sec-head" style="margin-bottom:0">
+        <div class="sec-label">🚙 Fleet & Pricing</div>
+        <h2 class="sec-title">Cars & Pricing<br><b>per Kilometre</b></h2>
+        <p class="sec-desc">Every vehicle, every fare — transparent pricing with no hidden charges.</p>
+      </div>
+      <a href="fleet.html" class="view-all-btn">View All Cars <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+
+    <div class="reveal">
+      <div class="fleet-track-outer">
+        <div class="fleet-track" id="fleetTrack">
+          <div class="fleet-slide">
+            <div class="fleet-card">
+              <div class="fleet-media"><img src="https://www.nicepng.com/png/detail/252-2526491_maruti-suzuki-wagonr-wagon-r-new-model.png" alt="WagonR Indore"><div class="fleet-badge">Economy</div></div>
+              <div class="fleet-body"><div class="fleet-cat">Hatchback</div><div class="fleet-name">WagonR / Alto</div><div class="fleet-price-row"><span class="fleet-price">₹11</span><span class="fleet-price-unit">/ km</span></div><div class="fleet-feats"><div class="fleet-feat">Up to 4 passengers</div><div class="fleet-feat">AC · City rides</div></div></div>
+              <button class="fleet-book-btn" onclick="doBook()">Book Now</button>
+            </div>
+          </div>
+          <div class="fleet-slide">
+            <div class="fleet-card">
+              <div class="fleet-media"><img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=400&auto=format&fit=crop&q=80" alt="Swift Dzire Indore"><div class="fleet-badge popular">Popular</div></div>
+              <div class="fleet-body"><div class="fleet-cat">Sedan</div><div class="fleet-name">Swift Dzire / Amaze</div><div class="fleet-price-row"><span class="fleet-price">₹13</span><span class="fleet-price-unit">/ km</span></div><div class="fleet-feats"><div class="fleet-feat">Up to 4 passengers</div><div class="fleet-feat">City & Outstation</div></div></div>
+              <button class="fleet-book-btn" onclick="doBook()">Book Now</button>
+            </div>
+          </div>
+          <div class="fleet-slide">
+            <div class="fleet-card">
+              <div class="fleet-media"><img src="https://images.unsplash.com/photo-1594502184342-2e12f877aa73?w=400&auto=format&fit=crop&q=80" alt="Innova Indore"><div class="fleet-badge">Spacious</div></div>
+              <div class="fleet-body"><div class="fleet-cat">SUV</div><div class="fleet-name">Innova / Ertiga</div><div class="fleet-price-row"><span class="fleet-price">₹17</span><span class="fleet-price-unit">/ km</span></div><div class="fleet-feats"><div class="fleet-feat">Up to 7 passengers</div><div class="fleet-feat">Families & Groups</div></div></div>
+              <button class="fleet-book-btn" onclick="doBook()">Book Now</button>
+            </div>
+          </div>
+          <div class="fleet-slide">
+            <div class="fleet-card">
+              <div class="fleet-media"><img src="https://www.nicepng.com/png/detail/443-4432912_tempo-traveller-tempo-traveller-png.png" alt="Tempo Traveller Indore"><div class="fleet-badge">Group</div></div>
+              <div class="fleet-body"><div class="fleet-cat">Tempo Traveller</div><div class="fleet-name">12 / 16 Seater</div><div class="fleet-price-row"><span class="fleet-price">₹22</span><span class="fleet-price-unit">/ km</span></div><div class="fleet-feats"><div class="fleet-feat">12–16 passengers</div><div class="fleet-feat">Tours & Corporate</div></div></div>
+              <button class="fleet-book-btn" onclick="doBook()">Book Now</button>
+            </div>
+          </div>
+          <div class="fleet-slide">
+            <div class="fleet-card">
+              <div class="fleet-media"><img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&auto=format&fit=crop&q=80" alt="Luxury Cab Indore"><div class="fleet-badge popular">Premium</div></div>
+              <div class="fleet-body"><div class="fleet-cat">Luxury</div><div class="fleet-name">Mercedes / BMW</div><div class="fleet-price-row"><span class="fleet-price">₹32</span><span class="fleet-price-unit">/ km</span></div><div class="fleet-feats"><div class="fleet-feat">Up to 4 passengers</div><div class="fleet-feat">VIP & Corporate</div></div></div>
+              <button class="fleet-book-btn" onclick="doBook()">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="car-arrow" id="fleetPrev" onclick="carMove('fleet',-1)"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="car-dots" id="fleetDots"></div>
+        <button class="car-arrow" id="fleetNext" onclick="carMove('fleet',1)"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <p style="text-align:center;margin-top:16px;font-size:12px;color:var(--text-light)">* Fares include driver charges. Toll & parking billed at actuals. Min billing: 10 km (local) / 150 km (outstation).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ WHY US ════ -->
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="sec-label">✅ Why Choose Us</div>
+      <h2 class="sec-title">Why Indore Trusts <b>Us</b></h2>
+      <p class="sec-desc">Thousands of Indore residents rely on us every single day for safe, reliable transport.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon">👨‍✈️</div><h3>Experienced Local Drivers</h3><p>Verified drivers with 5+ years navigating Indore roads and outstation routes across Madhya Pradesh.</p></div>
+      <div class="why-card reveal"><div class="why-icon">✨</div><h3>Clean & Well-Maintained Cabs</h3><p>Every vehicle is sanitized before each ride and regularly serviced. Comfort and hygiene are our priorities.</p></div>
+      <div class="why-card reveal"><div class="why-icon">💰</div><h3>Transparent & Fair Pricing</h3><p>No hidden charges, no surge pricing. Toll, parking & GST clearly communicated before you confirm.</p></div>
+      <div class="why-card reveal"><div class="why-icon">🕐</div><h3>24/7 Customer Support</h3><p>Available round the clock by phone and WhatsApp — even on holidays and late at night.</p></div>
+      <div class="why-card reveal"><div class="why-icon">⏱️</div><h3>Always Punctual</h3><p>We arrive 10 minutes early for airport pickups and all scheduled rides. Your time matters.</p></div>
+      <div class="why-card reveal"><div class="why-icon">🛡️</div><h3>GPS-Tracked & Safe</h3><p>All vehicles are GPS-tracked and fully insured. Share live location with family for peace of mind.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ABOUT ════ -->
+<section class="section bg-white" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-stats-grid">
+          <div class="ab-card"><div class="ab-num">5K+</div><div class="ab-label">Rides Completed</div></div>
+          <div class="ab-card"><div class="ab-num">4.9★</div><div class="ab-label">Average Rating</div></div>
+          <div class="ab-card" style="background:var(--bg);border:1.5px solid var(--border)"><div class="ab-num" style="color:var(--dark)">30+</div><div class="ab-label" style="color:var(--text-light)">Fleet Vehicles</div></div>
+          <div class="ab-card" style="background:var(--bg);border:1.5px solid var(--border)"><div class="ab-num" style="color:var(--dark)">10yr</div><div class="ab-label" style="color:var(--text-light)">Serving Indore</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="sec-label">ℹ️ About Us</div>
+        <h2 class="sec-title">Indore's Most Trusted <b>Cab & Taxi Service</b></h2>
+        <p style="font-size:14.5px;color:var(--text-mid);line-height:1.7;margin-bottom:12px">Taxi Service Indore has been serving Indore and Madhya Pradesh since 2014. We specialize in affordable, reliable transportation — from quick city rides to long-distance journeys.</p>
+        <p style="font-size:14.5px;color:var(--text-mid);line-height:1.7">Our fleet includes clean sedans, spacious SUVs, and Tempo Travellers driven by verified local drivers.</p>
+        <div class="feat-list">
+          <div class="feat-item"><div class="feat-chk">✓</div><p><strong>Local expertise:</strong> Drivers who know every corner of Indore and the best routes.</p></div>
+          <div class="feat-item"><div class="feat-chk">✓</div><p><strong>All-inclusive pricing:</strong> Your quote includes toll, driver allowance & fuel.</p></div>
+          <div class="feat-item"><div class="feat-chk">✓</div><p><strong>Instant booking:</strong> Confirmed in under 2 minutes by phone, WhatsApp, or form.</p></div>
+        </div>
+        <a href="tel:+917312345678" class="btn-primary">📞 Talk to Us Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TESTIMONIALS ════ -->
+<section class="section" id="testimonials">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="sec-label">⭐ Reviews</div>
+      <h2 class="sec-title">What Indore Travelers <b>Say</b></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card reveal" itemscope itemtype="https://schema.org/Review">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text" itemprop="reviewBody">"Booked Indore to Ujjain for Mahashivaratri. Driver arrived 15 min early, Dzire was spotless, reached Mahakaleshwar exactly on time. Best cab service in Indore!"</p>
+        <div class="rev-user"><div class="rev-av">RK</div><div><p class="rev-name" itemprop="author">Rajesh Kulkarni</p><p class="rev-route">📍 Indore to Ujjain</p></div></div>
+      </div>
+      <div class="rev-card reveal" itemscope itemtype="https://schema.org/Review">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text" itemprop="reviewBody">"Needed airport pickup at 3 AM from Devi Ahilya Airport. Cab was already waiting when I landed. No surge, clean car, polite driver. My go-to for every Indore trip!"</p>
+        <div class="rev-user"><div class="rev-av">PS</div><div><p class="rev-name" itemprop="author">Priya Sharma</p><p class="rev-route">✈️ Airport Pickup</p></div></div>
+      </div>
+      <div class="rev-card reveal" itemscope itemtype="https://schema.org/Review">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text" itemprop="reviewBody">"Weekend trip Indore → Omkareshwar → Mandu in one go. Innova was comfortable, pricing totally transparent. Will definitely book again for next trip!"</p>
+        <div class="rev-user"><div class="rev-av">AM</div><div><p class="rev-name" itemprop="author">Ankit Mehta</p><p class="rev-route">🛣️ Omkareshwar → Mandu</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CTA ════ -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <div class="sec-label">🚕 Book Today</div>
+    <h2 class="sec-title">Book Your Cab in Indore Today</h2>
+    <p>Available 24/7. No waiting, no hidden charges. Just reliable cab service across Indore and Madhya Pradesh.</p>
+    <div class="cta-btns">
+      <a href="tel:+917312345678" class="cta-call">📞 Call +91 731 234 5678</a>
+      <a href="https://wa.me/917312345678" class="cta-wa" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+    </div>
+    <div class="cta-info">
+      <div class="ci">📍 <a href="#">Vijay Nagar, Indore, MP</a></div>
+      <div class="ci">✉️ <a href="mailto:info@taxiserviceindore.in">info@taxiserviceindore.in</a></div>
+      <div class="ci">⏰ <span>Open 24 hrs, 7 days</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-logo"><div class="footer-logo-icon"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Taxi Service Indore logo"></div><div class="footer-logo-text">Taxi Service <b>Indore</b></div></a>
+      <p class="footer-tagline">Indore's most trusted cab & taxi service since 2014. Reliable rides across the city and outstation routes all over India.</p>
+      <div class="footer-contacts">
+        <a href="tel:+917312345678" class="fci"><div class="fci-icon">📞</div><div><span class="fci-label">Call Us</span><span class="fci-val">+91 731 234 5678</span></div></a>
+        <a href="https://wa.me/917312345678" class="fci" target="_blank"><div class="fci-icon">💬</div><div><span class="fci-label">WhatsApp</span><span class="fci-val">+91 731 234 5678</span></div></a>
+        <a href="mailto:info@taxiserviceindore.in" class="fci"><div class="fci-icon">✉️</div><div><span class="fci-label">Email</span><span class="fci-val">info@taxiserviceindore.in</span></div></a>
+      </div>
+    </div>
+    <div class="footer-nav-col"><h4>Services</h4><ul><li><a href="#services">Local City Taxi</a></li><li><a href="#services">Airport Transfers</a></li><li><a href="#services">Outstation Cab</a></li><li><a href="rental.html">Car Rental</a></li><li><a href="#services">Corporate Cab</a></li><li><a href="#services">Wedding Cars</a></li></ul></div>
+    <div class="footer-nav-col"><h4>Popular Routes</h4><ul><li><a href="routes-all.html">Indore → Ujjain</a></li><li><a href="routes-all.html">Indore → Omkareshwar</a></li><li><a href="routes-all.html">Indore → Mandu</a></li><li><a href="routes-all.html">Indore → Bhopal</a></li><li><a href="routes-all.html">Indore → Maheshwar</a></li><li><a href="routes-all.html">Indore → Mumbai</a></li></ul></div>
+    <div class="footer-nav-col"><h4>Areas in Indore</h4><ul><li><a href="#">Vijay Nagar</a></li><li><a href="#">Palasia & MG Road</a></li><li><a href="#">Rajwada & Old Indore</a></li><li><a href="#">AB Road</a></li><li><a href="#">Super Corridor</a></li><li><a href="#">IIM Indore</a></li></ul></div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 5%">
+    <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <p class="footer-copyright">© 2024 Taxi Service Indore · Best Cab Service in Indore, Madhya Pradesh.</p>
+      <div class="footer-social">
+        <a href="#" title="Facebook">📘</a><a href="#" title="Instagram">📸</a><a href="#" title="YouTube">▶️</a><a href="https://wa.me/917312345678" title="WhatsApp" target="_blank">💬</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOAT BTNS -->
+<div class="float-btns">
+  <a href="https://wa.me/917312345678" class="fb fb-wa" target="_blank" rel="noopener"><span>💬</span><span>WhatsApp</span></a>
+  <a href="tel:+917312345678" class="fb fb-call"><span>📞</span><span>Call Now</span></a>
+</div>
+
+<!-- SCHEMA -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Taxi Service Indore","description":"Best cab, taxi and car rental service in Indore, Madhya Pradesh.","telephone":"+917312345678","email":"info@taxiserviceindore.in","address":{"@type":"PostalAddress","addressLocality":"Indore","addressRegion":"Madhya Pradesh","addressCountry":"IN"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"847"}}
+</script>
+
+<script>
+/* ── LOADER ── */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('out'), 1500);
+});
+
+/* ── NAV SCROLL ── */
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const nav = document.getElementById('navbar');
+  const tb = document.getElementById('topbar');
+  nav.classList.toggle('scrolled', y > 50);
+  if (y > 200) { tb.classList.toggle('hide', y > lastY); }
+  lastY = y;
+});
+
+/* ── MOBILE MENU ── */
+function toggleMenu() {
+  document.getElementById('mobMenu').classList.toggle('open');
+  document.getElementById('mobOverlay').style.display = document.getElementById('mobMenu').classList.contains('open') ? 'block' : 'none';
+}
+function closeMenu() {
+  document.getElementById('mobMenu').classList.remove('open');
+  document.getElementById('mobOverlay').style.display = 'none';
+}
+
+/* ── BOOKING TABS ── */
+function switchTab(id, btn) {
+  document.querySelectorAll('.tp').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ── BOOK HANDLER ── */
+function doBook() {
+  window.location.href = 'tel:+917312345678';
+}
+
+/* ── GENERIC CAROUSEL ── */
+const carousels = {
+  svc:    { track: null, slides: null, idx: 0, visCount: 3 },
+  routes: { track: null, slides: null, idx: 0, visCount: 4 },
+  fleet:  { track: null, slides: null, idx: 0, visCount: 4 },
+};
+
+function getVisCount(key) {
+  const w = window.innerWidth;
+  if (key === 'svc') return w < 680 ? 1 : w < 1100 ? 2 : 3;
+  if (key === 'routes') return w < 680 ? 1 : w < 900 ? 2 : w < 1100 ? 3 : 4;
+  if (key === 'fleet') return w < 680 ? 1 : w < 900 ? 2 : w < 1100 ? 3 : 4;
+  return 3;
+}
+
+function initCarousel(key) {
+  const c = carousels[key];
+  const trackId = key === 'svc' ? 'svcTrack' : key === 'routes' ? 'routesTrack' : 'fleetTrack';
+  c.track = document.getElementById(trackId);
+  c.slides = c.track.children;
+  c.idx = 0;
+  buildDots(key);
+  updateCarousel(key);
+}
+
+function buildDots(key) {
+  const c = carousels[key];
+  const dotsEl = document.getElementById(key + 'Dots');
+  dotsEl.innerHTML = '';
+  const vis = getVisCount(key);
+  const total = Math.ceil(c.slides.length / vis);
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('div');
+    d.className = 'car-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => { carousels[key].idx = i * vis; updateCarousel(key); };
+    dotsEl.appendChild(d);
+  }
+}
+
+function updateCarousel(key) {
+  const c = carousels[key];
+  const vis = getVisCount(key);
+  const slideW = c.slides[0] ? c.slides[0].offsetWidth : 0;
+  const gap = 20;
+  const offset = c.idx * (slideW + gap);
+  c.track.style.transform = `translateX(-${offset}px)`;
+
+  // arrows
+  document.getElementById(key + 'Prev').classList.toggle('disabled', c.idx <= 0);
+  document.getElementById(key + 'Next').classList.toggle('disabled', c.idx + vis >= c.slides.length);
+
+  // dots
+  const dots = document.querySelectorAll('#' + key + 'Dots .car-dot');
+  const activeDot = Math.floor(c.idx / vis);
+  dots.forEach((d, i) => d.classList.toggle('active', i === activeDot));
+}
+
+function carMove(key, dir) {
+  const c = carousels[key];
+  const vis = getVisCount(key);
+  c.idx = Math.max(0, Math.min(c.idx + (dir * vis), c.slides.length - vis));
+  updateCarousel(key);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  initCarousel('svc');
+  initCarousel('routes');
+  initCarousel('fleet');
+});
+
+window.addEventListener('resize', () => {
+  Object.keys(carousels).forEach(key => { buildDots(key); updateCarousel(key); });
+});
+
+/* ── SCROLL REVEAL ── */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Routes from Indore | Taxi Service Indore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #F5A800; --primary-dark: #D98F00; --primary-light: #FFF5D6;
+      --primary-glow: rgba(245,168,0,0.25); --dark: #0F0D0A; --dark2: #1A1712;
+      --text: #1C1A15; --text-mid: #5A5548; --text-light: #9A9080;
+      --white: #FFFFFF; --bg: #FAFAF7; --border: #EEEAE0;
+      --font-h: 'Syne', sans-serif; --font-b: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: var(--bg); color: var(--text); }
+
+    nav {
+      position: sticky; top: 0; z-index: 999;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); height: 72px; padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 20px rgba(15,13,10,0.06);
+    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-mark { width: 44px; height: 44px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; overflow: hidden; }
+    .logo-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .logo-name { font-family: var(--font-h); font-weight: 800; font-size: 18px; color: var(--dark); }
+    .logo-name b { color: var(--primary-dark); }
+    .nav-back { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text-mid); font-size: 13.5px; font-weight: 600; padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 10px; transition: all 0.2s; }
+    .nav-back:hover { border-color: var(--primary); color: var(--primary-dark); background: var(--primary-light); }
+
+    .page-hero { background: var(--dark); padding: 64px 5%; position: relative; overflow: hidden; }
+    .page-hero::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 80% 50%, rgba(245,168,0,0.06) 0%, transparent 60%); }
+    .page-hero-inner { max-width: 1240px; margin: 0 auto; position: relative; z-index: 2; }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+    .breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .breadcrumb span { color: rgba(255,255,255,0.2); }
+    .page-hero h1 { font-family: var(--font-h); font-size: clamp(28px, 4vw, 48px); font-weight: 800; color: white; letter-spacing: -1.5px; margin-bottom: 10px; }
+    .page-hero h1 b { color: var(--primary); }
+    .page-hero p { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 560px; line-height: 1.7; }
+
+    .content { max-width: 1240px; margin: 0 auto; padding: 64px 5%; }
+
+    .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 44px; }
+    .filter-btn { padding: 9px 18px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: white; color: var(--text-mid); transition: all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { background: var(--primary); border-color: var(--primary); color: var(--dark); }
+
+    .routes-section { margin-bottom: 44px; }
+    .routes-section-title { font-family: var(--font-h); font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid var(--primary); display: inline-block; }
+    .routes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    .route-card {
+      background: white; border-radius: 18px; padding: 20px 18px;
+      border: 1.5px solid var(--border); transition: all 0.3s ease;
+      cursor: pointer; display: flex; flex-direction: column; gap: 12px;
+      opacity: 0; transform: translateY(16px);
+      animation: cardIn 0.45s ease forwards;
+    }
+    @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+    .route-card:hover { transform: translateY(-4px); box-shadow: 0 16px 42px rgba(15,13,10,0.1); border-color: var(--primary); }
+    .route-emoji { font-size: 30px; }
+    .route-from-to { font-family: var(--font-h); font-size: 15px; font-weight: 700; color: var(--dark); line-height: 1.3; }
+    .route-arrow { color: var(--primary); margin: 0 4px; }
+    .route-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+    .chip { font-size: 11px; color: var(--text-mid); background: var(--bg); border: 1px solid var(--border); padding: 3px 10px; border-radius: 100px; font-weight: 500; }
+    .route-desc { font-size: 12.5px; color: var(--text-light); line-height: 1.5; }
+    .route-footer { display: flex; gap: 8px; }
+    .route-book-btn { flex: 1; padding: 10px; background: var(--primary-light); color: var(--primary-dark); border: 1.5px solid var(--primary); border-radius: 9px; font-family: var(--font-b); font-weight: 700; font-size: 12.5px; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .route-book-btn:hover { background: var(--primary); color: var(--dark); }
+    .route-wa-btn { padding: 10px 12px; background: white; border: 1.5px solid var(--border); border-radius: 9px; font-size: 14px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: flex; align-items: center; }
+    .route-wa-btn:hover { background: #25D366; border-color: #25D366; }
+
+    .popular-badge { background: var(--primary); color: var(--dark); font-size: 10px; font-weight: 800; padding: 2px 10px; border-radius: 100px; align-self: flex-start; }
+
+    .cta-strip { background: var(--dark); border-radius: 24px; padding: 48px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 20px; flex-wrap: wrap; }
+    .cta-strip h3 { font-family: var(--font-h); font-size: 24px; font-weight: 800; color: white; margin-bottom: 6px; }
+    .cta-strip p { font-size: 14px; color: rgba(255,255,255,0.5); }
+    .cta-strip-btns { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: var(--dark); font-weight: 700; font-size: 14px; padding: 13px 24px; border-radius: 11px; text-decoration: none; transition: all 0.25s; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-wa { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); color: white; font-weight: 600; font-size: 14px; padding: 13px 22px; border-radius: 11px; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.15); transition: all 0.25s; }
+    .btn-wa:hover { background: #25D366; border-color: #25D366; }
+
+    @media (max-width: 1000px) { .routes-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px) { .routes-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px) { .routes-grid { grid-template-columns: 1fr; } .cta-strip { padding: 28px 20px; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Taxi Service Indore logo"></div>
+    <div class="logo-name">Taxi Service <b>Indore</b></div>
+  </a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>All Routes</span></div>
+    <h1>Top Routes <b>from Indore</b></h1>
+    <p>Pre-planned, transparent pricing to all major destinations. Book in minutes — no hidden charges.</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterRoutes('all',this)">All Routes</button>
+    <button class="filter-btn" onclick="filterRoutes('mp',this)">Madhya Pradesh</button>
+    <button class="filter-btn" onclick="filterRoutes('interstate',this)">Interstate</button>
+    <button class="filter-btn" onclick="filterRoutes('pilgrimage',this)">Pilgrimage</button>
+  </div>
+
+  <div class="routes-section">
+    <div class="routes-section-title">🗺️ Popular MP Routes</div>
+    <div class="routes-grid" id="routesGrid">
+
+      <div class="route-card" data-cat="mp pilgrimage" style="animation-delay:0.05s" onclick="book('Ujjain')">
+        <div class="route-emoji">🕉️</div>
+        <div><span class="popular-badge">⭐ Most Popular</span></div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Ujjain</div>
+        <div class="route-chips"><span class="chip">📏 56 km</span><span class="chip">⏱️ ~1.5 hrs</span></div>
+        <p class="route-desc">Mahakaleshwar Jyotirlinga darshan with trusted local driver.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Ujjain" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+      <div class="route-card" data-cat="mp pilgrimage" style="animation-delay:0.08s" onclick="book('Omkareshwar')">
+        <div class="route-emoji">🛕</div>
+        <div><span class="popular-badge">⭐ Most Popular</span></div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Omkareshwar</div>
+        <div class="route-chips"><span class="chip">📏 77 km</span><span class="chip">⏱️ ~2 hrs</span></div>
+        <p class="route-desc">Peaceful spiritual journey to the Narmada Jyotirlinga island.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Omkareshwar" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+      <div class="route-card" data-cat="mp" style="animation-delay:0.11s" onclick="book('Mandu')">
+        <div class="route-emoji">🏯</div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Mandu</div>
+        <div class="route-chips"><span class="chip">📏 98 km</span><span class="chip">⏱️ ~2.5 hrs</span></div>
+        <p class="route-desc">Jahaz Mahal, Rani Roopmati Pavilion and the City of Joy ruins.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Mandu" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+      <div class="route-card" data-cat="mp pilgrimage" style="animation-delay:0.14s" onclick="book('Maheshwar')">
+        <div class="route-emoji">⛵</div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Maheshwar</div>
+        <div class="route-chips"><span class="chip">📏 91 km</span><span class="chip">⏱️ ~2.5 hrs</span></div>
+        <p class="route-desc">Maheshwar fort & Ahilya Bai Holkar temple on Narmada ghats.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Maheshwar" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+      <div class="route-card" data-cat="mp" style="animation-delay:0.17s" onclick="book('Bhopal')">
+        <div class="route-emoji">🏙️</div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Bhopal</div>
+        <div class="route-chips"><span class="chip">📏 195 km</span><span class="chip">⏱️ ~3.5 hrs</span></div>
+        <p class="route-desc">Comfortable city ride to the City of Lakes and state capital.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Bhopal" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+      <div class="route-card" data-cat="mp pilgrimage" style="animation-delay:0.2s" onclick="book('Baglamukhi')">
+        <div class="route-emoji">🕌</div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Baglamukhi</div>
+        <div class="route-chips"><span class="chip">📏 158 km</span><span class="chip">⏱️ ~3 hrs</span></div>
+        <p class="route-desc">Maa Baglamukhi temple, one of the Shakti peethas of India.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Baglamukhi" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+      <div class="route-card" data-cat="mp" style="animation-delay:0.23s" onclick="book('Pachmarhi')">
+        <div class="route-emoji">🌿</div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Pachmarhi</div>
+        <div class="route-chips"><span class="chip">📏 256 km</span><span class="chip">⏱️ ~5 hrs</span></div>
+        <p class="route-desc">MP's only hill station — waterfalls, caves and colonial charm.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Pachmarhi" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+      <div class="route-card" data-cat="mp" style="animation-delay:0.26s" onclick="book('Khajuraho')">
+        <div class="route-emoji">🏛️</div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Khajuraho</div>
+        <div class="route-chips"><span class="chip">📏 390 km</span><span class="chip">⏱️ ~7 hrs</span></div>
+        <p class="route-desc">UNESCO World Heritage Site — ancient temple complex of MP.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Khajuraho" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="routes-section">
+    <div class="routes-section-title">🌏 Interstate Routes</div>
+    <div class="routes-grid">
+
+      <div class="route-card" data-cat="interstate" style="animation-delay:0.05s" onclick="book('Ahmedabad')">
+        <div class="route-emoji">🌆</div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Ahmedabad</div>
+        <div class="route-chips"><span class="chip">📏 400 km</span><span class="chip">⏱️ ~7 hrs</span></div>
+        <p class="route-desc">Gujarat's commercial capital — Sabarmati Ashram, Adalaj stepwell.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Ahmedabad" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+      <div class="route-card" data-cat="interstate" style="animation-delay:0.1s" onclick="book('Mumbai')">
+        <div class="route-emoji">🌃</div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Mumbai</div>
+        <div class="route-chips"><span class="chip">📏 590 km</span><span class="chip">⏱️ ~10 hrs</span></div>
+        <p class="route-desc">City of Dreams — comfortable long-distance cab with experienced drivers.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Mumbai" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+      <div class="route-card" data-cat="interstate" style="animation-delay:0.15s" onclick="book('Nagpur')">
+        <div class="route-emoji">🍊</div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Nagpur</div>
+        <div class="route-chips"><span class="chip">📏 480 km</span><span class="chip">⏱️ ~8 hrs</span></div>
+        <p class="route-desc">Orange City of India — Deekshabhoomi, Sitabuldi Fort.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Nagpur" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+      <div class="route-card" data-cat="interstate" style="animation-delay:0.2s" onclick="book('Pune')">
+        <div class="route-emoji">🏟️</div>
+        <div class="route-from-to">Indore <span class="route-arrow">→</span> Pune</div>
+        <div class="route-chips"><span class="chip">📏 500 km</span><span class="chip">⏱️ ~9 hrs</span></div>
+        <p class="route-desc">Oxford of the East — Shaniwar Wada, Sinhagad Fort.</p>
+        <div class="route-footer"><button class="route-book-btn" onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Pune" class="route-wa-btn" onclick="event.stopPropagation()" target="_blank">💬</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div>
+      <h3>Need a custom route?</h3>
+      <p>We cover any destination across India. Call us for custom quotes on routes not listed here.</p>
+    </div>
+    <div class="cta-strip-btns">
+      <a href="tel:+917312345678" class="btn-primary">📞 Get Custom Quote</a>
+      <a href="https://wa.me/917312345678" class="btn-wa" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function book(dest) { window.location.href = 'tel:+917312345678'; }
+function filterRoutes(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.route-card').forEach(card => {
+    if (cat === 'all') { card.style.display = ''; return; }
+    card.style.display = (card.dataset.cat || '').includes(cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

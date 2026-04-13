@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fleet & Car Pricing | Taxi Service Indore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #F5A800; --primary-dark: #D98F00; --primary-light: #FFF5D6;
+      --primary-glow: rgba(245,168,0,0.25); --dark: #0F0D0A; --dark2: #1A1712;
+      --text: #1C1A15; --text-mid: #5A5548; --text-light: #9A9080;
+      --white: #FFFFFF; --bg: #FAFAF7; --border: #EEEAE0; --green: #22C55E;
+      --font-h: 'Syne', sans-serif; --font-b: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: var(--bg); color: var(--text); }
+
+    nav {
+      position: sticky; top: 0; z-index: 999;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); height: 72px; padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 20px rgba(15,13,10,0.06);
+    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-mark { width: 44px; height: 44px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; overflow: hidden; }
+    .logo-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .logo-name { font-family: var(--font-h); font-weight: 800; font-size: 18px; color: var(--dark); }
+    .logo-name b { color: var(--primary-dark); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .nav-back { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text-mid); font-size: 13px; font-weight: 600; padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 10px; transition: all 0.2s; }
+    .nav-back:hover { border-color: var(--primary); color: var(--primary-dark); background: var(--primary-light); }
+    .nav-book { display: flex; align-items: center; gap: 8px; background: var(--primary); color: var(--dark); font-weight: 700; font-size: 13px; padding: 10px 20px; border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+    .nav-book:hover { background: var(--primary-dark); }
+
+    .page-hero { background: var(--dark); padding: 64px 5%; position: relative; overflow: hidden; }
+    .page-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(245,168,0,0.05) 0%, transparent 60%); }
+    .page-hero-inner { max-width: 1240px; margin: 0 auto; position: relative; z-index: 2; }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+    .breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--primary); }
+    .breadcrumb span { color: rgba(255,255,255,0.2); }
+    .page-hero h1 { font-family: var(--font-h); font-size: clamp(28px, 4vw, 48px); font-weight: 800; color: white; letter-spacing: -1.5px; margin-bottom: 10px; }
+    .page-hero h1 b { color: var(--primary); }
+    .page-hero p { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 560px; line-height: 1.7; }
+    .hero-stats { display: flex; gap: 28px; margin-top: 28px; flex-wrap: wrap; }
+    .hs { display: flex; align-items: center; gap: 10px; }
+    .hs-icon { font-size: 20px; }
+    .hs-text { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500; }
+    .hs-text b { color: var(--primary); }
+
+    .content { max-width: 1240px; margin: 0 auto; padding: 64px 5%; }
+
+    .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 44px; }
+    .filter-btn { padding: 9px 18px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: white; color: var(--text-mid); transition: all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { background: var(--primary); border-color: var(--primary); color: var(--dark); }
+
+    .fleet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    .fleet-card {
+      background: white; border-radius: 22px; overflow: hidden;
+      border: 1.5px solid var(--border); transition: all 0.3s ease;
+      display: flex; flex-direction: column;
+      box-shadow: 0 2px 16px rgba(15,13,10,0.05);
+      opacity: 0; transform: translateY(20px);
+      animation: cardIn 0.5s ease forwards;
+    }
+    @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+    .fleet-card:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(15,13,10,0.13); border-color: var(--primary); }
+    .fleet-card.featured { border-color: var(--primary); box-shadow: 0 8px 40px var(--primary-glow); }
+    .fleet-card.featured::before { content: '⭐ Most Popular'; display: block; background: var(--primary); color: var(--dark); text-align: center; font-size: 11.5px; font-weight: 800; padding: 6px; letter-spacing: 0.4px; }
+
+    .fleet-img { background: var(--bg); height: 180px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 16px; }
+    .fleet-img img { max-height: 150px; max-width: 100%; object-fit: contain; transition: transform 0.35s ease; }
+    .fleet-card:hover .fleet-img img { transform: scale(1.07); }
+    .fleet-badge { position: absolute; top: 12px; left: 12px; background: var(--dark); color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 100px; }
+    .fleet-badge.eco { background: #22C55E; color: white; }
+    .fleet-badge.lux { background: #7C3AED; color: white; }
+
+    .fleet-body { padding: 20px 22px; flex: 1; display: flex; flex-direction: column; }
+    .fleet-cat { font-size: 10.5px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+    .fleet-name { font-family: var(--font-h); font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+    .fleet-price-section { display: flex; align-items: baseline; gap: 4px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .fleet-price { font-family: var(--font-h); font-size: 32px; font-weight: 800; color: var(--dark); }
+    .fleet-price-unit { font-size: 13px; color: var(--text-light); }
+    .fleet-price-note { font-size: 11px; color: var(--text-light); margin-left: auto; padding: 3px 8px; background: var(--bg); border-radius: 6px; border: 1px solid var(--border); }
+
+    .fleet-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+    .fleet-spec { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--text-mid); background: var(--bg); padding: 8px 10px; border-radius: 9px; border: 1px solid var(--border); }
+    .spec-icon { font-size: 14px; flex-shrink: 0; }
+
+    .fare-table { margin-bottom: 18px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .fare-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; font-size: 12.5px; border-bottom: 1px solid var(--border); }
+    .fare-row:last-child { border-bottom: none; }
+    .fare-row:nth-child(even) { background: var(--bg); }
+    .fare-label { color: var(--text-mid); font-weight: 500; }
+    .fare-val { color: var(--dark); font-weight: 700; }
+    .fare-val.highlight { color: var(--primary-dark); }
+
+    .fleet-cta { display: flex; gap: 10px; }
+    .fleet-book-btn { flex: 1; padding: 13px; background: var(--primary); color: var(--dark); border: none; border-radius: 11px; font-family: var(--font-b); font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.25s; }
+    .fleet-book-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .fleet-wa-btn { padding: 13px 15px; background: white; border: 1.5px solid var(--border); border-radius: 11px; font-size: 18px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: flex; align-items: center; }
+    .fleet-wa-btn:hover { background: #25D366; border-color: #25D366; }
+
+    .price-note { background: white; border: 1.5px solid var(--border); border-radius: 16px; padding: 20px 24px; display: flex; align-items: flex-start; gap: 14px; margin-bottom: 44px; }
+    .price-note-icon { font-size: 22px; flex-shrink: 0; }
+    .price-note p { font-size: 13.5px; color: var(--text-mid); line-height: 1.65; }
+    .price-note strong { color: var(--dark); }
+
+    .cta-strip { background: var(--dark); border-radius: 24px; padding: 48px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .cta-strip h3 { font-family: var(--font-h); font-size: 24px; font-weight: 800; color: white; margin-bottom: 6px; }
+    .cta-strip p { font-size: 14px; color: rgba(255,255,255,0.5); }
+    .cta-strip-btns { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: var(--dark); font-weight: 700; font-size: 14px; padding: 13px 24px; border-radius: 11px; text-decoration: none; transition: all 0.25s; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-wa { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); color: white; font-weight: 600; font-size: 14px; padding: 13px 22px; border-radius: 11px; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.15); transition: all 0.25s; }
+    .btn-wa:hover { background: #25D366; border-color: #25D366; }
+
+    @media (max-width: 1000px) { .fleet-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .fleet-grid { grid-template-columns: 1fr; } .cta-strip { padding: 28px 20px; } .fleet-specs { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Taxi Service Indore logo"></div>
+    <div class="logo-name">Taxi Service <b>Indore</b></div>
+  </a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-back">← Home</a>
+    <a href="tel:+917312345678" class="nav-book">📞 Book Now</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Fleet & Pricing</span></div>
+    <h1>Cars & Pricing <b>per Kilometre</b></h1>
+    <p>Every vehicle, every fare — transparent pricing with no hidden charges. Choose from economy to luxury.</p>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-icon">🚗</div><div class="hs-text"><b>30+</b> vehicles available</div></div>
+      <div class="hs"><div class="hs-icon">💰</div><div class="hs-text"><b>No</b> hidden charges</div></div>
+      <div class="hs"><div class="hs-icon">✅</div><div class="hs-text"><b>GST</b> invoices available</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="price-note">
+    <div class="price-note-icon">ℹ️</div>
+    <p><strong>Pricing Note:</strong> All fares shown include driver charges. Toll & parking billed at actuals. Minimum billing: <strong>10 km for local</strong> / <strong>150 km for outstation</strong> trips. Night charges (10 PM–6 AM) may apply. All prices include GST.</p>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterCars('all',this)">All Cars</button>
+    <button class="filter-btn" onclick="filterCars('economy',this)">Economy</button>
+    <button class="filter-btn" onclick="filterCars('sedan',this)">Sedan</button>
+    <button class="filter-btn" onclick="filterCars('suv',this)">SUV</button>
+    <button class="filter-btn" onclick="filterCars('group',this)">Group</button>
+    <button class="filter-btn" onclick="filterCars('luxury',this)">Luxury</button>
+  </div>
+
+  <div class="fleet-grid" id="fleetGrid">
+
+    <div class="fleet-card" data-cat="economy" style="animation-delay:0.05s">
+      <div class="fleet-img"><img src="https://www.nicepng.com/png/detail/252-2526491_maruti-suzuki-wagonr-wagon-r-new-model.png" alt="WagonR Indore cab"><div class="fleet-badge eco">Economy</div></div>
+      <div class="fleet-body">
+        <div class="fleet-cat">Hatchback</div>
+        <div class="fleet-name">WagonR / Alto</div>
+        <div class="fleet-price-section"><span class="fleet-price">₹11</span><span class="fleet-price-unit">/ km</span><span class="fleet-price-note">Min 10 km</span></div>
+        <div class="fleet-specs">
+          <div class="fleet-spec"><span class="spec-icon">👥</span>Up to 4 pax</div>
+          <div class="fleet-spec"><span class="spec-icon">❄️</span>AC</div>
+          <div class="fleet-spec"><span class="spec-icon">💼</span>1 bag</div>
+          <div class="fleet-spec"><span class="spec-icon">🏙️</span>City rides</div>
+        </div>
+        <div class="fare-table">
+          <div class="fare-row"><span class="fare-label">Local (per km)</span><span class="fare-val highlight">₹11</span></div>
+          <div class="fare-row"><span class="fare-label">Outstation (per km)</span><span class="fare-val highlight">₹12</span></div>
+          <div class="fare-row"><span class="fare-label">Waiting (per hr)</span><span class="fare-val">₹80</span></div>
+          <div class="fare-row"><span class="fare-label">Base fare</span><span class="fare-val">₹110</span></div>
+        </div>
+        <div class="fleet-cta">
+          <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This Car</button>
+          <a href="https://wa.me/917312345678?text=Hi+I+need+WagonR+cab" class="fleet-wa-btn" target="_blank">💬</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fleet-card featured" data-cat="sedan" style="animation-delay:0.1s">
+      <div class="fleet-img"><img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=400&auto=format&fit=crop&q=80" alt="Swift Dzire Indore"><div class="fleet-badge" style="background:var(--primary);color:var(--dark)">Popular</div></div>
+      <div class="fleet-body">
+        <div class="fleet-cat">Sedan</div>
+        <div class="fleet-name">Swift Dzire / Amaze</div>
+        <div class="fleet-price-section"><span class="fleet-price">₹13</span><span class="fleet-price-unit">/ km</span><span class="fleet-price-note">Min 10 km</span></div>
+        <div class="fleet-specs">
+          <div class="fleet-spec"><span class="spec-icon">👥</span>Up to 4 pax</div>
+          <div class="fleet-spec"><span class="spec-icon">❄️</span>AC</div>
+          <div class="fleet-spec"><span class="spec-icon">💼</span>2 bags</div>
+          <div class="fleet-spec"><span class="spec-icon">🛣️</span>City & outsttn</div>
+        </div>
+        <div class="fare-table">
+          <div class="fare-row"><span class="fare-label">Local (per km)</span><span class="fare-val highlight">₹13</span></div>
+          <div class="fare-row"><span class="fare-label">Outstation (per km)</span><span class="fare-val highlight">₹14</span></div>
+          <div class="fare-row"><span class="fare-label">Waiting (per hr)</span><span class="fare-val">₹80</span></div>
+          <div class="fare-row"><span class="fare-label">Base fare</span><span class="fare-val">₹130</span></div>
+        </div>
+        <div class="fleet-cta">
+          <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This Car</button>
+          <a href="https://wa.me/917312345678?text=Hi+I+need+Dzire+cab" class="fleet-wa-btn" target="_blank">💬</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fleet-card" data-cat="sedan" style="animation-delay:0.15s">
+      <div class="fleet-img"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=400&auto=format&fit=crop&q=80" alt="Ciaz Indore"><div class="fleet-badge">Comfort</div></div>
+      <div class="fleet-body">
+        <div class="fleet-cat">Premium Sedan</div>
+        <div class="fleet-name">Ciaz / Honda City</div>
+        <div class="fleet-price-section"><span class="fleet-price">₹15</span><span class="fleet-price-unit">/ km</span><span class="fleet-price-note">Min 10 km</span></div>
+        <div class="fleet-specs">
+          <div class="fleet-spec"><span class="spec-icon">👥</span>Up to 4 pax</div>
+          <div class="fleet-spec"><span class="spec-icon">❄️</span>AC</div>
+          <div class="fleet-spec"><span class="spec-icon">💼</span>3 bags</div>
+          <div class="fleet-spec"><span class="spec-icon">🌟</span>Premium comfort</div>
+        </div>
+        <div class="fare-table">
+          <div class="fare-row"><span class="fare-label">Local (per km)</span><span class="fare-val highlight">₹15</span></div>
+          <div class="fare-row"><span class="fare-label">Outstation (per km)</span><span class="fare-val highlight">₹16</span></div>
+          <div class="fare-row"><span class="fare-label">Waiting (per hr)</span><span class="fare-val">₹100</span></div>
+          <div class="fare-row"><span class="fare-label">Base fare</span><span class="fare-val">₹150</span></div>
+        </div>
+        <div class="fleet-cta">
+          <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This Car</button>
+          <a href="https://wa.me/917312345678?text=Hi+I+need+Ciaz+cab" class="fleet-wa-btn" target="_blank">💬</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fleet-card" data-cat="suv" style="animation-delay:0.2s">
+      <div class="fleet-img"><img src="https://images.unsplash.com/photo-1594502184342-2e12f877aa73?w=400&auto=format&fit=crop&q=80" alt="Ertiga Indore"><div class="fleet-badge">Spacious</div></div>
+      <div class="fleet-body">
+        <div class="fleet-cat">SUV / MPV</div>
+        <div class="fleet-name">Innova / Ertiga</div>
+        <div class="fleet-price-section"><span class="fleet-price">₹17</span><span class="fleet-price-unit">/ km</span><span class="fleet-price-note">Min 10 km</span></div>
+        <div class="fleet-specs">
+          <div class="fleet-spec"><span class="spec-icon">👥</span>Up to 7 pax</div>
+          <div class="fleet-spec"><span class="spec-icon">❄️</span>AC</div>
+          <div class="fleet-spec"><span class="spec-icon">💼</span>4 bags</div>
+          <div class="fleet-spec"><span class="spec-icon">👨‍👩‍👧‍👦</span>Families</div>
+        </div>
+        <div class="fare-table">
+          <div class="fare-row"><span class="fare-label">Local (per km)</span><span class="fare-val highlight">₹17</span></div>
+          <div class="fare-row"><span class="fare-label">Outstation (per km)</span><span class="fare-val highlight">₹18</span></div>
+          <div class="fare-row"><span class="fare-label">Waiting (per hr)</span><span class="fare-val">₹100</span></div>
+          <div class="fare-row"><span class="fare-label">Base fare</span><span class="fare-val">₹170</span></div>
+        </div>
+        <div class="fleet-cta">
+          <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This Car</button>
+          <a href="https://wa.me/917312345678?text=Hi+I+need+Innova+cab" class="fleet-wa-btn" target="_blank">💬</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fleet-card" data-cat="group" style="animation-delay:0.25s">
+      <div class="fleet-img"><img src="https://www.nicepng.com/png/detail/443-4432912_tempo-traveller-tempo-traveller-png.png" alt="Tempo Traveller Indore"><div class="fleet-badge">Group</div></div>
+      <div class="fleet-body">
+        <div class="fleet-cat">Tempo Traveller</div>
+        <div class="fleet-name">12 / 16 Seater</div>
+        <div class="fleet-price-section"><span class="fleet-price">₹22</span><span class="fleet-price-unit">/ km</span><span class="fleet-price-note">Min 150 km</span></div>
+        <div class="fleet-specs">
+          <div class="fleet-spec"><span class="spec-icon">👥</span>12–16 pax</div>
+          <div class="fleet-spec"><span class="spec-icon">❄️</span>AC</div>
+          <div class="fleet-spec"><span class="spec-icon">🧳</span>Large luggage</div>
+          <div class="fleet-spec"><span class="spec-icon">🏢</span>Corporate tours</div>
+        </div>
+        <div class="fare-table">
+          <div class="fare-row"><span class="fare-label">Per km (outstation)</span><span class="fare-val highlight">₹22</span></div>
+          <div class="fare-row"><span class="fare-label">Per day (local, ~8 hrs)</span><span class="fare-val highlight">₹3,500</span></div>
+          <div class="fare-row"><span class="fare-label">Waiting (per hr)</span><span class="fare-val">₹150</span></div>
+          <div class="fare-row"><span class="fare-label">Minimum km (outsttn)</span><span class="fare-val">150 km</span></div>
+        </div>
+        <div class="fleet-cta">
+          <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This</button>
+          <a href="https://wa.me/917312345678?text=Hi+I+need+Tempo+Traveller" class="fleet-wa-btn" target="_blank">💬</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fleet-card" data-cat="luxury" style="animation-delay:0.3s">
+      <div class="fleet-img"><img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&auto=format&fit=crop&q=80" alt="Luxury Mercedes BMW Indore"><div class="fleet-badge lux">Luxury</div></div>
+      <div class="fleet-body">
+        <div class="fleet-cat">Premium Luxury</div>
+        <div class="fleet-name">Mercedes / BMW</div>
+        <div class="fleet-price-section"><span class="fleet-price">₹32</span><span class="fleet-price-unit">/ km</span><span class="fleet-price-note">Min 20 km</span></div>
+        <div class="fleet-specs">
+          <div class="fleet-spec"><span class="spec-icon">👥</span>Up to 4 pax</div>
+          <div class="fleet-spec"><span class="spec-icon">❄️</span>Climate ctrl</div>
+          <div class="fleet-spec"><span class="spec-icon">🎩</span>VIP service</div>
+          <div class="fleet-spec"><span class="spec-icon">💼</span>Corporate</div>
+        </div>
+        <div class="fare-table">
+          <div class="fare-row"><span class="fare-label">Local (per km)</span><span class="fare-val highlight">₹32</span></div>
+          <div class="fare-row"><span class="fare-label">Outstation (per km)</span><span class="fare-val highlight">₹35</span></div>
+          <div class="fare-row"><span class="fare-label">Waiting (per hr)</span><span class="fare-val">₹200</span></div>
+          <div class="fare-row"><span class="fare-label">Base fare</span><span class="fare-val">₹640</span></div>
+        </div>
+        <div class="fleet-cta">
+          <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This Car</button>
+          <a href="https://wa.me/917312345678?text=Hi+I+need+luxury+cab+in+Indore" class="fleet-wa-btn" target="_blank">💬</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-strip" style="margin-top:44px">
+    <div>
+      <h3>Ready to book a ride?</h3>
+      <p>Call now for instant confirmation. We're available 24/7, even on holidays.</p>
+    </div>
+    <div class="cta-strip-btns">
+      <a href="tel:+917312345678" class="btn-primary">📞 Call to Book</a>
+      <a href="https://wa.me/917312345678" class="btn-wa" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function filterCars(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.fleet-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
