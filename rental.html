@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Car rental packages in Indore with driver. 4hr, 8hr, 12hr & custom rentals. Sedan, SUV, Tempo Traveller available.">
+  <title>Car Rental Packages | Taxi Service Indore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--primary:#F5A800;--primary-dark:#D98F00;--primary-light:#FFF5D6;--primary-glow:rgba(245,168,0,0.25);--dark:#0F0D0A;--dark2:#1A1712;--text:#1C1A15;--text-mid:#5A5548;--text-light:#9A9080;--bg:#FAFAF7;--border:#EEEAE0;--font-h:'Outfit',sans-serif;--font-b:'Inter',sans-serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}body{font-family:var(--font-b);background:var(--bg);color:var(--text)}
+
+    nav{position:sticky;top:0;z-index:999;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:72px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 20px rgba(15,13,10,0.06)}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo-mark{width:110px;border-radius:8px;overflow:hidden;display:flex;align-items:center}
+    .logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
+    .nav-right{display:flex;align-items:center;gap:10px}
+    .nav-back{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--text-mid);font-size:13px;font-weight:600;padding:8px 14px;border:1.5px solid var(--border);border-radius:10px;transition:all 0.2s}
+    .nav-back:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
+    .nav-book{display:flex;align-items:center;gap:6px;background:var(--primary);color:var(--dark);font-weight:700;font-size:13px;padding:10px 20px;border-radius:10px;text-decoration:none;transition:all 0.2s}
+    .nav-book:hover{background:var(--primary-dark)}
+
+    .page-hero{background:var(--dark);padding:48px 5% 56px;position:relative;overflow:hidden}
+    .page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 80%,rgba(245,168,0,0.06) 0%,transparent 60%)}
+    .hero-inner{max-width:1240px;margin:0 auto;position:relative;z-index:2}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:14px}
+    .breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--primary)}
+    .page-hero h1{font-family:var(--font-h);font-size:clamp(28px,4vw,44px);font-weight:800;color:white;letter-spacing:-1px;margin-bottom:8px}
+    .page-hero h1 b{color:var(--primary)}
+    .page-hero p{font-size:15px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.7}
+
+    .content{max-width:1240px;margin:0 auto;padding:48px 5% 64px}
+
+    .sec-label{display:inline-flex;align-items:center;gap:7px;background:var(--primary-light);border:1px solid rgba(245,168,0,0.25);color:var(--primary-dark);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:14px}
+    .sec-title{font-family:var(--font-h);font-size:clamp(22px,3vw,34px);font-weight:800;color:var(--dark);line-height:1.15;letter-spacing:-0.5px;margin-bottom:12px}
+    .sec-title b{color:var(--primary-dark)}
+    .sec-desc{font-size:14px;color:var(--text-mid);line-height:1.7;max-width:520px}
+
+    /* Packages */
+    .packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:56px}
+    .pkg-card{background:white;border-radius:22px;overflow:hidden;border:1.5px solid var(--border);transition:all 0.35s;display:flex;flex-direction:column;opacity:0;transform:translateY(20px);animation:cardIn .5s ease forwards}
+    @keyframes cardIn{to{opacity:1;transform:translateY(0)}}
+    .pkg-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(15,13,10,0.1);border-color:var(--primary)}
+    .pkg-card.featured{border-color:var(--primary);box-shadow:0 8px 36px var(--primary-glow)}
+    .pkg-card.featured::before{content:'⭐ Most Popular';display:block;background:var(--primary);color:var(--dark);text-align:center;font-size:11px;font-weight:800;padding:7px;letter-spacing:0.4px}
+    .pkg-header{background:linear-gradient(135deg,var(--dark),var(--dark2));padding:28px 24px 22px;text-align:center}
+    .pkg-icon{font-size:32px;margin-bottom:10px}
+    .pkg-name{font-family:var(--font-h);font-size:20px;font-weight:800;color:white;margin-bottom:3px}
+    .pkg-hours{font-size:12px;color:var(--primary);font-weight:700}
+    .pkg-body{padding:24px;flex:1;display:flex;flex-direction:column}
+    .pkg-price-row{text-align:center;margin-bottom:18px;padding-bottom:18px;border-bottom:1.5px solid var(--border)}
+    .pkg-price{font-family:var(--font-h);font-size:34px;font-weight:800;color:var(--dark)}
+    .pkg-price span{font-size:13px;font-weight:500;color:var(--text-light)}
+    .pkg-features{display:flex;flex-direction:column;gap:9px;margin-bottom:20px;flex:1}
+    .pkg-feat{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-mid)}
+    .pkg-feat::before{content:'';width:5px;height:5px;background:var(--primary);border-radius:50%;flex-shrink:0}
+    .pkg-cta{display:flex;gap:10px}
+    .pkg-book{flex:1;padding:12px;background:var(--primary);color:var(--dark);border:none;border-radius:10px;font-family:var(--font-b);font-weight:700;font-size:14px;cursor:pointer;transition:all 0.25s;text-align:center}
+    .pkg-book:hover{background:var(--primary-dark);transform:translateY(-1px)}
+    .pkg-wa{padding:12px 14px;background:white;border:1.5px solid var(--border);border-radius:10px;font-size:17px;cursor:pointer;transition:all 0.2s;text-decoration:none;display:flex;align-items:center}
+    .pkg-wa:hover{background:#25D366;border-color:#25D366}
+
+    /* Vehicle Slider */
+    .v-slider-outer{position:relative;overflow:hidden;margin-bottom:56px}
+    .v-slider-track{display:flex;gap:20px;transition:transform 0.45s cubic-bezier(0.16,1,0.3,1)}
+    .v-slide{flex:0 0 calc(25% - 15px)}
+    .v-card{background:white;border-radius:20px;padding:22px;border:1.5px solid var(--border);text-align:center;transition:all 0.35s;height:100%;display:flex;flex-direction:column;position:relative}
+    .v-card:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(15,13,10,0.1);border-color:var(--primary)}
+    .v-card-img{height:110px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;background:var(--bg);border-radius:14px;padding:10px}
+    .v-card-img img{max-height:85px;max-width:100%;object-fit:contain;transition:transform 0.35s;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.08))}
+    .v-card:hover .v-card-img img{transform:scale(1.06)}
+    .v-card h4{font-family:var(--font-h);font-size:16px;font-weight:800;color:var(--dark);margin-bottom:3px}
+    .v-card .v-type{font-size:11px;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .v-card .v-rating{font-size:12px;color:var(--primary);letter-spacing:1px;margin-bottom:10px}
+    .v-card .v-specs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px;text-align:left}
+    .v-card .v-spec{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-mid);background:var(--bg);padding:5px 8px;border-radius:6px}
+    .v-card .v-spec-icon{font-size:12px;flex-shrink:0}
+    .v-card .v-bestfor{font-size:11px;color:var(--text-mid);background:var(--primary-light);border:1px solid rgba(245,168,0,0.2);padding:5px 10px;border-radius:6px;margin-bottom:12px;font-weight:600}
+    .v-card .v-price{font-family:var(--font-h);font-size:20px;font-weight:800;color:var(--primary-dark)}
+    .v-card .v-price span{font-size:12px;color:var(--text-light);font-weight:500}
+    .v-card .v-book{margin-top:10px;width:100%;padding:10px;background:var(--primary-light);color:var(--primary-dark);border:1.5px solid var(--primary);border-radius:10px;font-family:var(--font-b);font-weight:700;font-size:12px;cursor:pointer;transition:all 0.25s}
+    .v-card .v-book:hover{background:var(--primary);color:var(--dark)}
+    .slider-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px}
+    .sl-arrow{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--border);background:white;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+    .sl-arrow:hover{border-color:var(--primary);background:var(--primary-light)}
+    .sl-arrow.disabled{opacity:0.3;pointer-events:none}
+    .sl-dots{display:flex;gap:6px}
+    .sl-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.2s}
+    .sl-dot.active{background:var(--primary);width:24px;border-radius:4px}
+
+    .cta-strip{background:var(--dark);border-radius:22px;padding:40px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .cta-strip h3{font-family:var(--font-h);font-size:22px;font-weight:800;color:white;margin-bottom:4px}
+    .cta-strip p{font-size:13px;color:rgba(255,255,255,0.5)}
+    .cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:var(--dark);font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px;text-decoration:none;transition:all 0.25s}
+    .btn-primary:hover{background:var(--primary-dark)}
+    .btn-wa{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);color:white;font-weight:600;font-size:14px;padding:12px 20px;border-radius:10px;text-decoration:none;border:1.5px solid rgba(255,255,255,0.15);transition:all 0.25s}
+    .btn-wa:hover{background:#25D366;border-color:#25D366}
+
+    @media(max-width:1000px){.packages-grid{grid-template-columns:repeat(2,1fr)}.v-slide{flex:0 0 calc(33.33% - 14px)}}
+    @media(max-width:680px){.packages-grid{grid-template-columns:1fr}.v-slide{flex:0 0 calc(80%)}.pkg-body{padding:18px}.cta-strip{padding:24px 20px;border-radius:16px}.cta-btns{flex-direction:column;width:100%}nav{height:60px}.logo-mark{width:80px}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><div class="logo-mark"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Logo"></div></a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-back">← Home</a>
+    <a href="tel:+917312345678" class="nav-book">📞 Book Now</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Rental Packages</span></div>
+    <h1>Car Rental <b>Packages</b></h1>
+    <p>Flexible hourly and full-day car rental packages with dedicated driver. Perfect for sightseeing, corporate travel, weddings, and more.</p>
+  </div>
+</div>
+
+<div class="content">
+  <div style="text-align:center;margin-bottom:36px">
+    <div class="sec-label">🔑 Rental Plans</div>
+    <h2 class="sec-title">Choose Your <b>Package</b></h2>
+    <p class="sec-desc" style="margin:0 auto">All packages include dedicated driver, AC vehicle, and fuel. Toll & parking charged at actuals.</p>
+  </div>
+
+  <div class="packages-grid">
+    <div class="pkg-card" style="animation-delay:0.05s">
+      <div class="pkg-header"><div class="pkg-icon">🏙️</div><div class="pkg-name">City Ride</div><div class="pkg-hours">4 Hours / 40 km</div></div>
+      <div class="pkg-body">
+        <div class="pkg-price-row"><div class="pkg-price">₹999 <span>starting</span></div></div>
+        <div class="pkg-features"><div class="pkg-feat">Up to 4 hours usage</div><div class="pkg-feat">40 km included</div><div class="pkg-feat">Extra: ₹12/km, ₹150/hr</div><div class="pkg-feat">AC sedan included</div></div>
+        <div class="pkg-cta"><button class="pkg-book" onclick="window.location='tel:+917312345678'">📞 Book Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+4hr+rental" class="pkg-wa" target="_blank">💬</a></div>
+      </div>
+    </div>
+    <div class="pkg-card featured" style="animation-delay:0.1s">
+      <div class="pkg-header"><div class="pkg-icon">🗺️</div><div class="pkg-name">Half Day</div><div class="pkg-hours">8 Hours / 80 km</div></div>
+      <div class="pkg-body">
+        <div class="pkg-price-row"><div class="pkg-price">₹1,799 <span>starting</span></div></div>
+        <div class="pkg-features"><div class="pkg-feat">Up to 8 hours usage</div><div class="pkg-feat">80 km included</div><div class="pkg-feat">Extra: ₹14/km, ₹150/hr</div><div class="pkg-feat">Sedan or SUV available</div></div>
+        <div class="pkg-cta"><button class="pkg-book" onclick="window.location='tel:+917312345678'">📞 Book Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+8hr+rental" class="pkg-wa" target="_blank">💬</a></div>
+      </div>
+    </div>
+    <div class="pkg-card" style="animation-delay:0.15s">
+      <div class="pkg-header"><div class="pkg-icon">🌅</div><div class="pkg-name">Full Day</div><div class="pkg-hours">12 Hours / 120 km</div></div>
+      <div class="pkg-body">
+        <div class="pkg-price-row"><div class="pkg-price">₹2,499 <span>starting</span></div></div>
+        <div class="pkg-features"><div class="pkg-feat">Up to 12 hours usage</div><div class="pkg-feat">120 km included</div><div class="pkg-feat">Extra: ₹14/km, ₹150/hr</div><div class="pkg-feat">All vehicle types</div></div>
+        <div class="pkg-cta"><button class="pkg-book" onclick="window.location='tel:+917312345678'">📞 Book Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+12hr+rental" class="pkg-wa" target="_blank">💬</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VEHICLE SLIDER -->
+  <div style="text-align:center;margin-bottom:28px">
+    <div class="sec-label">🚗 Vehicle Options</div>
+    <h2 class="sec-title">Available <b>Vehicles</b></h2>
+  </div>
+  <div class="v-slider-outer">
+    <div class="v-slider-track" id="vTrack">
+      <div class="v-slide"><div class="v-card">
+        <div class="v-card-img"><img src="https://www.nicepng.com/png/detail/252-2526491_maruti-suzuki-wagonr-wagon-r-new-model.png" alt="WagonR"></div>
+        <h4>WagonR / Alto</h4><div class="v-type">Economy Hatchback</div>
+        <div class="v-rating">★★★★☆</div>
+        <div class="v-specs">
+          <div class="v-spec"><span class="v-spec-icon">👥</span> 4 Pax</div>
+          <div class="v-spec"><span class="v-spec-icon">❄️</span> AC</div>
+          <div class="v-spec"><span class="v-spec-icon">💼</span> 1 Bag</div>
+          <div class="v-spec"><span class="v-spec-icon">⛽</span> CNG/Petrol</div>
+        </div>
+        <div class="v-bestfor">🏙️ Best for: City errands & short trips</div>
+        <div class="v-price">₹999 <span>/ 4hr</span></div>
+        <button class="v-book" onclick="window.location='tel:+917312345678'">Book Now</button>
+      </div></div>
+      <div class="v-slide"><div class="v-card">
+        <div class="v-card-img"><img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=300&auto=format&fit=crop&q=80" alt="Dzire"></div>
+        <h4>Swift Dzire / Amaze</h4><div class="v-type">Sedan</div>
+        <div class="v-rating">★★★★★</div>
+        <div class="v-specs">
+          <div class="v-spec"><span class="v-spec-icon">👥</span> 4 Pax</div>
+          <div class="v-spec"><span class="v-spec-icon">❄️</span> AC</div>
+          <div class="v-spec"><span class="v-spec-icon">💼</span> 2 Bags</div>
+          <div class="v-spec"><span class="v-spec-icon">⛽</span> Petrol/Diesel</div>
+        </div>
+        <div class="v-bestfor">🛣️ Best for: Outstation & daily rentals</div>
+        <div class="v-price">₹1,199 <span>/ 4hr</span></div>
+        <button class="v-book" onclick="window.location='tel:+917312345678'">Book Now</button>
+      </div></div>
+      <div class="v-slide"><div class="v-card">
+        <div class="v-card-img"><img src="https://images.unsplash.com/photo-1594502184342-2e12f877aa73?w=300&auto=format&fit=crop&q=80" alt="Innova"></div>
+        <h4>Innova / Ertiga</h4><div class="v-type">SUV / MPV</div>
+        <div class="v-rating">★★★★★</div>
+        <div class="v-specs">
+          <div class="v-spec"><span class="v-spec-icon">👥</span> 7 Pax</div>
+          <div class="v-spec"><span class="v-spec-icon">❄️</span> AC</div>
+          <div class="v-spec"><span class="v-spec-icon">💼</span> 4 Bags</div>
+          <div class="v-spec"><span class="v-spec-icon">⛽</span> Diesel</div>
+        </div>
+        <div class="v-bestfor">👨‍👩‍👧‍👦 Best for: Family trips & groups</div>
+        <div class="v-price">₹1,699 <span>/ 4hr</span></div>
+        <button class="v-book" onclick="window.location='tel:+917312345678'">Book Now</button>
+      </div></div>
+      <div class="v-slide"><div class="v-card">
+        <div class="v-card-img"><img src="https://www.nicepng.com/png/detail/443-4432912_tempo-traveller-tempo-traveller-png.png" alt="Tempo Traveller"></div>
+        <h4>Tempo Traveller</h4><div class="v-type">12-16 Seater</div>
+        <div class="v-rating">★★★★☆</div>
+        <div class="v-specs">
+          <div class="v-spec"><span class="v-spec-icon">👥</span> 12-16 Pax</div>
+          <div class="v-spec"><span class="v-spec-icon">❄️</span> AC</div>
+          <div class="v-spec"><span class="v-spec-icon">🧳</span> Large</div>
+          <div class="v-spec"><span class="v-spec-icon">⛽</span> Diesel</div>
+        </div>
+        <div class="v-bestfor">🏢 Best for: Corporate tours & pilgrimages</div>
+        <div class="v-price">₹2,499 <span>/ 4hr</span></div>
+        <button class="v-book" onclick="window.location='tel:+917312345678'">Book Now</button>
+      </div></div>
+      <div class="v-slide"><div class="v-card">
+        <div class="v-card-img"><img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=300&auto=format&fit=crop&q=80" alt="Luxury"></div>
+        <h4>Mercedes / BMW</h4><div class="v-type">Luxury</div>
+        <div class="v-rating">★★★★★</div>
+        <div class="v-specs">
+          <div class="v-spec"><span class="v-spec-icon">👥</span> 4 Pax</div>
+          <div class="v-spec"><span class="v-spec-icon">❄️</span> Climate</div>
+          <div class="v-spec"><span class="v-spec-icon">💼</span> 3 Bags</div>
+          <div class="v-spec"><span class="v-spec-icon">🎩</span> VIP</div>
+        </div>
+        <div class="v-bestfor">💎 Best for: Weddings & VIP transfers</div>
+        <div class="v-price">₹3,499 <span>/ 4hr</span></div>
+        <button class="v-book" onclick="window.location='tel:+917312345678'">Book Now</button>
+      </div></div>
+    </div>
+  </div>
+  <div class="slider-nav">
+    <button class="sl-arrow" id="vPrev" onclick="vMove(-1)"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="sl-dots" id="vDots"></div>
+    <button class="sl-arrow" id="vNext" onclick="vMove(1)"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+  </div>
+
+  <div class="cta-strip" style="margin-top:48px">
+    <div>
+      <h3>Need a custom rental package?</h3>
+      <p>Call us for tailored plans — weddings, multi-day, corporate events and more.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="tel:+917312345678" class="btn-primary">📞 Get Quote</a>
+      <a href="https://wa.me/917312345678" class="btn-wa" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const track = document.getElementById('vTrack');
+const slides = track.children;
+let vIdx = 0;
+function getVis(){ return window.innerWidth<680?1:window.innerWidth<1000?3:4; }
+function vUpdate(){
+  const vis = getVis();
+  const sw = slides[0].offsetWidth;
+  const gap = 20;
+  track.style.transform = `translateX(-${vIdx*(sw+gap)}px)`;
+  document.getElementById('vPrev').classList.toggle('disabled', vIdx<=0);
+  document.getElementById('vNext').classList.toggle('disabled', vIdx+vis>=slides.length);
+  const dots = document.getElementById('vDots');
+  dots.innerHTML='';
+  const total = Math.ceil(slides.length/vis);
+  const active = Math.floor(vIdx/vis);
+  for(let i=0;i<total;i++){const d=document.createElement('div');d.className='sl-dot'+(i===active?' active':'');d.onclick=()=>{vIdx=i*vis;vUpdate()};dots.appendChild(d);}
+}
+function vMove(d){const vis=getVis();vIdx=Math.max(0,Math.min(vIdx+d*vis,slides.length-vis));vUpdate();}
+window.addEventListener('DOMContentLoaded',vUpdate);
+window.addEventListener('resize',()=>{vIdx=0;vUpdate();});
+</script>
+</body>
+</html>

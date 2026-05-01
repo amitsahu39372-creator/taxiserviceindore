@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Taxi Service Indore. Call, WhatsApp or message us. Available 24/7 for cab bookings in Indore.">
+  <title>Contact Us | Taxi Service Indore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--primary:#F5A800;--primary-dark:#D98F00;--primary-light:#FFF5D6;--primary-glow:rgba(245,168,0,0.25);--dark:#0F0D0A;--dark2:#1A1712;--text:#1C1A15;--text-mid:#5A5548;--text-light:#9A9080;--bg:#FAFAF7;--border:#EEEAE0;--font-h:'Outfit',sans-serif;--font-b:'Inter',sans-serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}body{font-family:var(--font-b);background:var(--bg);color:var(--text)}
+
+    nav{position:sticky;top:0;z-index:999;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:72px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 20px rgba(15,13,10,0.06)}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo-mark{width:110px;border-radius:8px;overflow:hidden;display:flex;align-items:center}
+    .logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
+    .nav-right{display:flex;align-items:center;gap:10px}
+    .nav-back{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--text-mid);font-size:13px;font-weight:600;padding:8px 14px;border:1.5px solid var(--border);border-radius:10px;transition:all 0.2s}
+    .nav-back:hover{border-color:var(--primary);color:var(--primary-dark);background:var(--primary-light)}
+    .nav-book{display:flex;align-items:center;gap:6px;background:var(--primary);color:var(--dark);font-weight:700;font-size:13px;padding:10px 20px;border-radius:10px;text-decoration:none;transition:all 0.2s}
+    .nav-book:hover{background:var(--primary-dark)}
+
+    /* Hero */
+    .page-hero{background:var(--dark);padding:48px 5% 56px;position:relative;overflow:hidden}
+    .page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(245,168,0,0.06) 0%,transparent 60%)}
+    .hero-inner{max-width:1240px;margin:0 auto;position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+    .hero-text{max-width:520px}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:14px}
+    .breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--primary)}
+    .hero-text h1{font-family:var(--font-h);font-size:clamp(28px,4vw,44px);font-weight:800;color:white;letter-spacing:-1px;margin-bottom:10px;line-height:1.1}
+    .hero-text h1 b{color:var(--primary)}
+    .hero-text p{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7}
+    .hero-quick{display:flex;gap:16px;flex-wrap:wrap}
+    .hq-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(12px);border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:all 0.3s;min-width:200px}
+    .hq-card:hover{background:rgba(245,168,0,0.1);border-color:rgba(245,168,0,0.3);transform:translateY(-2px)}
+    .hq-icon{width:44px;height:44px;border-radius:12px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+    .hq-label{font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+    .hq-val{font-size:15px;color:white;font-weight:700;margin-top:2px}
+
+    /* Content */
+    .content{max-width:1240px;margin:0 auto;padding:48px 5% 64px}
+    .contact-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+
+    /* Form */
+    .form-card{background:white;border-radius:20px;padding:36px;border:1.5px solid var(--border);box-shadow:0 4px 24px rgba(15,13,10,0.05)}
+    .form-card h2{font-family:var(--font-h);font-size:22px;font-weight:800;color:var(--dark);margin-bottom:4px}
+    .form-card .fsub{font-size:13px;color:var(--text-light);margin-bottom:24px}
+    .fg{margin-bottom:16px}
+    .fg label{display:block;font-size:11px;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px}
+    .fg input,.fg textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg);font-family:var(--font-b);font-size:14px;color:var(--text);transition:all 0.2s;resize:vertical}
+    .fg input:focus,.fg textarea:focus{outline:none;border-color:var(--primary);background:white;box-shadow:0 0 0 3px rgba(245,168,0,0.1)}
+    .fg textarea{min-height:100px}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .submit-btn{width:100%;padding:14px;background:var(--primary);color:var(--dark);border:none;border-radius:10px;font-family:var(--font-h);font-weight:700;font-size:15px;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px var(--primary-glow)}
+    .submit-btn:hover{background:var(--primary-dark);transform:translateY(-2px)}
+
+    /* Info sidebar */
+    .info-side{display:flex;flex-direction:column;gap:16px}
+    .info-item{background:white;border-radius:16px;padding:20px;border:1.5px solid var(--border);display:flex;align-items:center;gap:14px;transition:all 0.3s}
+    .info-item:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,13,10,0.06)}
+    .info-icon{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--primary-light),rgba(245,168,0,0.08));border:1.5px solid rgba(245,168,0,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;transition:all 0.3s}
+    .info-item:hover .info-icon{background:var(--primary)}
+    .info-item h4{font-family:var(--font-h);font-size:14px;font-weight:700;color:var(--dark);margin-bottom:2px}
+    .info-item p{font-size:13px;color:var(--text-mid);line-height:1.5}
+    .info-item a{color:var(--primary-dark);text-decoration:none;font-weight:600}
+    .info-item a:hover{text-decoration:underline}
+
+    /* Map */
+    .map-wrap{border-radius:16px;overflow:hidden;border:1.5px solid var(--border);height:220px}
+    .map-wrap iframe{width:100%;height:100%;border:0}
+
+    /* Responsive */
+    @media(max-width:900px){.contact-layout{grid-template-columns:1fr}.hero-inner{flex-direction:column;align-items:flex-start}.hero-quick{width:100%}}
+    @media(max-width:600px){.form-card{padding:22px}.frow{grid-template-columns:1fr}.hq-card{flex:1;min-width:0}.hero-quick{gap:10px}nav{height:60px}.logo-mark{width:80px}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><div class="logo-mark"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Logo"></div></a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-back">← Home</a>
+    <a href="tel:+917312345678" class="nav-book">📞 Call Now</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></div>
+      <h1>Get in <b>Touch</b></h1>
+      <p>Have a question or need a ride? We respond within minutes — call, WhatsApp, or fill the form.</p>
+    </div>
+    <div class="hero-quick">
+      <a href="tel:+917312345678" class="hq-card">
+        <div class="hq-icon">📞</div>
+        <div><div class="hq-label">Call Us</div><div class="hq-val">+91 731 234 5678</div></div>
+      </a>
+      <a href="https://wa.me/917312345678" class="hq-card" target="_blank">
+        <div class="hq-icon">💬</div>
+        <div><div class="hq-label">WhatsApp</div><div class="hq-val">Quick Chat</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="contact-layout">
+    <div class="form-card">
+      <h2>Send Us a Message</h2>
+      <p class="fsub">We'll get back to you within 30 minutes.</p>
+      <form onsubmit="event.preventDefault();alert('Thank you! We will contact you shortly.');this.reset();">
+        <div class="frow">
+          <div class="fg"><label>👤 Name</label><input type="text" placeholder="Your full name" required></div>
+          <div class="fg"><label>📞 Phone</label><input type="tel" placeholder="+91 98765 43210" required></div>
+        </div>
+        <div class="fg"><label>📧 Email (optional)</label><input type="email" placeholder="your@email.com"></div>
+        <div class="fg"><label>📍 Service Needed</label>
+          <select style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg);font-family:var(--font-b);font-size:14px;color:var(--text)">
+            <option>Local City Ride</option><option>Outstation Trip</option><option>Airport Transfer</option><option>Car Rental</option><option>Corporate Service</option><option>Wedding Car</option><option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>💬 Message</label><textarea placeholder="Tell us about your travel needs..."></textarea></div>
+        <button type="submit" class="submit-btn">📨 Send Message</button>
+      </form>
+    </div>
+
+    <div class="info-side">
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div><h4>Phone</h4><p><a href="tel:+917312345678">+91 731 234 5678</a><br>Available 24/7</p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💬</div>
+        <div><h4>WhatsApp</h4><p><a href="https://wa.me/917312345678" target="_blank">+91 731 234 5678</a><br>Quick replies anytime</p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <div><h4>Email</h4><p><a href="mailto:info@taxiserviceindore.in">info@taxiserviceindore.in</a></p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div><h4>Office</h4><p>Vijay Nagar, Indore<br>Madhya Pradesh 452010</p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div><h4>Hours</h4><p>Open 24 hours, 7 days a week<br>Including holidays</p></div>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29370.98!2d75.87!3d22.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd0b21e4a5e1%3A0x98a40e0c75e894e!2sVijay%20Nagar%2C%20Indore!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy" title="Office Location"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
