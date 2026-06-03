@@ -43,45 +43,66 @@
     body {
       font-family: var(--font-b);
       background: var(--bg);
-      color: var(--text)
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
     }
 
+    /* ══ TOPBAR ══ */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--dark); height: 36px; display: flex; align-items: center;
+      padding: 0 5%; transition: transform 0.3s ease;
+    }
+    .topbar.hide { transform: translateY(-100%); }
+    .topbar-inner { max-width: 1240px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .tb-left { display: flex; gap: 18px; align-items: center; }
+    .tb-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: rgba(255,255,255,0.45); font-weight: 500; }
+    .tb-item a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .tb-item a:hover { color: var(--primary); }
+    .tb-badge { display: flex; align-items: center; gap: 5px; background: rgba(245,168,0,0.12); border: 1px solid rgba(245,168,0,0.22); color: var(--primary); font-size: 10.5px; font-weight: 700; padding: 2px 10px; border-radius: 100px; }
+
+    /* ══ NAV ══ */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background: rgba(255, 255, 255, 0.97);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      height: 72px;
-      padding: 0 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 20px rgba(15, 13, 10, 0.06)
+      position: fixed; top: 36px; left: 0; right: 0; z-index: 999;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); height: 72px; padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.35s ease; box-shadow: 0 2px 20px rgba(15,13,10,0.06);
     }
+    nav.scrolled { top: 0; background: rgba(255,255,255,0.82); backdrop-filter: blur(28px) saturate(180%); box-shadow: 0 8px 40px rgba(15,13,10,0.10), 0 0 0 1px rgba(238,234,224,0.5); }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-mark { width: 110px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 22px; overflow: hidden; }
+    .logo-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 7px 14px; border-radius: 8px; transition: all 0.2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 3px; left: 14px; right: 14px; height: 2px; background: var(--primary); border-radius: 2px; transform: scaleX(0); transition: transform 0.25s ease; transform-origin: left; }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-tel { display: flex; align-items: center; gap: 7px; font-size: 13.5px; font-weight: 700; color: var(--text-mid); text-decoration: none; padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 10px; transition: all 0.2s; }
+    .nav-tel:hover { border-color: var(--primary); color: var(--primary-dark); background: var(--primary-light); }
+    .nav-tel .ring-icon { display: inline-block; animation: phoneRing 1.5s ease-in-out infinite; transform-origin: center; }
+    @keyframes phoneRing { 0%,100%{transform:rotate(0)} 10%{transform:rotate(14deg)} 20%{transform:rotate(-10deg)} 30%{transform:rotate(10deg)} 40%{transform:rotate(-6deg)} 50%{transform:rotate(0)} }
+    .btn-book { display: flex; align-items: center; gap: 7px; background: var(--primary); color: var(--dark); font-family: var(--font-b); font-weight: 700; font-size: 13.5px; padding: 10px 22px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 3px 16px var(--primary-glow); transition: all 0.3s ease; }
+    .btn-book:hover { background: var(--primary-dark); transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 32px var(--primary-glow); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 22px; height: 2.5px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+    .header-offset { height: 108px; }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none
-    }
-
-    .logo-mark {
-      width: 110px;
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      align-items: center
-    }
-
-    .logo-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block
-    }
+    /* ══ MOBILE MENU ══ */
+    .mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 990; }
+    .mob-menu { position: fixed; top: 0; right: -100%; width: 300px; height: 100vh; background: white; z-index: 995; padding: 80px 28px 32px; display: flex; flex-direction: column; gap: 6px; transition: right 0.35s cubic-bezier(0.16,1,0.3,1); box-shadow: -20px 0 60px rgba(0,0,0,0.15); }
+    .mob-menu.open { right: 0; }
+    .mob-close { position: absolute; top: 22px; right: 22px; background: var(--border); border: none; border-radius: 8px; width: 36px; height: 36px; cursor: pointer; font-size: 18px; }
+    .mob-menu a { color: var(--text); text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px 14px; border-radius: 10px; transition: all 0.2s; display: flex; align-items: center; gap: 10px; }
+    .mob-menu a:hover { background: var(--primary-light); color: var(--primary-dark); }
+    .mob-divider { height: 1px; background: var(--border); margin: 8px 0; }
+    .mob-cta { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: var(--dark); font-family: var(--font-b); font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 12px; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 6px 28px var(--primary-glow); transition: all 0.25s; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .wa-btn { width: 100%; padding: 12px; background: #25D366; color: white; border: none; border-radius: 11px; font-family: var(--font-h); font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.25s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+    .wa-btn:hover { background: #1fb358; transform: translateY(-1px); }
 
     .nav-right {
       display: flex;
@@ -90,14 +111,6 @@
     }
 
     .nav-back {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-      color: var(--text-mid);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 14px;
       border: 1.5px solid var(--border);
       border-radius: 10px;
       transition: all 0.2s
@@ -482,17 +495,60 @@
 </head>
 
 <body>
-  <nav>
-    <a href="index.html" class="logo">
-      <div class="logo-mark"><img
-          src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg"
-          alt="Logo"></div>
-    </a>
-    <div class="nav-right">
-      <a href="index.html" class="nav-back">← Home</a>
-      <a href="tel:+919179480342" class="nav-book">📞 Call Now</a>
+  <!-- TOPBAR -->
+  <div class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <div class="tb-left">
+        <div class="tb-item">📞 <a href="tel:+917312345678">+91 731 234 5678</a></div>
+        <div class="tb-item">✉️ <a href="mailto:info@taxiserviceindore.in">info@taxiserviceindore.in</a></div>
+        <div class="tb-item">📍 Vijay Nagar, Indore, MP</div>
+      </div>
+      <div class="tb-badge">🟢 Available 24/7</div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div style="max-width:1240px;width:100%;display:flex;align-items:center;justify-content:space-between;margin:0 auto;">
+      <a href="index.html" class="logo">
+        <div class="logo-mark"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Taxi Service Indore logo"></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#routes">Routes</a></li>
+        <li><a href="fleet.html">Fleet & Pricing</a></li>
+        <li><a href="rental.html">Rentals</a></li>
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="tel:+917312345678" class="nav-tel"><span class="ring-icon">📞</span> +91 731 234 5678</a>
+        <a href="index.html#booking" class="btn-book">Book Now →</a>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mob-overlay" id="mobOverlay" onclick="closeMenu()"></div>
+  <div class="mob-menu" id="mobMenu">
+    <button class="mob-close" onclick="closeMenu()">✕</button>
+    <a href="index.html#services" onclick="closeMenu()">🚗 Services</a>
+    <a href="index.html#routes" onclick="closeMenu()">🗺️ Top Routes</a>
+    <a href="fleet.html" onclick="closeMenu()">🚙 Fleet & Pricing</a>
+    <a href="rental.html" onclick="closeMenu()">🔑 Rentals</a>
+    <a href="aboutus.html" onclick="closeMenu()">ℹ️ About</a>
+    <a href="contactus.html" onclick="closeMenu()">📞 Contact</a>
+    <div class="mob-divider"></div>
+    <div class="mob-cta">
+      <a href="tel:+917312345678" class="btn-primary" style="justify-content:center">📞 Call Now</a>
+      <a href="https://wa.me/917312345678" class="wa-btn" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="header-offset"></div>
 
   <div class="page-hero">
     <div class="hero-inner">
@@ -593,6 +649,36 @@
       </div>
     </div>
   </div>
-</body>
 
+  <div id="site-footer"></div>
+  <script>fetch('footer.html').then(r=>r.text()).then(t=>{document.getElementById('site-footer').innerHTML=t;});</script>
+
+  <script>
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const nav = document.getElementById('navbar');
+      const tb = document.getElementById('topbar');
+      if (nav) nav.classList.toggle('scrolled', y > 50);
+      if (tb) tb.classList.toggle('hide', y > lastY && y > 200);
+      lastY = y;
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobMenu');
+      const overlay = document.getElementById('mobOverlay');
+      if (!menu || !overlay) return;
+      const open = menu.classList.toggle('open');
+      overlay.style.display = open ? 'block' : 'none';
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById('mobMenu');
+      const overlay = document.getElementById('mobOverlay');
+      if (!menu || !overlay) return;
+      menu.classList.remove('open');
+      overlay.style.display = 'none';
+    }
+  </script>
+</body>
 </html>

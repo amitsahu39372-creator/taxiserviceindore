@@ -1,0 +1,105 @@
+<!-- Shared footer included across all pages (copied from index.html) -->
+<style>
+  footer { background: var(--dark2); }
+  .footer-top { max-width: 1240px; margin: 0 auto; padding: 64px 2% 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 16px; }
+  .footer-logo-icon { width: 90px;  border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 18px; overflow: hidden; }
+  .footer-logo-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .footer-logo-text { font-family: var(--font-h); font-size: 18px; font-weight: 800; color: white; }
+  .footer-logo-text b { color: var(--primary); }
+  .footer-tagline { font-size: 13.5px; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 22px; }
+  .footer-contacts { display: flex; flex-direction: column; gap: 10px; }
+  .fci { display: flex; align-items: center; gap: 10px; text-decoration: none; transition: opacity 0.2s; }
+  .fci:hover { opacity: 0.8; }
+  .fci-icon { width: 32px; height: 32px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .fci-label { font-size: 10px; color: rgba(255,255,255,0.35); font-weight: 600; display: block; }
+  .fci-val { font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 600; display: block; }
+  .footer-nav-col h4 { font-family: var(--font-h); font-size: 13px; font-weight: 700; color: white; letter-spacing: 0.5px; margin-bottom: 16px; }
+  .footer-nav-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .footer-nav-col a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-nav-col a:hover { color: var(--primary); }
+  .footer-copyright { font-size: 12.5px; color: rgba(255,255,255,0.3); }
+  .footer-social { display: flex; gap: 8px; }
+  .footer-social a { width: 34px; height: 34px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: background 0.2s; }
+  .footer-social a:hover { background: rgba(245,168,0,0.15); }
+
+  /* FLOAT BTNS */
+  .float-btns { position: fixed; bottom: 24px; right: 24px; z-index: 888; display: flex; flex-direction: column; gap: 10px; }
+  .fb { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 100px; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 6px 24px rgba(0,0,0,0.2); transition: all 0.25s; }
+  .fb:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.25); }
+  .fb-wa { background: #25D366; color: white; }
+  .fb-call { background: var(--primary); color: var(--dark); }
+
+  @media (max-width: 900px) {
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (max-width: 680px) {
+    .footer-top { grid-template-columns: 1fr; gap: 24px; padding: 40px 4% 28px; }
+    .float-btns { bottom: 12px; right: 12px; gap: 8px; }
+    .fb span:last-child { display: none; }
+    .fb { padding: 12px; border-radius: 50%; }
+  }
+</style>
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-logo">
+        <div class="footer-logo-icon"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Taxi Service Indore logo"></div>
+        <div class="footer-logo-text">Taxi Service <b>Indore</b></div>
+      </a>
+      <p class="footer-tagline">Indore's most trusted cab & taxi service since 2014. Reliable rides across the city and outstation routes all over India.</p>
+      <div class="footer-contacts">
+        <a href="tel:+917312345678" class="fci"><div class="fci-icon">📞</div><div><span class="fci-label">Call Us</span><span class="fci-val">+91 731 234 5678</span></div></a>
+        <a href="https://wa.me/917312345678" class="fci" target="_blank"><div class="fci-icon">💬</div><div><span class="fci-label">WhatsApp</span><span class="fci-val">+91 731 234 5678</span></div></a>
+        <a href="mailto:info@taxiserviceindore.in" class="fci"><div class="fci-icon">✉️</div><div><span class="fci-label">Email</span><span class="fci-val">info@taxiserviceindore.in</span></div></a>
+      </div>
+    </div>
+    <div class="footer-nav-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Local City Taxi</a></li>
+        <li><a href="#services">Airport Transfers</a></li>
+        <li><a href="#services">Outstation Cab</a></li>
+        <li><a href="rental.html">Car Rental</a></li>
+        <li><a href="#services">Corporate Cab</a></li>
+        <li><a href="#services">Wedding Cars</a></li>
+      </ul>
+    </div>
+    <div class="footer-nav-col">
+      <h4>Popular Routes</h4>
+      <ul>
+        <li><a href="routes-all.html">Indore → Ujjain</a></li>
+        <li><a href="routes-all.html">Indore → Omkareshwar</a></li>
+        <li><a href="routes-all.html">Indore → Mandu</a></li>
+        <li><a href="routes-all.html">Indore → Bhopal</a></li>
+        <li><a href="routes-all.html">Indore → Maheshwar</a></li>
+        <li><a href="routes-all.html">Indore → Mumbai</a></li>
+      </ul>
+    </div>
+    <div class="footer-nav-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="fleet.html">Fleet & Pricing</a></li>
+        <li><a href="rental.html">Rental Packages</a></li>
+        <li><a href="routes-all.html">All Routes</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.06);padding:20px 5%">
+    <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <p class="footer-copyright">© 2025 Taxi Service Indore · Best Cab Service in Indore, Madhya Pradesh.</p>
+      <div class="footer-social">
+        <a href="#" title="Facebook">📘</a><a href="#" title="Instagram">📸</a><a href="#" title="YouTube">▶️</a>
+        <a href="https://wa.me/917312345678" title="WhatsApp" target="_blank">💬</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="float-btns">
+  <a href="https://wa.me/917312345678" class="fb fb-wa" target="_blank" rel="noopener"><span>💬</span><span>WhatsApp</span></a>
+  <a href="tel:+917312345678" class="fb fb-call"><span>📞</span><span>Call Now</span></a>
+</div>
