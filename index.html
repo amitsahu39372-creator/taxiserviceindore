@@ -45,23 +45,9 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-b); background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
 
-    /* ══ TOPBAR ══ */
-    .topbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: var(--dark); height: 36px; display: flex; align-items: center;
-      padding: 0 5%; transition: transform 0.3s ease;
-    }
-    .topbar.hide { transform: translateY(-100%); }
-    .topbar-inner { max-width: 1240px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    .tb-left { display: flex; gap: 18px; align-items: center; }
-    .tb-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: rgba(255,255,255,0.45); font-weight: 500; }
-    .tb-item a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
-    .tb-item a:hover { color: var(--primary); }
-    .tb-badge { display: flex; align-items: center; gap: 5px; background: rgba(245,168,0,0.12); border: 1px solid rgba(245,168,0,0.22); color: var(--primary); font-size: 10.5px; font-weight: 700; padding: 2px 10px; border-radius: 100px; }
-
     /* ══ NAV ══ */
     nav {
-      position: fixed; top: 36px; left: 0; right: 0; z-index: 999;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border); height: 72px; padding: 0 5%;
       display: flex; align-items: center; justify-content: space-between;
@@ -85,7 +71,7 @@
     .btn-book:hover { background: var(--primary-dark); transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 32px var(--primary-glow); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { width: 22px; height: 2.5px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-    .header-offset { height: 108px; }
+    .header-offset { height: 72px; }
 
     /* ══ MOBILE MENU ══ */
     .mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 990; }
@@ -819,7 +805,6 @@
       .frow { grid-template-columns: 1fr; }
     }
     @media (max-width: 680px) {
-      .topbar { display: none; }
       nav { top: 0; height: 60px; }
       .header-offset { height: 60px; }
       .nav-links,.nav-tel { display: none; }
@@ -860,21 +845,10 @@
       .route-card { height: 280px; }
     }
   </style>
+  <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
-
-  <!-- TOPBAR -->
-  <div class="topbar" id="topbar">
-    <div class="topbar-inner">
-      <div class="tb-left">
-        <div class="tb-item">📞 <a href="tel:+919179480342">+91 9179480342</a></div>
-        <div class="tb-item">✉️ <a href="mailto:taxiserviceindores@gmail.com">taxiserviceindores@gmail.com</a></div>
-        <div class="tb-item">📍 Sangam Nagar, Indore, MP</div>
-      </div>
-      <div class="tb-badge">🟢 Available 24/7</div>
-    </div>
-  </div>
 
   <!-- NAV -->
   <nav id="navbar">
@@ -884,8 +858,8 @@
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#routes">Routes</a></li>
+        <li><a href="services-all.html">Services</a></li>
+        <li><a href="routes-all.html">Routes</a></li>
         <li><a href="fleet.html">Fleet & Pricing</a></li>
         <li><a href="rental.html">Rentals</a></li>
         <li><a href="aboutus.html">About</a></li>
@@ -893,7 +867,7 @@
       </ul>
       <div class="nav-actions">
         <a href="tel:+919179480342" class="nav-tel"><span class="ring-icon">📞</span> +91 9179480342</a>
-        <a href="#booking" class="btn-book">Book Now →</a>
+        <a href="#booking" class="btn-book" onclick="event.preventDefault();openBookingRequest('Cab booking')">Book Now →</a>
         <button class="hamburger" id="hamburger" onclick="toggleMenu()">
           <span></span><span></span><span></span>
         </button>
@@ -905,8 +879,8 @@
   <div class="mob-overlay" id="mobOverlay" onclick="closeMenu()"></div>
   <div class="mob-menu" id="mobMenu">
     <button class="mob-close" onclick="closeMenu()">✕</button>
-    <a href="#services" onclick="closeMenu()">🚗 Services</a>
-    <a href="#routes" onclick="closeMenu()">🗺️ Top Routes</a>
+    <a href="services-all.html" onclick="closeMenu()">🚗 Services</a>
+    <a href="routes-all.html" onclick="closeMenu()">🗺️ Top Routes</a>
     <a href="fleet.html" onclick="closeMenu()">🚙 Fleet & Pricing</a>
     <a href="rental.html" onclick="closeMenu()">🔑 Rentals</a>
     <a href="aboutus.html" onclick="closeMenu()">ℹ️ About Us</a>
@@ -950,28 +924,30 @@
           <div class="bk-head-icon">🚖</div>
           <h2>Book Your Ride Now</h2>
         </div>
-        <div class="bk-body">
-          <div class="fg"><label>📍 Pickup Location</label><input type="text" id="bookPickup" placeholder="e.g. Vijay Nagar, Indore" required></div>
-          <div class="fg"><label>📍 Drop Location</label><input type="text" id="bookDrop" placeholder="e.g. Airport, Ujjain, Bhopal" required></div>
+        <form class="bk-body" id="bookingForm">
+          <input type="hidden" id="bookService" name="service" value="Cab booking">
+          <div class="fg"><label for="bookPickup">📍 Pickup Location</label><input type="text" id="bookPickup" name="pickup" placeholder="e.g. Vijay Nagar, Indore" autocomplete="street-address" required></div>
+          <div class="fg"><label for="bookDrop">📍 Drop Location</label><input type="text" id="bookDrop" name="drop" placeholder="e.g. Airport, Ujjain, Bhopal" required></div>
           <div class="frow">
-            <div class="fg"><label>📅 Pickup Date</label><input type="date" id="bookDate" required></div>
-            <div class="fg"><label>🕐 Pickup Time</label><input type="time" id="bookTime" required></div>
+            <div class="fg"><label for="bookDate">📅 Pickup Date</label><input type="date" id="bookDate" name="date" required></div>
+            <div class="fg"><label for="bookTime">🕐 Pickup Time</label><input type="time" id="bookTime" name="time" required></div>
           </div>
-          <div class="fg"><label>📞 Phone Number</label><input type="tel" id="bookPhone" placeholder="+91 98765 43210" required></div>
-          <div class="fg"><label>🚗 Vehicle Type</label>
-            <select id="bookVehicle">
+          <div class="fg"><label for="bookPhone">📞 Phone Number</label><input type="tel" id="bookPhone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" required></div>
+          <div class="fg"><label for="bookVehicle">🚗 Vehicle Type</label>
+            <select id="bookVehicle" name="vehicle" required>
               <option value="">Select your vehicle</option>
               <option>WagonR / Alto (Economy)</option>
               <option>Swift Dzire / Amaze (Sedan)</option>
+              <option>Ciaz / Honda City (Premium Sedan)</option>
               <option>Innova / Ertiga (SUV)</option>
               <option>Tempo Traveller (12-16 Seater)</option>
               <option>Mercedes / BMW (Luxury)</option>
             </select>
           </div>
-          <button class="bk-btn" onclick="doBook()">🚖 Book Your Cab Now</button>
-          <div class="or-div">or reach us directly</div>
-          <a href="https://wa.me/919179480342?text=Hi+I+need+a+cab+in+Indore" class="wa-btn" target="_blank">💬 Book via WhatsApp</a>
-        </div>
+          <button class="bk-btn" type="submit">🚖 Book Your Cab Now</button>
+          <div class="or-div">Review and send your request in WhatsApp</div>
+          <button class="wa-btn" type="submit">💬 Book via WhatsApp</button>
+        </form>
       </div>
     </div>
   </section>
@@ -990,12 +966,12 @@
       <div class="svc-carousel-wrap reveal">
         <div class="svc-track-outer">
           <div class="svc-track" id="svcTrack">
-            <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop&q=80" alt="Local City Taxi Indore" loading="lazy"><div class="svc-price-badge">From ₹150</div></div><div class="svc-body"><div class="svc-name">Local City Taxi</div><p class="svc-desc">24/7 rides across Vijay Nagar, Palasia, MG Road, Rajwada and all of Indore. Fixed fare, no surprises.</p><a href="#booking" class="svc-cta">Book Now →</a></div></div></div>
-            <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&auto=format&fit=crop&q=80" alt="Airport Taxi Indore" loading="lazy"><div class="svc-price-badge">From ₹299</div></div><div class="svc-body"><div class="svc-name">Airport Transfers</div><p class="svc-desc">Flight tracking & meet-greet at Devi Ahilya Airport (IDR). No surge, punctual pick-up & drop at all hours.</p><a href="#booking" class="svc-cta">Book Now →</a></div></div></div>
-            <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600&auto=format&fit=crop&q=80" alt="Outstation Cab Indore" loading="lazy"><div class="svc-price-badge">From ₹12/km</div></div><div class="svc-body"><div class="svc-name">Outstation Cab</div><p class="svc-desc">One-way & round-trip from Indore to Ujjain, Omkareshwar, Bhopal, Mumbai and 50+ cities.</p><a href="#booking" class="svc-cta">Book Now →</a></div></div></div>
+            <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop&q=80" alt="Local City Taxi Indore" loading="lazy"><div class="svc-price-badge">From ₹150</div></div><div class="svc-body"><div class="svc-name">Local City Taxi</div><p class="svc-desc">24/7 rides across Vijay Nagar, Palasia, MG Road, Rajwada and all of Indore. Fixed fare, no surprises.</p><a href="#booking" onclick="event.preventDefault();openCardBooking(this.closest('.svc-card'))" class="svc-cta">Book Now →</a></div></div></div>
+            <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&auto=format&fit=crop&q=80" alt="Airport Taxi Indore" loading="lazy"><div class="svc-price-badge">From ₹299</div></div><div class="svc-body"><div class="svc-name">Airport Transfers</div><p class="svc-desc">Flight tracking & meet-greet at Devi Ahilya Airport (IDR). No surge, punctual pick-up & drop at all hours.</p><a href="#booking" onclick="event.preventDefault();openCardBooking(this.closest('.svc-card'))" class="svc-cta">Book Now →</a></div></div></div>
+            <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600&auto=format&fit=crop&q=80" alt="Outstation Cab Indore" loading="lazy"><div class="svc-price-badge">From ₹12/km</div></div><div class="svc-body"><div class="svc-name">Outstation Cab</div><p class="svc-desc">One-way & round-trip from Indore to Ujjain, Omkareshwar, Bhopal, Mumbai and 50+ cities.</p><a href="#booking" onclick="event.preventDefault();openCardBooking(this.closest('.svc-card'))" class="svc-cta">Book Now →</a></div></div></div>
             <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=600&auto=format&fit=crop&q=80" alt="Car Rental Indore" loading="lazy"><div class="svc-price-badge">4/8/Full Day</div></div><div class="svc-body"><div class="svc-name">Car Rental with Driver</div><p class="svc-desc">Hourly & full-day rentals for corporate travel, weddings, sightseeing and family outings across MP.</p><a href="rental.html" class="svc-cta">View Packages →</a></div></div></div>
-            <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://shraddhacabs.com/images/a38.jpg" alt="Corporate Cab Indore" loading="lazy"><div class="svc-price-badge">Contract Rates</div></div><div class="svc-body"><div class="svc-name">Corporate Cab Service</div><p class="svc-desc">Monthly contracts for IT parks, offices and corporate campuses. GST invoices provided.</p><a href="#booking" class="svc-cta">Get Quote →</a></div></div></div>
-            <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Wedding Car Indore" loading="lazy"><div class="svc-price-badge">Luxury Fleet</div></div><div class="svc-body"><div class="svc-name">Wedding Cars</div><p class="svc-desc">Decked luxury cars and fleets for wedding ceremonies, receptions, and baraat processions in Indore.</p><a href="#booking" class="svc-cta">Enquire Now →</a></div></div></div>
+            <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://shraddhacabs.com/images/a38.jpg" alt="Corporate Cab Indore" loading="lazy"><div class="svc-price-badge">Contract Rates</div></div><div class="svc-body"><div class="svc-name">Corporate Cab Service</div><p class="svc-desc">Monthly contracts for IT parks, offices and corporate campuses. GST invoices provided.</p><a href="#booking" onclick="event.preventDefault();openCardBooking(this.closest('.svc-card'))" class="svc-cta">Get Quote →</a></div></div></div>
+            <div class="svc-slide"><div class="svc-card"><div class="svc-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80" alt="Wedding Car Indore" loading="lazy"><div class="svc-price-badge">Luxury Fleet</div></div><div class="svc-body"><div class="svc-name">Wedding Cars</div><p class="svc-desc">Decked luxury cars and fleets for wedding ceremonies, receptions, and baraat processions in Indore.</p><a href="#booking" onclick="event.preventDefault();openCardBooking(this.closest('.svc-card'))" class="svc-cta">Enquire Now →</a></div></div></div>
           </div>
         </div>
         <div class="carousel-nav">
@@ -1023,7 +999,7 @@
           <div class="routes-track" id="routesTrack">
 
             <div class="route-slide">
-              <div class="route-card" onclick="doBook()">
+              <div class="route-card" onclick="openCardBooking(this)">
                 <img class="route-card-img" src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=500&auto=format&fit=crop&q=80" alt="Ujjain Mahakaleshwar" loading="lazy">
                 <div class="route-card-overlay"></div>
                 <div class="route-card-shimmer"></div>
@@ -1037,7 +1013,7 @@
             </div>
 
             <div class="route-slide">
-              <div class="route-card" onclick="doBook()">
+              <div class="route-card" onclick="openCardBooking(this)">
                 <img class="route-card-img" src="https://static2.tripoto.com/media/filter/tst/img/593133/TripDocument/1546496763_dsc00286_1.jpg" alt="Omkareshwar Temple" loading="lazy">
                 <div class="route-card-overlay"></div>
                 <div class="route-card-shimmer"></div>
@@ -1051,7 +1027,7 @@
             </div>
 
             <div class="route-slide">
-              <div class="route-card" onclick="doBook()">
+              <div class="route-card" onclick="openCardBooking(this)">
                 <img class="route-card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&auto=format&fit=crop&q=80" alt="Mandu Fort" loading="lazy">
                 <div class="route-card-overlay"></div>
                 <div class="route-card-shimmer"></div>
@@ -1065,7 +1041,7 @@
             </div>
 
             <div class="route-slide">
-              <div class="route-card" onclick="doBook()">
+              <div class="route-card" onclick="openCardBooking(this)">
                 <img class="route-card-img" src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?w=500&auto=format&fit=crop&q=80" alt="Maheshwar Ghats" loading="lazy">
                 <div class="route-card-overlay"></div>
                 <div class="route-card-shimmer"></div>
@@ -1079,7 +1055,7 @@
             </div>
 
             <div class="route-slide">
-              <div class="route-card" onclick="doBook()">
+              <div class="route-card" onclick="openCardBooking(this)">
                 <img class="route-card-img" src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=500&auto=format&fit=crop&q=80" alt="Bhopal City" loading="lazy">
                 <div class="route-card-overlay"></div>
                 <div class="route-card-shimmer"></div>
@@ -1093,7 +1069,7 @@
             </div>
 
             <div class="route-slide">
-              <div class="route-card" onclick="doBook()">
+              <div class="route-card" onclick="openCardBooking(this)">
                 <img class="route-card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&auto=format&fit=crop&q=80" alt="Pachmarhi Hills" loading="lazy">
                 <div class="route-card-overlay"></div>
                 <div class="route-card-shimmer"></div>
@@ -1107,7 +1083,7 @@
             </div>
 
             <div class="route-slide">
-              <div class="route-card" onclick="doBook()">
+              <div class="route-card" onclick="openCardBooking(this)">
                 <img class="route-card-img" src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500&auto=format&fit=crop&q=80" alt="Ahmedabad" loading="lazy">
                 <div class="route-card-overlay"></div>
                 <div class="route-card-shimmer"></div>
@@ -1166,7 +1142,7 @@
                     <div class="fleet-feat"><div class="fleet-feat-dot">❄️</div> AC · City rides</div>
                   </div>
                 </div>
-                <button class="fleet-book-btn" onclick="doBook()">Book Now →</button>
+                <button type="button" class="fleet-book-btn" onclick="openCardBooking(this)">Book Now →</button>
               </div>
             </div>
 
@@ -1190,7 +1166,7 @@
                     <div class="fleet-feat"><div class="fleet-feat-dot">🛣️</div> City & Outstation</div>
                   </div>
                 </div>
-                <button class="fleet-book-btn" onclick="doBook()">Book Now →</button>
+                <button type="button" class="fleet-book-btn" onclick="openCardBooking(this)">Book Now →</button>
               </div>
             </div>
 
@@ -1214,7 +1190,7 @@
                     <div class="fleet-feat"><div class="fleet-feat-dot">🏕️</div> Families & Groups</div>
                   </div>
                 </div>
-                <button class="fleet-book-btn" onclick="doBook()">Book Now →</button>
+                <button type="button" class="fleet-book-btn" onclick="openCardBooking(this)">Book Now →</button>
               </div>
             </div>
 
@@ -1238,7 +1214,7 @@
                     <div class="fleet-feat"><div class="fleet-feat-dot">🏢</div> Tours & Corporate</div>
                   </div>
                 </div>
-                <button class="fleet-book-btn" onclick="doBook()">Book Now →</button>
+                <button type="button" class="fleet-book-btn" onclick="openCardBooking(this)">Book Now →</button>
               </div>
             </div>
 
@@ -1262,7 +1238,7 @@
                     <div class="fleet-feat"><div class="fleet-feat-dot">🌟</div> VIP & Corporate</div>
                   </div>
                 </div>
-                <button class="fleet-book-btn" onclick="doBook()">Book Now →</button>
+                <button type="button" class="fleet-book-btn" onclick="openCardBooking(this)">Book Now →</button>
               </div>
             </div>
 
@@ -1297,7 +1273,7 @@
           <div class="rental-hours">4 Hours / 40 km</div>
           <p>Perfect for shopping trips, doctor visits, and quick errands around Indore.</p>
           <div class="rental-price">₹999 <span>starting</span></div>
-          <button class="rental-card-btn" onclick="doBook()">Book Now</button>
+          <button type="button" class="rental-card-btn" onclick="openBookingRequest('Car rental', { package: 'City Ride - 4 hours / 40 km' })">Book Now</button>
         </div>
         <div class="rental-card">
           <div class="rental-card-icon">🗺️</div>
@@ -1305,7 +1281,7 @@
           <div class="rental-hours">8 Hours / 80 km</div>
           <p>Ideal for sightseeing, business meetings, and full morning or afternoon use.</p>
           <div class="rental-price">₹1,799 <span>starting</span></div>
-          <button class="rental-card-btn" onclick="doBook()">Book Now</button>
+          <button type="button" class="rental-card-btn" onclick="openBookingRequest('Car rental', { package: 'Half Day - 8 hours / 80 km' })">Book Now</button>
         </div>
         <div class="rental-card">
           <div class="rental-card-icon">🌅</div>
@@ -1313,7 +1289,7 @@
           <div class="rental-hours">12 Hours / 120 km</div>
           <p>Best for day trips, extended sightseeing tours, and event transportation.</p>
           <div class="rental-price">₹2,499 <span>starting</span></div>
-          <button class="rental-card-btn" onclick="doBook()">Book Now</button>
+          <button type="button" class="rental-card-btn" onclick="openBookingRequest('Car rental', { package: 'Full Day - 12 hours / 120 km' })">Book Now</button>
         </div>
         <div class="rental-card">
           <div class="rental-card-icon">💎</div>
@@ -1321,7 +1297,7 @@
           <div class="rental-hours">Flexible Hours &amp; Distance</div>
           <p>Weddings, corporate events, multi-day tours — tailored to your needs.</p>
           <div class="rental-price">Custom <span>quote</span></div>
-          <button class="rental-card-btn" onclick="doBook()">Get Quote</button>
+          <button type="button" class="rental-card-btn" onclick="openBookingRequest('Custom car rental quote')">Get Quote</button>
         </div>
       </div>
     </div>
@@ -1460,14 +1436,10 @@
 
   <script>
     /* ── NAV SCROLL ── */
-    let lastY = 0;
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       const nav = document.getElementById('navbar');
-      const tb = document.getElementById('topbar');
       nav.classList.toggle('scrolled', y > 50);
-      if (y > 200) { tb.classList.toggle('hide', y > lastY); }
-      lastY = y;
     });
 
     /* ── MOBILE MENU ── */
@@ -1482,7 +1454,7 @@
     }
 
     /* ── BOOK HANDLER ── */
-    function doBook() { window.location.href = 'tel:+919179480342'; }
+    function doBook(service, details) { openBookingRequest(service || 'Cab booking', details || {}); }
 
     /* ── GENERIC CAROUSEL ── */
     const carousels = {
@@ -1562,5 +1534,6 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   </script>
+  <script src="booking.js"></script>
 </body>
 </html>

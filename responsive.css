@@ -1,0 +1,517 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+img,
+iframe,
+video {
+  max-width: 100%;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 760px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  nav {
+    top: 0;
+    height: 60px;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  nav > div {
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-actions {
+    flex: 0 0 auto;
+    gap: 5px;
+  }
+
+  .nav-tel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    gap: 4px;
+    padding: 5px 6px;
+    border-radius: 8px;
+    font-size: 10px;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+    animation: mobileContactReveal 420ms ease-out both;
+  }
+
+  .nav-tel .ring-icon {
+    animation-duration: 2.8s;
+  }
+
+  .logo-mark {
+    width: 64px;
+  }
+
+  .btn-book {
+    display: none;
+    gap: 4px;
+    padding: 7px 8px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .hamburger {
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  .header-offset {
+    height: 60px;
+  }
+
+  .mob-menu {
+    width: min(320px, 88vw);
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    padding: 76px 20px 24px;
+  }
+
+  .section,
+  .content {
+    padding: 32px 16px;
+  }
+
+  .page-hero {
+    padding: 32px 16px;
+  }
+
+  .page-hero-inner,
+  .hero-inner,
+  .wrap {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-inner {
+    gap: 22px;
+    padding: 28px 16px 24px;
+  }
+
+  .hero-left {
+    display: none;
+  }
+
+  .hero-h1,
+  .page-hero h1 {
+    font-size: 30px;
+    line-height: 1.15;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .sec-title {
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .sec-desc,
+  .page-hero p {
+    font-size: 14px;
+  }
+
+  .sec-head {
+    margin-bottom: 28px;
+  }
+
+  .sec-head-row {
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .view-all-btn {
+    max-width: 100%;
+    padding: 9px 13px;
+    white-space: normal;
+  }
+
+  .breadcrumb {
+    flex-wrap: wrap;
+  }
+
+  .fci-val,
+  .footer-nav-col a,
+  .hq-val,
+  .route-card .route-subtitle,
+  .svc-desc {
+    overflow-wrap: anywhere;
+  }
+
+  .contact-layout,
+  .intro-grid,
+  .mv-grid,
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .choose-grid,
+  .services-grid,
+  .routes-grid,
+  .fleet-grid,
+  .packages-grid,
+  .why-grid,
+  .rental-grid,
+  .rev-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .stats-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: -28px;
+    padding: 22px 16px;
+  }
+
+  .form-card {
+    padding: 24px 20px;
+  }
+
+  .intro-img {
+    height: 280px;
+  }
+
+  .svc-img {
+    height: 170px;
+  }
+
+  .svc-body,
+  .fleet-body,
+  .pkg-body {
+    padding: 16px;
+  }
+
+  .svc-desc,
+  .route-desc {
+    overflow-wrap: anywhere;
+  }
+
+  .filter-bar {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .filter-btn {
+    padding: 8px 12px;
+  }
+
+  .route-card {
+    min-width: 0;
+  }
+
+  .route-card .route-subtitle {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .fleet-img {
+    height: 150px;
+  }
+
+  .fleet-price-note {
+    max-width: 45%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .v-card {
+    padding: 16px;
+  }
+
+  .v-slide {
+    flex: 0 0 min(84vw, 320px);
+  }
+
+  .pkg-header {
+    padding: 22px 16px 18px;
+  }
+
+  .pkg-price {
+    font-size: 30px;
+  }
+
+  .cta-strip {
+    align-items: stretch;
+    gap: 18px;
+    padding: 26px 20px;
+  }
+
+  .cta-strip-btns,
+  .cta-btns {
+    flex-wrap: wrap;
+  }
+
+  .footer-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding: 36px 16px 28px;
+  }
+
+  .footer-top > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  .car-arrow,
+  .sl-arrow {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .bk-body {
+    padding: 18px;
+  }
+
+  .frow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+  }
+
+  .bk-body input,
+  .bk-body select,
+  .form-card input,
+  .form-card select,
+  .form-card textarea,
+  .rental-booking-field input,
+  .card-booking-field input {
+    min-height: 44px;
+    font-size: 16px !important;
+  }
+
+  .btn-primary,
+  .btn-book,
+  .bk-btn,
+  .submit-btn,
+  .fleet-book-btn,
+  .rental-card-btn,
+  .pkg-book,
+  .v-book,
+  .route-book-btn,
+  .svc-btn-book {
+    min-height: 44px;
+  }
+
+  .float-btns {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+@keyframes mobileContactReveal {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 4px));
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .section,
+  .content {
+    padding: 28px 14px;
+  }
+
+  .page-hero {
+    padding: 28px 14px;
+  }
+
+  nav {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  nav > div {
+    gap: 4px;
+  }
+
+  .logo-mark {
+    width: 56px;
+  }
+
+  .nav-tel {
+    gap: 3px;
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  .btn-book {
+    padding: 6px 7px;
+    font-size: 10px;
+  }
+
+  .hero-inner {
+    padding: 24px 14px 20px;
+  }
+
+  .hero-h1,
+  .page-hero h1 {
+    font-size: 27px;
+  }
+
+  .sec-title {
+    font-size: 23px;
+  }
+
+  .choose-grid,
+  .services-grid,
+  .routes-grid,
+  .fleet-grid,
+  .packages-grid,
+  .why-grid,
+  .rental-grid,
+  .rev-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stats-bar,
+  .about-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-quick {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .hq-card {
+    min-width: 0;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .hq-val {
+    overflow-wrap: anywhere;
+    font-size: 13px;
+  }
+
+  .contact-layout {
+    gap: 20px;
+  }
+
+  .form-card {
+    padding: 20px 16px;
+  }
+
+  .rental-card {
+    padding: 18px 16px;
+  }
+
+  .cta-strip {
+    padding: 22px 16px;
+  }
+
+  .cta-strip-btns,
+  .cta-btns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .cta-strip-btns a,
+  .cta-btns a {
+    justify-content: center;
+  }
+
+  .footer-top {
+    gap: 20px 14px;
+    padding: 30px 14px 24px;
+  }
+
+  .footer-logo-text {
+    font-size: 16px;
+  }
+
+  .footer-tagline {
+    overflow-wrap: anywhere;
+  }
+
+  .route-card-content {
+    padding: 18px 16px;
+  }
+
+  .card-booking-actions,
+  .rental-booking-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .route-card .route-dest-line {
+    font-size: 18px;
+    flex-wrap: wrap;
+  }
+
+  .route-card {
+    height: 280px;
+  }
+
+  .svc-slide,
+  .rev-slide {
+    flex: 0 0 min(88vw, 340px);
+  }
+
+  .route-slide,
+  .fleet-slide {
+    flex: 0 0 min(86vw, 320px);
+  }
+
+  .content iframe {
+    width: 100%;
+    min-height: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

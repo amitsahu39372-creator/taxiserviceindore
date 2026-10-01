@@ -50,23 +50,9 @@
 
     body { font-family: var(--font-b); background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
 
-    /* ══ TOPBAR ══ */
-    .topbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: var(--dark); height: 36px; display: flex; align-items: center;
-      padding: 0 5%; transition: transform 0.3s ease;
-    }
-    .topbar.hide { transform: translateY(-100%); }
-    .topbar-inner { max-width: 1240px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    .tb-left { display: flex; gap: 18px; align-items: center; }
-    .tb-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: rgba(255,255,255,0.45); font-weight: 500; }
-    .tb-item a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
-    .tb-item a:hover { color: var(--primary); }
-    .tb-badge { display: flex; align-items: center; gap: 5px; background: rgba(245,168,0,0.12); border: 1px solid rgba(245,168,0,0.22); color: var(--primary); font-size: 10.5px; font-weight: 700; padding: 2px 10px; border-radius: 100px; }
-
     /* ══ NAV ══ */
     nav {
-      position: fixed; top: 36px; left: 0; right: 0; z-index: 999;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border); height: 72px; padding: 0 5%;
       display: flex; align-items: center; justify-content: space-between;
@@ -90,7 +76,7 @@
     .btn-book:hover { background: var(--primary-dark); transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 32px var(--primary-glow); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { width: 22px; height: 2.5px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-    .header-offset { height: 108px; }
+    .header-offset { height: 72px; }
 
     /* ══ MOBILE MENU ══ */
     .mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 990; }
@@ -453,7 +439,6 @@
     }
 
     @media (max-width: 680px) {
-      .topbar { display: none; }
       nav { top: 0; height: 60px; }
       .header-offset { height: 60px; }
       .nav-links, .nav-tel { display: none; }
@@ -470,21 +455,10 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
-
-  <!-- TOPBAR -->
-  <div class="topbar" id="topbar">
-    <div class="topbar-inner">
-      <div class="tb-left">
-        <div class="tb-item">📞 <a href="tel:+917312345678">+91 731 234 5678</a></div>
-        <div class="tb-item">✉️ <a href="mailto:info@taxiserviceindore.in">info@taxiserviceindore.in</a></div>
-        <div class="tb-item">📍 Vijay Nagar, Indore, MP</div>
-      </div>
-      <div class="tb-badge">🟢 Available 24/7</div>
-    </div>
-  </div>
 
   <!-- NAV -->
   <nav id="navbar">
@@ -493,8 +467,8 @@
         <div class="logo-mark"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Taxi Service Indore logo"></div>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="index.html#routes">Routes</a></li>
+        <li><a href="services-all.html">Services</a></li>
+        <li><a href="routes-all.html">Routes</a></li>
         <li><a href="fleet.html">Fleet & Pricing</a></li>
         <li><a href="rental.html">Rentals</a></li>
         <li><a href="aboutus.html">About</a></li>
@@ -514,8 +488,8 @@
   <div class="mob-overlay" id="mobOverlay" onclick="closeMenu()"></div>
   <div class="mob-menu" id="mobMenu">
     <button class="mob-close" onclick="closeMenu()">✕</button>
-    <a href="index.html#services" onclick="closeMenu()">🚗 Services</a>
-    <a href="index.html#routes" onclick="closeMenu()">🗺️ Top Routes</a>
+    <a href="services-all.html" onclick="closeMenu()">🚗 Services</a>
+    <a href="routes-all.html" onclick="closeMenu()">🗺️ Top Routes</a>
     <a href="fleet.html" onclick="closeMenu()">🚙 Fleet & Pricing</a>
     <a href="rental.html" onclick="closeMenu()">🔑 Rentals</a>
     <a href="aboutus.html" onclick="closeMenu()">ℹ️ About Us</a>
@@ -523,7 +497,7 @@
     <div class="mob-divider"></div>
     <div class="mob-cta">
       <a href="tel:+917312345678" class="btn-primary" style="justify-content:center">📞 Call Now</a>
-      <a href="https://wa.me/917312345678" class="wa-btn" target="_blank">💬 WhatsApp</a>
+      <a href="https://wa.me/919179480342" class="wa-btn" target="_blank">💬 WhatsApp</a>
     </div>
   </div>
 
@@ -564,8 +538,8 @@
             <div class="svc-feat">Available 24/7, 365 days</div>
             <div class="svc-feat">AC vehicles, verified drivers</div>
           </div>
-          <div class="svc-footer"><button class="svc-btn-book" onclick="window.location='tel:+917312345678'">📞 Book
-              Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+a+local+cab" class="svc-btn-wa"
+          <div class="svc-footer"><button class="svc-btn-book" onclick="startBooking('Local city taxi')">📞 Book
+              Now</button><a href="https://wa.me/919179480342?text=Hi+I+need+a+local+cab" class="svc-btn-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
@@ -585,8 +559,8 @@
             <div class="svc-feat">Meet & greet at arrivals</div>
             <div class="svc-feat">Fixed fare — no surge</div>
           </div>
-          <div class="svc-footer"><button class="svc-btn-book" onclick="window.location='tel:+917312345678'">📞 Book
-              Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+an+airport+transfer" class="svc-btn-wa"
+          <div class="svc-footer"><button class="svc-btn-book" onclick="startBooking('Airport transfer')">📞 Book
+              Now</button><a href="https://wa.me/919179480342?text=Hi+I+need+an+airport+transfer" class="svc-btn-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
@@ -606,8 +580,8 @@
             <div class="svc-feat">50+ cities covered from Indore</div>
             <div class="svc-feat">Experienced intercity drivers</div>
           </div>
-          <div class="svc-footer"><button class="svc-btn-book" onclick="window.location='tel:+917312345678'">📞 Book
-              Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+an+outstation+cab" class="svc-btn-wa"
+          <div class="svc-footer"><button class="svc-btn-book" onclick="startBooking('Outstation taxi')">📞 Book
+              Now</button><a href="https://wa.me/919179480342?text=Hi+I+need+an+outstation+cab" class="svc-btn-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
@@ -628,14 +602,14 @@
             <div class="svc-feat">Corporate invoices available</div>
           </div>
           <div class="svc-footer"><button class="svc-btn-book" onclick="window.location.href='rental.html'">View
-              Packages</button><a href="https://wa.me/917312345678?text=Hi+I+need+a+cab+rental" class="svc-btn-wa"
+              Packages</button><a href="https://wa.me/919179480342?text=Hi+I+need+a+cab+rental" class="svc-btn-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
 
       <div class="svc-card" data-cat="corporate" style="animation-delay:0.25s">
         <div class="svc-img"><img
-            src="https://images.unsplash.com/photo-1521791055366-0d553872952f?w=600&auto=format&fit=crop&q=80"
+            src="https://shraddhacabs.com/images/a38.jpg"
             alt="Corporate Cab Indore">
           <div class="svc-price-badge">Contract Rates</div>
           <div class="svc-category-badge">Corporate</div>
@@ -648,8 +622,8 @@
             <div class="svc-feat">GST invoices & billing</div>
             <div class="svc-feat">Dedicated fleet for your office</div>
           </div>
-          <div class="svc-footer"><button class="svc-btn-book" onclick="window.location='tel:+917312345678'">Get
-              Quote</button><a href="https://wa.me/917312345678?text=Hi+I+need+corporate+cab+service" class="svc-btn-wa"
+          <div class="svc-footer"><button class="svc-btn-book" onclick="startBooking('Corporate cab')">Get
+              Quote</button><a href="https://wa.me/919179480342?text=Hi+I+need+corporate+cab+service" class="svc-btn-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
@@ -669,8 +643,8 @@
             <div class="svc-feat">Multi-car packages for baraat</div>
             <div class="svc-feat">Sedan, SUV & limousine options</div>
           </div>
-          <div class="svc-footer"><button class="svc-btn-book" onclick="window.location='tel:+917312345678'">Enquire
-              Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+wedding+cars+in+Indore" class="svc-btn-wa"
+          <div class="svc-footer"><button class="svc-btn-book" onclick="startBooking('Wedding car')">Enquire
+              Now</button><a href="https://wa.me/919179480342?text=Hi+I+need+wedding+cars+in+Indore" class="svc-btn-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
@@ -690,8 +664,8 @@
             <div class="svc-feat">Driver + vehicle for entire trip</div>
             <div class="svc-feat">Hotel tie-ups available</div>
           </div>
-          <div class="svc-footer"><button class="svc-btn-book" onclick="window.location='tel:+917312345678'">Plan My
-              Trip</button><a href="https://wa.me/917312345678?text=Hi+I+need+a+tour+package" class="svc-btn-wa"
+          <div class="svc-footer"><button class="svc-btn-book" onclick="startBooking('Tour package')">Plan My
+              Trip</button><a href="https://wa.me/919179480342?text=Hi+I+need+a+tour+package" class="svc-btn-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
@@ -711,15 +685,15 @@
             <div class="svc-feat">Verified, background-checked drivers</div>
             <div class="svc-feat">Live tracking for parents</div>
           </div>
-          <div class="svc-footer"><button class="svc-btn-book" onclick="window.location='tel:+917312345678'">Enquire
-              Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+school+cab+service" class="svc-btn-wa"
+          <div class="svc-footer"><button class="svc-btn-book" onclick="startBooking('School cab')">Enquire
+              Now</button><a href="https://wa.me/919179480342?text=Hi+I+need+school+cab+service" class="svc-btn-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
 
       <div class="svc-card" data-cat="special" style="animation-delay:0.45s">
         <div class="svc-img"><img
-            src="https://images.unsplash.com/photo-1504428558777-1c42e8f7f408?w=600&auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop&q=80"
             alt="Medical Cab Indore">
           <div class="svc-price-badge">Priority Service</div>
           <div class="svc-category-badge">Medical</div>
@@ -732,8 +706,8 @@
             <div class="svc-feat">Wheelchair-friendly vehicles</div>
             <div class="svc-feat">Night & emergency service</div>
           </div>
-          <div class="svc-footer"><button class="svc-btn-book" onclick="window.location='tel:+917312345678'">Book
-              Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+a+medical+cab" class="svc-btn-wa"
+          <div class="svc-footer"><button class="svc-btn-book" onclick="startBooking('Medical cab')">Book
+              Now</button><a href="https://wa.me/919179480342?text=Hi+I+need+a+medical+cab" class="svc-btn-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
@@ -747,7 +721,7 @@
       </div>
       <div class="cta-strip-btns">
         <a href="tel:+917312345678" class="btn-primary">📞 Call Us Now</a>
-        <a href="https://wa.me/917312345678" class="btn-wa" target="_blank">💬 WhatsApp</a>
+        <a href="https://wa.me/919179480342" class="btn-wa" target="_blank">💬 WhatsApp</a>
       </div>
     </div>
   </div>
@@ -760,13 +734,10 @@
     // Scroll effects
     window.addEventListener('scroll', () => {
       const navbar = document.getElementById('navbar');
-      const topbar = document.getElementById('topbar');
       if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
-        if (topbar) topbar.classList.add('hide');
       } else {
         navbar.classList.remove('scrolled');
-        if (topbar) topbar.classList.remove('hide');
       }
     });
 
@@ -781,6 +752,7 @@
   </script>
   <div id="site-footer"></div>
   <script>fetch('footer.html').then(r=>r.text()).then(t=>{document.getElementById('site-footer').innerHTML=t;});</script>
+  <script src="booking.js" defer></script>
 </body>
 
 </html>

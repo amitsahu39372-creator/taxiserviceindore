@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -55,23 +55,9 @@
       line-height: 1.6;
     }
 
-    /* ══ TOPBAR ══ */
-    .topbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: var(--dark); height: 36px; display: flex; align-items: center;
-      padding: 0 5%; transition: transform 0.3s ease;
-    }
-    .topbar.hide { transform: translateY(-100%); }
-    .topbar-inner { max-width: 1240px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    .tb-left { display: flex; gap: 18px; align-items: center; }
-    .tb-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: rgba(255,255,255,0.45); font-weight: 500; }
-    .tb-item a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
-    .tb-item a:hover { color: var(--primary); }
-    .tb-badge { display: flex; align-items: center; gap: 5px; background: rgba(245,168,0,0.12); border: 1px solid rgba(245,168,0,0.22); color: var(--primary); font-size: 10.5px; font-weight: 700; padding: 2px 10px; border-radius: 100px; }
-
     /* ══ NAV ══ */
     nav {
-      position: fixed; top: 36px; left: 0; right: 0; z-index: 999;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border); height: 72px; padding: 0 5%;
       display: flex; align-items: center; justify-content: space-between;
@@ -95,7 +81,7 @@
     .btn-book:hover { background: var(--primary-dark); transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 32px var(--primary-glow); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { width: 22px; height: 2.5px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-    .header-offset { height: 108px; }
+    .header-offset { height: 72px; }
 
     /* ══ MOBILE MENU ══ */
     .mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 990; }
@@ -571,6 +557,122 @@
       color: var(--dark)
     }
 
+    .rental-booking-dialog {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: min(420px, calc(100% - 32px));
+      max-height: calc(100vh - 32px);
+      max-height: calc(100dvh - 32px);
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 16px;
+      color: var(--text);
+      box-shadow: 0 24px 72px rgba(15, 13, 10, 0.24);
+      overflow-y: auto;
+      transform: translate(-50%, -50%);
+    }
+
+    .rental-booking-dialog::backdrop {
+      background: rgba(15, 13, 10, 0.58);
+      backdrop-filter: blur(3px);
+    }
+
+    .rental-booking-content {
+      display: grid;
+      gap: 16px;
+      padding: 24px;
+    }
+
+    .rental-booking-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .rental-booking-header h2 {
+      font-family: var(--font-h);
+      font-size: 21px;
+      line-height: 1.2;
+      color: var(--dark);
+    }
+
+    .rental-booking-summary {
+      margin-top: 5px;
+      font-size: 13px;
+      color: var(--text-mid);
+      overflow-wrap: anywhere;
+    }
+
+    .rental-dialog-close {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text-mid);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .rental-booking-field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .rental-booking-field label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-mid);
+    }
+
+    .rental-booking-field input {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px var(--font-b);
+    }
+
+    .rental-booking-field input:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 1px;
+    }
+
+    .rental-booking-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .rental-booking-actions button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font: 700 13px var(--font-b);
+      cursor: pointer;
+    }
+
+    .rental-booking-cancel {
+      background: white;
+      color: var(--text-mid);
+    }
+
+    .rental-booking-submit {
+      border-color: var(--primary) !important;
+      background: var(--primary);
+      color: var(--dark);
+    }
+
     .slider-nav {
       display: flex;
       align-items: center;
@@ -733,21 +835,10 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
-  <!-- TOPBAR -->
-  <div class="topbar" id="topbar">
-    <div class="topbar-inner">
-      <div class="tb-left">
-        <div class="tb-item">📞 <a href="tel:+917312345678">+91 731 234 5678</a></div>
-        <div class="tb-item">✉️ <a href="mailto:info@taxiserviceindore.in">info@taxiserviceindore.in</a></div>
-        <div class="tb-item">📍 Vijay Nagar, Indore, MP</div>
-      </div>
-      <div class="tb-badge">🟢 Available 24/7</div>
-    </div>
-  </div>
-
   <!-- NAV -->
   <nav id="navbar">
     <div style="max-width:1240px;width:100%;display:flex;align-items:center;justify-content:space-between;margin:0 auto;">
@@ -755,8 +846,8 @@
         <div class="logo-mark"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Taxi Service Indore logo"></div>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="index.html#routes">Routes</a></li>
+        <li><a href="services-all.html">Services</a></li>
+        <li><a href="routes-all.html">Routes</a></li>
         <li><a href="fleet.html">Fleet & Pricing</a></li>
         <li><a href="rental.html">Rentals</a></li>
         <li><a href="aboutus.html">About</a></li>
@@ -776,8 +867,8 @@
   <div class="mob-overlay" id="mobOverlay" onclick="closeMenu()"></div>
   <div class="mob-menu" id="mobMenu">
     <button class="mob-close" onclick="closeMenu()">✕</button>
-    <a href="index.html#services" onclick="closeMenu()">🚗 Services</a>
-    <a href="index.html#routes" onclick="closeMenu()">🗺️ Top Routes</a>
+    <a href="services-all.html" onclick="closeMenu()">🚗 Services</a>
+    <a href="routes-all.html" onclick="closeMenu()">🗺️ Top Routes</a>
     <a href="fleet.html" onclick="closeMenu()">🚙 Fleet & Pricing</a>
     <a href="rental.html" onclick="closeMenu()">🔑 Rentals</a>
     <a href="aboutus.html" onclick="closeMenu()">ℹ️ About</a>
@@ -785,7 +876,7 @@
     <div class="mob-divider"></div>
     <div class="mob-cta">
       <a href="tel:+917312345678" class="btn-primary" style="justify-content:center">📞 Call Now</a>
-      <a href="https://wa.me/917312345678" class="wa-btn" target="_blank">💬 WhatsApp</a>
+      <a href="https://wa.me/919179480342" class="wa-btn" target="_blank">💬 WhatsApp</a>
     </div>
   </div>
 
@@ -825,8 +916,8 @@
             <div class="pkg-feat">Extra: ₹12/km, ₹150/hr</div>
             <div class="pkg-feat">AC sedan included</div>
           </div>
-          <div class="pkg-cta"><button class="pkg-book" onclick="window.location='tel:+917312345678'">📞 Book
-              Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+4hr+rental" class="pkg-wa"
+          <div class="pkg-cta"><button class="pkg-book" onclick="openRentalBooking(this)">📞 Book
+              Now</button><a href="https://wa.me/919179480342?text=Hi+I+need+4hr+rental" class="pkg-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
@@ -846,8 +937,8 @@
             <div class="pkg-feat">Extra: ₹14/km, ₹150/hr</div>
             <div class="pkg-feat">Sedan or SUV available</div>
           </div>
-          <div class="pkg-cta"><button class="pkg-book" onclick="window.location='tel:+917312345678'">📞 Book
-              Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+8hr+rental" class="pkg-wa"
+          <div class="pkg-cta"><button class="pkg-book" onclick="openRentalBooking(this)">📞 Book
+              Now</button><a href="https://wa.me/919179480342?text=Hi+I+need+8hr+rental" class="pkg-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
@@ -867,8 +958,8 @@
             <div class="pkg-feat">Extra: ₹14/km, ₹150/hr</div>
             <div class="pkg-feat">All vehicle types</div>
           </div>
-          <div class="pkg-cta"><button class="pkg-book" onclick="window.location='tel:+917312345678'">📞 Book
-              Now</button><a href="https://wa.me/917312345678?text=Hi+I+need+12hr+rental" class="pkg-wa"
+          <div class="pkg-cta"><button class="pkg-book" onclick="openRentalBooking(this)">📞 Book
+              Now</button><a href="https://wa.me/919179480342?text=Hi+I+need+12hr+rental" class="pkg-wa"
               target="_blank">💬</a></div>
         </div>
       </div>
@@ -897,7 +988,7 @@
             </div>
             <div class="v-bestfor">🏙️ Best for: City errands & short trips</div>
             <div class="v-price">₹999 <span>/ 4hr</span></div>
-            <button class="v-book" onclick="window.location='tel:+917312345678'">Book Now</button>
+            <button class="v-book" onclick="openRentalBooking(this)">Book Now</button>
           </div>
         </div>
         <div class="v-slide">
@@ -916,7 +1007,7 @@
             </div>
             <div class="v-bestfor">🛣️ Best for: Outstation & daily rentals</div>
             <div class="v-price">₹1,199 <span>/ 4hr</span></div>
-            <button class="v-book" onclick="window.location='tel:+917312345678'">Book Now</button>
+            <button class="v-book" onclick="openRentalBooking(this)">Book Now</button>
           </div>
         </div>
         <div class="v-slide">
@@ -935,7 +1026,7 @@
             </div>
             <div class="v-bestfor">👨‍👩‍👧‍👦 Best for: Family trips & groups</div>
             <div class="v-price">₹1,699 <span>/ 4hr</span></div>
-            <button class="v-book" onclick="window.location='tel:+917312345678'">Book Now</button>
+            <button class="v-book" onclick="openRentalBooking(this)">Book Now</button>
           </div>
         </div>
         <div class="v-slide">
@@ -954,7 +1045,7 @@
             </div>
             <div class="v-bestfor">🏢 Best for: Corporate tours & pilgrimages</div>
             <div class="v-price">₹2,499 <span>/ 4hr</span></div>
-            <button class="v-book" onclick="window.location='tel:+917312345678'">Book Now</button>
+            <button class="v-book" onclick="openRentalBooking(this)">Book Now</button>
           </div>
         </div>
         <div class="v-slide">
@@ -973,7 +1064,7 @@
             </div>
             <div class="v-bestfor">💎 Best for: Weddings & VIP transfers</div>
             <div class="v-price">₹3,499 <span>/ 4hr</span></div>
-            <button class="v-book" onclick="window.location='tel:+917312345678'">Book Now</button>
+            <button class="v-book" onclick="openRentalBooking(this)">Book Now</button>
           </div>
         </div>
       </div>
@@ -996,11 +1087,35 @@
         <p>Call us for tailored plans — weddings, multi-day, corporate events and more.</p>
       </div>
       <div class="cta-btns">
-        <a href="tel:+917312345678" class="btn-primary">📞 Get Quote</a>
-        <a href="https://wa.me/917312345678" class="btn-wa" target="_blank">💬 WhatsApp</a>
+        <a href="index.html?service=Custom%20car%20rental%20quote#booking" class="btn-primary">Get Quote</a>
+        <a href="https://wa.me/919179480342" class="btn-wa" target="_blank">💬 WhatsApp</a>
       </div>
     </div>
   </div>
+
+  <dialog class="rental-booking-dialog" id="rentalBookingDialog" aria-labelledby="rentalBookingTitle">
+    <form class="rental-booking-content" id="rentalBookingForm">
+      <div class="rental-booking-header">
+        <div>
+          <h2 id="rentalBookingTitle">Confirm your rental</h2>
+          <p class="rental-booking-summary" id="rentalBookingSummary"></p>
+        </div>
+        <button class="rental-dialog-close" type="button" aria-label="Close booking dialog" onclick="document.getElementById('rentalBookingDialog').close()">×</button>
+      </div>
+      <div class="rental-booking-field">
+        <label for="rentalBookingPhone">Phone number</label>
+        <input id="rentalBookingPhone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98765 43210" required>
+      </div>
+      <div class="rental-booking-field">
+        <label for="rentalBookingDate">Pickup date</label>
+        <input id="rentalBookingDate" name="date" type="date" required>
+      </div>
+      <div class="rental-booking-actions">
+        <button class="rental-booking-cancel" type="button" onclick="document.getElementById('rentalBookingDialog').close()">Cancel</button>
+        <button class="rental-booking-submit" type="submit">Continue to WhatsApp</button>
+      </div>
+    </form>
+  </dialog>
 
   <script>
     const track = document.getElementById('vTrack');
@@ -1025,14 +1140,10 @@
     window.addEventListener('resize', () => { vIdx = 0; vUpdate(); });
   </script>
   <script>
-    let lastY = 0;
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       const nav = document.getElementById('navbar');
-      const tb = document.getElementById('topbar');
       if (nav) nav.classList.toggle('scrolled', y > 50);
-      if (tb) tb.classList.toggle('hide', y > lastY && y > 200);
-      lastY = y;
     });
 
     function toggleMenu() {
@@ -1050,9 +1161,45 @@
       menu.classList.remove('open');
       overlay.style.display = 'none';
     }
+
+    function openRentalBooking(button) {
+      const card = button.closest('.pkg-card, .v-card');
+      if (!card) return;
+
+      const isPackage = card.classList.contains('pkg-card');
+      const title = card.querySelector(isPackage ? '.pkg-name' : 'h4')?.textContent.trim();
+      const terms = card.querySelector(isPackage ? '.pkg-hours' : '.v-type')?.textContent.trim();
+      const price = card.querySelector(isPackage ? '.pkg-price' : '.v-price')?.textContent.replace(/\s+/g, ' ').trim();
+      const selection = [title, terms, price].filter(Boolean).join(' | ');
+      const dialog = document.getElementById('rentalBookingDialog');
+
+      document.getElementById('rentalBookingSummary').textContent = selection;
+      const dateField = document.getElementById('rentalBookingDate');
+      const today = new Date();
+      dateField.min = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, '0'), String(today.getDate()).padStart(2, '0')].join('-');
+      dialog.showModal();
+    }
+
+    document.getElementById('rentalBookingForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+
+      const fields = new FormData(form);
+      const pickupDate = new Date(`${fields.get('date')}T00:00:00`);
+      const message = [
+        'Hi, I would like to book this rental.',
+        `Selected rental: ${document.getElementById('rentalBookingSummary').textContent}`,
+        `Phone number: ${fields.get('phone')}`,
+        `Pickup date: ${pickupDate.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}`
+      ].join('\n');
+
+      window.location.href = `https://wa.me/919179480342?text=${encodeURIComponent(message)}`;
+    });
   </script>
   <div id="site-footer"></div>
   <script>fetch('footer.html').then(r=>r.text()).then(t=>{document.getElementById('site-footer').innerHTML=t;});</script>
+  <script src="booking.js" defer></script>
 </body>
 
 </html>

@@ -55,23 +55,9 @@
       line-height: 1.6;
     }
 
-    /* ══ TOPBAR ══ */
-    .topbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: var(--dark); height: 36px; display: flex; align-items: center;
-      padding: 0 5%; transition: transform 0.3s ease;
-    }
-    .topbar.hide { transform: translateY(-100%); }
-    .topbar-inner { max-width: 1240px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    .tb-left { display: flex; gap: 18px; align-items: center; }
-    .tb-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: rgba(255,255,255,0.45); font-weight: 500; }
-    .tb-item a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
-    .tb-item a:hover { color: var(--primary); }
-    .tb-badge { display: flex; align-items: center; gap: 5px; background: rgba(245,168,0,0.12); border: 1px solid rgba(245,168,0,0.22); color: var(--primary); font-size: 10.5px; font-weight: 700; padding: 2px 10px; border-radius: 100px; }
-
     /* ══ NAV ══ */
     nav {
-      position: fixed; top: 36px; left: 0; right: 0; z-index: 999;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border); height: 72px; padding: 0 5%;
       display: flex; align-items: center; justify-content: space-between;
@@ -95,7 +81,7 @@
     .btn-book:hover { background: var(--primary-dark); transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 32px var(--primary-glow); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { width: 22px; height: 2.5px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-    .header-offset { height: 108px; }
+    .header-offset { height: 72px; }
 
     /* ══ MOBILE MENU ══ */
     .mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 990; }
@@ -280,7 +266,7 @@
     .fleet-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 14px;
     }
 
     @keyframes cardIn {
@@ -326,7 +312,7 @@
 
     .fleet-card {
       background: white;
-      border-radius: 24px;
+      border-radius: 16px;
       overflow: hidden;
       border: 1.5px solid var(--border);
       transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
@@ -343,7 +329,7 @@
       content: '';
       position: absolute;
       inset: -1px;
-      border-radius: 25px;
+      border-radius: 17px;
       padding: 2px;
       background: linear-gradient(135deg, transparent 30%, var(--primary) 50%, transparent 70%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -351,6 +337,7 @@
       mask-composite: exclude;
       opacity: 0;
       transition: opacity 0.4s ease;
+      pointer-events: none;
     }
 
     .fleet-card:hover::after {
@@ -358,7 +345,7 @@
     }
 
     .fleet-card:hover {
-      transform: translateY(-10px) scale(1.02);
+      transform: translateY(-6px);
       box-shadow: 0 28px 64px rgba(15, 13, 10, 0.14), 0 0 0 1px rgba(245, 168, 0, 0.15);
     }
 
@@ -381,13 +368,13 @@
 
     .fleet-img {
       background: linear-gradient(135deg, var(--bg) 0%, #f0ede5 100%);
-      height: 200px;
+      height: 125px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
-      padding: 20px;
+      padding: 10px;
     }
 
     .fleet-img::before {
@@ -400,7 +387,7 @@
     }
 
     .fleet-img img {
-      max-height: 160px;
+      max-height: 105px;
       max-width: 100%;
       object-fit: contain;
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -414,13 +401,13 @@
 
     .fleet-badge {
       position: absolute;
-      top: 14px;
-      left: 14px;
+      top: 10px;
+      left: 10px;
       background: var(--dark);
       color: white;
       font-size: 10px;
       font-weight: 700;
-      padding: 5px 12px;
+      padding: 3px 8px;
       border-radius: 100px;
       letter-spacing: 0.4px;
       backdrop-filter: blur(8px);
@@ -438,27 +425,27 @@
     }
 
     .fleet-body {
-      padding: 22px 24px;
+      padding: 12px 14px;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
 
     .fleet-cat {
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       color: var(--primary-dark);
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
 
     .fleet-name {
       font-family: var(--font-h);
-      font-size: 21px;
+      font-size: 16px;
       font-weight: 800;
       color: var(--dark);
-      margin-bottom: 14px;
+      margin-bottom: 6px;
       letter-spacing: -0.3px;
     }
 
@@ -466,8 +453,8 @@
       display: flex;
       align-items: baseline;
       gap: 4px;
-      margin-bottom: 18px;
-      padding-bottom: 18px;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
       border-bottom: 1.5px solid var(--border);
       position: relative;
     }
@@ -489,7 +476,7 @@
 
     .fleet-price {
       font-family: var(--font-h);
-      font-size: 34px;
+      font-size: 26px;
       font-weight: 800;
       color: var(--dark);
     }
@@ -500,10 +487,10 @@
     }
 
     .fleet-price-note {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--text-light);
       margin-left: auto;
-      padding: 4px 10px;
+      padding: 2px 6px;
       background: var(--bg);
       border-radius: 8px;
       border: 1px solid var(--border);
@@ -513,19 +500,19 @@
     .fleet-specs {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 18px;
+      gap: 4px;
+      margin-bottom: 8px;
     }
 
     .fleet-spec {
       display: flex;
       align-items: center;
-      gap: 7px;
-      font-size: 12.5px;
+      gap: 5px;
+      font-size: 11px;
       color: var(--text-mid);
       background: var(--bg);
-      padding: 9px 12px;
-      border-radius: 10px;
+      padding: 5px 7px;
+      border-radius: 7px;
       border: 1px solid var(--border);
       transition: all 0.25s;
     }
@@ -536,7 +523,7 @@
     }
 
     .spec-icon {
-      font-size: 14px;
+      font-size: 13px;
       flex-shrink: 0;
     }
 
@@ -586,19 +573,19 @@
 
     .fleet-cta {
       display: flex;
-      gap: 10px;
+      gap: 6px;
     }
 
     .fleet-book-btn {
       flex: 1;
-      padding: 14px;
+      padding: 9px 10px;
       background: var(--primary);
       color: var(--dark);
       border: none;
       border-radius: 12px;
       font-family: var(--font-b);
       font-weight: 700;
-      font-size: 14px;
+      font-size: 12px;
       cursor: pointer;
       transition: all 0.3s;
       box-shadow: 0 4px 16px var(--primary-glow);
@@ -628,11 +615,11 @@
     }
 
     .fleet-wa-btn {
-      padding: 14px 16px;
+      padding: 9px 11px;
       background: white;
       border: 1.5px solid var(--border);
       border-radius: 12px;
-      font-size: 18px;
+      font-size: 14px;
       cursor: pointer;
       transition: all 0.3s;
       text-decoration: none;
@@ -732,7 +719,7 @@
       font-weight: 700;
       font-size: 14px;
       padding: 13px 24px;
-      border-radius: 12px;
+      border-radius: 10px;
       text-decoration: none;
       transition: all 0.3s;
       box-shadow: 0 4px 16px var(--primary-glow);
@@ -785,25 +772,14 @@
       }
 
       .fleet-img {
-        height: 170px;
+        height: 125px;
       }
     }
   </style>
+  <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
-
-  <!-- TOPBAR -->
-  <div class="topbar" id="topbar">
-    <div class="topbar-inner">
-      <div class="tb-left">
-        <div class="tb-item">📞 <a href="tel:+917312345678">+91 731 234 5678</a></div>
-        <div class="tb-item">✉️ <a href="mailto:info@taxiserviceindore.in">info@taxiserviceindore.in</a></div>
-        <div class="tb-item">📍 Vijay Nagar, Indore, MP</div>
-      </div>
-      <div class="tb-badge">🟢 Available 24/7</div>
-    </div>
-  </div>
 
   <!-- NAV -->
   <nav id="navbar">
@@ -812,8 +788,8 @@
         <div class="logo-mark"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Taxi Service Indore logo"></div>
       </a>
       <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#routes">Top Routes</a></li>
+        <li><a href="services-all.html">Services</a></li>
+        <li><a href="routes-all.html">Top Routes</a></li>
         <li><a href="fleet.html">Fleet & Pricing</a></li>
         <li><a href="rental.html">Rentals</a></li>
         <li><a href="aboutus.html">About</a></li>
@@ -821,7 +797,7 @@
       </ul>
       <div class="nav-actions">
         <a href="tel:+917312345678" class="nav-tel"><span class="ring-icon">📞</span> +91 731 234 5678</a>
-        <a href="#booking" class="btn-book">Book Now →</a>
+        <a href="index.html#booking" class="btn-book">Book Now →</a>
         <button class="hamburger" id="hamburger" onclick="toggleMenu()">
           <span></span><span></span><span></span>
         </button>
@@ -833,8 +809,8 @@
   <div class="mob-overlay" id="mobOverlay" onclick="closeMenu()"></div>
   <div class="mob-menu" id="mobMenu">
     <button class="mob-close" onclick="closeMenu()">✕</button>
-    <a href="#services" onclick="closeMenu()">🚗 Services</a>
-    <a href="#routes" onclick="closeMenu()">🗺️ Top Routes</a>
+    <a href="services-all.html" onclick="closeMenu()">🚗 Services</a>
+    <a href="routes-all.html" onclick="closeMenu()">🗺️ Top Routes</a>
     <a href="fleet.html" onclick="closeMenu()">🚙 Fleet & Pricing</a>
     <a href="rental.html" onclick="closeMenu()">🔑 Rentals</a>
     <a href="aboutus.html" onclick="closeMenu()">ℹ️ About</a>
@@ -842,7 +818,7 @@
     <div class="mob-divider"></div>
     <div class="mob-cta">
       <a href="tel:+917312345678" class="btn-primary" style="justify-content:center">📞 Call Now</a>
-      <a href="https://wa.me/917312345678" class="wa-btn" target="_blank">💬 WhatsApp</a>
+      <a href="https://wa.me/919179480342" class="wa-btn" target="_blank">💬 WhatsApp</a>
     </div>
   </div>
 
@@ -907,8 +883,8 @@
             <div class="fleet-spec"><span class="spec-icon">🏙️</span>City rides</div>
           </div>
           <div class="fleet-cta">
-            <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This Car</button>
-            <a href="https://wa.me/917312345678?text=Hi+I+need+WagonR+cab" class="fleet-wa-btn" target="_blank">💬</a>
+            <button type="button" class="fleet-book-btn" onclick="window.openCardBooking(this)">📞 Book This Car</button>
+            <a href="https://wa.me/919179480342?text=Hi+I+need+WagonR+cab" class="fleet-wa-btn" target="_blank">💬</a>
           </div>
         </div>
       </div>
@@ -931,8 +907,8 @@
             <div class="fleet-spec"><span class="spec-icon">🛣️</span>City & outsttn</div>
           </div>
           <div class="fleet-cta">
-            <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This Car</button>
-            <a href="https://wa.me/917312345678?text=Hi+I+need+Dzire+cab" class="fleet-wa-btn" target="_blank">💬</a>
+            <button type="button" class="fleet-book-btn" onclick="window.openCardBooking(this)">📞 Book This Car</button>
+            <a href="https://wa.me/919179480342?text=Hi+I+need+Dzire+cab" class="fleet-wa-btn" target="_blank">💬</a>
           </div>
         </div>
       </div>
@@ -955,8 +931,8 @@
             <div class="fleet-spec"><span class="spec-icon">👨‍👩‍👧‍👦</span>Families</div>
           </div>
           <div class="fleet-cta">
-            <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This Car</button>
-            <a href="https://wa.me/917312345678?text=Hi+I+need+Innova+cab" class="fleet-wa-btn" target="_blank">💬</a>
+            <button type="button" class="fleet-book-btn" onclick="window.openCardBooking(this)">📞 Book This Car</button>
+            <a href="https://wa.me/919179480342?text=Hi+I+need+Innova+cab" class="fleet-wa-btn" target="_blank">💬</a>
           </div>
         </div>
       </div>
@@ -979,8 +955,8 @@
             <div class="fleet-spec"><span class="spec-icon">🌟</span>Premium comfort</div>
           </div>
           <div class="fleet-cta">
-            <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This Car</button>
-            <a href="https://wa.me/917312345678?text=Hi+I+need+Ciaz+cab" class="fleet-wa-btn" target="_blank">💬</a>
+            <button type="button" class="fleet-book-btn" onclick="window.openCardBooking(this)">📞 Book This Car</button>
+            <a href="https://wa.me/919179480342?text=Hi+I+need+Ciaz+cab" class="fleet-wa-btn" target="_blank">💬</a>
           </div>
         </div>
       </div>
@@ -1005,8 +981,8 @@
             <div class="fleet-spec"><span class="spec-icon">🏢</span>Corporate tours</div>
           </div>
           <div class="fleet-cta">
-            <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This</button>
-            <a href="https://wa.me/917312345678?text=Hi+I+need+Tempo+Traveller" class="fleet-wa-btn"
+            <button type="button" class="fleet-book-btn" onclick="window.openCardBooking(this)">📞 Book This</button>
+            <a href="https://wa.me/919179480342?text=Hi+I+need+Tempo+Traveller" class="fleet-wa-btn"
               target="_blank">💬</a>
           </div>
         </div>
@@ -1030,8 +1006,8 @@
             <div class="fleet-spec"><span class="spec-icon">💼</span>Corporate</div>
           </div>
           <div class="fleet-cta">
-            <button class="fleet-book-btn" onclick="window.location='tel:+917312345678'">📞 Book This Car</button>
-            <a href="https://wa.me/917312345678?text=Hi+I+need+luxury+cab+in+Indore" class="fleet-wa-btn"
+            <button type="button" class="fleet-book-btn" onclick="window.openCardBooking(this)">📞 Book This Car</button>
+            <a href="https://wa.me/919179480342?text=Hi+I+need+luxury+cab+in+Indore" class="fleet-wa-btn"
               target="_blank">💬</a>
           </div>
         </div>
@@ -1045,8 +1021,8 @@
         <p>Call now for instant confirmation. We're available 24/7, even on holidays.</p>
       </div>
       <div class="cta-strip-btns">
-        <a href="tel:+917312345678" class="btn-primary">📞 Call to Book</a>
-        <a href="https://wa.me/917312345678" class="btn-wa" target="_blank">💬 WhatsApp</a>
+        <a href="index.html#booking" class="btn-primary">Book a Ride</a>
+        <a href="https://wa.me/919179480342" class="btn-wa" target="_blank">💬 WhatsApp</a>
       </div>
     </div>
   </div>
@@ -1061,15 +1037,11 @@
     }
   </script>
   <script>
-    let lastY = 0;
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       const nav = document.getElementById('navbar');
-      const tb = document.getElementById('topbar');
-      if (!nav || !tb) return;
+      if (!nav) return;
       nav.classList.toggle('scrolled', y > 50);
-      if (y > 200) { tb.classList.toggle('hide', y > lastY); }
-      lastY = y;
     });
 
     function toggleMenu() {
@@ -1084,6 +1056,7 @@
   </script>
   <div id="site-footer"></div>
   <script>fetch('footer.html').then(r=>r.text()).then(t=>{document.getElementById('site-footer').innerHTML=t;});</script>
+  <script src="booking.js" defer></script>
 </body>
 
 </html>

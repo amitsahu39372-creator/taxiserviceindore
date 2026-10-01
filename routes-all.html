@@ -58,23 +58,9 @@
       line-height: 1.6;
     }
 
-    /* ══ TOPBAR ══ */
-    .topbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: var(--dark); height: 36px; display: flex; align-items: center;
-      padding: 0 5%; transition: transform 0.3s ease;
-    }
-    .topbar.hide { transform: translateY(-100%); }
-    .topbar-inner { max-width: 1240px; width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    .tb-left { display: flex; gap: 18px; align-items: center; }
-    .tb-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: rgba(255,255,255,0.45); font-weight: 500; }
-    .tb-item a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
-    .tb-item a:hover { color: var(--primary); }
-    .tb-badge { display: flex; align-items: center; gap: 5px; background: rgba(245,168,0,0.12); border: 1px solid rgba(245,168,0,0.22); color: var(--primary); font-size: 10.5px; font-weight: 700; padding: 2px 10px; border-radius: 100px; }
-
     /* ══ NAV ══ */
     nav {
-      position: fixed; top: 36px; left: 0; right: 0; z-index: 999;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border); height: 72px; padding: 0 5%;
       display: flex; align-items: center; justify-content: space-between;
@@ -98,7 +84,7 @@
     .btn-book:hover { background: var(--primary-dark); transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 32px var(--primary-glow); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { width: 22px; height: 2.5px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-    .header-offset { height: 108px; }
+    .header-offset { height: 72px; }
 
     /* ══ MOBILE MENU ══ */
     .mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 990; }
@@ -113,24 +99,6 @@
     .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
     .wa-btn { width: 100%; padding: 12px; background: #25D366; color: white; border: none; border-radius: 11px; font-family: var(--font-h); font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.25s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
     .wa-btn:hover { background: #1fb358; transform: translateY(-1px); }
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: var(--text-mid);
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 8px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      transition: all 0.2s;
-    }
-
-    .nav-back:hover {
-      border-color: var(--primary);
-      color: var(--primary-dark);
-      background: var(--primary-light);
-    }
 
     .page-hero {
       background: var(--dark);
@@ -459,19 +427,61 @@
         padding: 28px 20px;
       }
     }
+
+    @media (max-width: 680px) {
+      nav { top: 0; height: 60px; }
+      .header-offset { height: 60px; }
+      .nav-links, .nav-tel { display: none; }
+      .hamburger { display: flex; }
+      .logo-mark { width: 80px; }
+    }
   </style>
+  <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
-  <nav>
-    <a href="index.html" class="logo">
-      <div class="logo-mark"><img
-          src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg"
-          alt="Taxi Service Indore logo"></div>
-      <div class="logo-name">Taxi Service <b>Indore</b></div>
-    </a>
-    <a href="index.html" class="nav-back">← Back to Home</a>
+  <nav id="navbar">
+    <div style="max-width:1240px;width:100%;display:flex;align-items:center;justify-content:space-between;margin:0 auto;">
+      <a href="index.html" class="logo">
+        <div class="logo-mark"><img src="https://res.cloudinary.com/dj3iwhwvr/image/upload/v1776084201/taxiserviceindore_logo_mpghna.jpg" alt="Taxi Service Indore logo"></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services-all.html">Services</a></li>
+        <li><a href="routes-all.html">Routes</a></li>
+        <li><a href="fleet.html">Fleet & Pricing</a></li>
+        <li><a href="rental.html">Rentals</a></li>
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="tel:+917312345678" class="nav-tel"><span class="ring-icon">📞</span> +91 731 234 5678</a>
+        <a href="index.html#booking" class="btn-book">Book Now →</a>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
   </nav>
+
+  <div class="mob-overlay" id="mobOverlay" onclick="closeMenu()"></div>
+  <div class="mob-menu" id="mobMenu">
+    <button class="mob-close" onclick="closeMenu()" aria-label="Close navigation menu">✕</button>
+    <a href="index.html" onclick="closeMenu()">🏠 Home</a>
+    <a href="services-all.html" onclick="closeMenu()">🚗 Services</a>
+    <a href="routes-all.html" onclick="closeMenu()">🗺️ Top Routes</a>
+    <a href="fleet.html" onclick="closeMenu()">🚙 Fleet & Pricing</a>
+    <a href="rental.html" onclick="closeMenu()">🔑 Rentals</a>
+    <a href="aboutus.html" onclick="closeMenu()">ℹ️ About</a>
+    <a href="contactus.html" onclick="closeMenu()">📞 Contact</a>
+    <div class="mob-divider"></div>
+    <div class="mob-cta">
+      <a href="tel:+917312345678" class="btn-primary" style="justify-content:center">📞 Call Now</a>
+      <a href="https://wa.me/919179480342" class="wa-btn" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="header-offset"></div>
 
   <div class="page-hero">
     <div class="page-hero-inner">
@@ -500,8 +510,8 @@
           <div class="route-chips"><span class="chip">📏 56 km</span><span class="chip">⏱️ ~1.5 hrs</span></div>
           <p class="route-desc">Mahakaleshwar Jyotirlinga darshan with trusted local driver.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Ujjain" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Ujjain')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Ujjain" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -512,8 +522,8 @@
           <div class="route-chips"><span class="chip">📏 77 km</span><span class="chip">⏱️ ~2 hrs</span></div>
           <p class="route-desc">Peaceful spiritual journey to the Narmada Jyotirlinga island.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Omkareshwar" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Omkareshwar')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Omkareshwar" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -523,8 +533,8 @@
           <div class="route-chips"><span class="chip">📏 98 km</span><span class="chip">⏱️ ~2.5 hrs</span></div>
           <p class="route-desc">Jahaz Mahal, Rani Roopmati Pavilion and the City of Joy ruins.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Mandu" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Mandu')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Mandu" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -534,8 +544,8 @@
           <div class="route-chips"><span class="chip">📏 91 km</span><span class="chip">⏱️ ~2.5 hrs</span></div>
           <p class="route-desc">Maheshwar fort & Ahilya Bai Holkar temple on Narmada ghats.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Maheshwar" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Maheshwar')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Maheshwar" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -545,8 +555,8 @@
           <div class="route-chips"><span class="chip">📏 195 km</span><span class="chip">⏱️ ~3.5 hrs</span></div>
           <p class="route-desc">Comfortable city ride to the City of Lakes and state capital.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Bhopal" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Bhopal')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Bhopal" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -556,8 +566,8 @@
           <div class="route-chips"><span class="chip">📏 158 km</span><span class="chip">⏱️ ~3 hrs</span></div>
           <p class="route-desc">Maa Baglamukhi temple, one of the Shakti peethas of India.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Baglamukhi" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Baglamukhi')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Baglamukhi" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -567,8 +577,8 @@
           <div class="route-chips"><span class="chip">📏 256 km</span><span class="chip">⏱️ ~5 hrs</span></div>
           <p class="route-desc">MP's only hill station — waterfalls, caves and colonial charm.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Pachmarhi" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Pachmarhi')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Pachmarhi" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -578,8 +588,8 @@
           <div class="route-chips"><span class="chip">📏 390 km</span><span class="chip">⏱️ ~7 hrs</span></div>
           <p class="route-desc">UNESCO World Heritage Site — ancient temple complex of MP.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Khajuraho" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Khajuraho')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Khajuraho" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -596,8 +606,8 @@
           <div class="route-chips"><span class="chip">📏 400 km</span><span class="chip">⏱️ ~7 hrs</span></div>
           <p class="route-desc">Gujarat's commercial capital — Sabarmati Ashram, Adalaj stepwell.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Ahmedabad" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Ahmedabad')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Ahmedabad" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -607,8 +617,8 @@
           <div class="route-chips"><span class="chip">📏 590 km</span><span class="chip">⏱️ ~10 hrs</span></div>
           <p class="route-desc">City of Dreams — comfortable long-distance cab with experienced drivers.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Mumbai" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Mumbai')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Mumbai" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -618,8 +628,8 @@
           <div class="route-chips"><span class="chip">📏 480 km</span><span class="chip">⏱️ ~8 hrs</span></div>
           <p class="route-desc">Orange City of India — Deekshabhoomi, Sitabuldi Fort.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Nagpur" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Nagpur')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Nagpur" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -629,8 +639,8 @@
           <div class="route-chips"><span class="chip">📏 500 km</span><span class="chip">⏱️ ~9 hrs</span></div>
           <p class="route-desc">Oxford of the East — Shaniwar Wada, Sinhagad Fort.</p>
           <div class="route-footer"><button class="route-book-btn"
-              onclick="event.stopPropagation();window.location='tel:+917312345678'">Book →</button><a
-              href="https://wa.me/917312345678?text=Hi+I+need+cab+to+Pune" class="route-wa-btn"
+              onclick="event.stopPropagation();book('Pune')">Book →</button><a
+              href="https://wa.me/919179480342?text=Hi+I+need+cab+to+Pune" class="route-wa-btn"
               onclick="event.stopPropagation()" target="_blank">💬</a></div>
         </div>
 
@@ -643,14 +653,27 @@
         <p>We cover any destination across India. Call us for custom quotes on routes not listed here.</p>
       </div>
       <div class="cta-strip-btns">
-        <a href="tel:+917312345678" class="btn-primary">📞 Get Custom Quote</a>
-        <a href="https://wa.me/917312345678" class="btn-wa" target="_blank">💬 WhatsApp</a>
+        <a href="index.html?service=Custom%20outstation%20quote#booking" class="btn-primary">Get Custom Quote</a>
+        <a href="https://wa.me/919179480342" class="btn-wa" target="_blank">💬 WhatsApp</a>
       </div>
     </div>
   </div>
 
   <script>
-    function book(dest) { window.location.href = 'tel:+917312345678'; }
+    function toggleMenu() {
+      document.getElementById('mobMenu').classList.toggle('open');
+      document.getElementById('mobOverlay').style.display =
+        document.getElementById('mobMenu').classList.contains('open') ? 'block' : 'none';
+    }
+    function closeMenu() {
+      document.getElementById('mobMenu').classList.remove('open');
+      document.getElementById('mobOverlay').style.display = 'none';
+    }
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      document.getElementById('navbar').classList.toggle('scrolled', y > 50);
+    });
+    function book(dest) { startBooking('Outstation taxi', { route: `Indore to ${dest}`, drop: dest }); }
     function filterRoutes(cat, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -662,6 +685,7 @@
   </script>
   <div id="site-footer"></div>
   <script>fetch('footer.html').then(r=>r.text()).then(t=>{document.getElementById('site-footer').innerHTML=t;});</script>
+  <script src="booking.js" defer></script>
 </body>
 
 </html>
